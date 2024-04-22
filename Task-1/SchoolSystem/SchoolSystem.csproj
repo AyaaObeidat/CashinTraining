@@ -16,10 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\TeacherDtos\" />
-    <Folder Include="Dtos\SubjectDtos\" />
-    <Folder Include="Dtos\StudentDtos\" />
-    <Folder Include="Dtos\SchoolDtos\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
