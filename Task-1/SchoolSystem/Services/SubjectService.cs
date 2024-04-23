@@ -28,6 +28,7 @@ namespace SchoolSystem.Services
         {
             var subjects = dbContext.Subjects.Select(x => new SubjectDetails()
             {
+                Id = x.Id,
                 Name = x.Name,
                 Mark = x.Mark,
                 StudentId = x.StudentId,
@@ -73,6 +74,7 @@ namespace SchoolSystem.Services
             var subject = dbContext.Subjects.FirstOrDefault(x => x.StudentId==parameters.StudentId && x.SchoolId==parameters.SchoolId && x.TeacherId==parameters.TeacherId);
             if (subject == null) { return null; }
             subject = subject.UpdateMark(parameters.Mark);
+            dbContext.SaveChanges();
             return subject;
         }
        

@@ -11,20 +11,20 @@ namespace SchoolSystem.Models
 
         //==========================================================
         private Teacher() { }
-        private Teacher(string fullName, Guid schoolId)
+        private Teacher(string fullName, Guid schoolId , bool isManager)
         {
             FullName = fullName;
             SchoolId = schoolId;
-            IsManager = false;
+            IsManager = isManager;
 
         }
         //===========================================================
 
-        public static Teacher Create(string fullName , Guid schoolId)
+        public static Teacher Create(string fullName , Guid schoolId , bool isManager)
         {
             if (string.IsNullOrEmpty(fullName)) throw new ArgumentNullException();
 
-            return new Teacher(fullName , schoolId);
+            return new Teacher(fullName , schoolId , isManager);
         }
 
 

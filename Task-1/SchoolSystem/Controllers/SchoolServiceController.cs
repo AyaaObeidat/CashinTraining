@@ -46,9 +46,9 @@ namespace SchoolSystem.Controllers
         //================================================ 
         [HttpGet]
         [Route("GetById")]
-        public IActionResult GetById(Guid schoolId)
+        public IActionResult GetById(Guid id)
         {
-            var school = _schoolService.GetById(schoolId);
+            var school = _schoolService.GetById(id);
             if (school == null) { return NotFound(); }
             return Ok(school);
         }

@@ -70,6 +70,7 @@ namespace SchoolSystem.Services
             var student = dbContext.Students.FirstOrDefault(x => x.Id == parameters.Id);
             if (student == null) { return null; }
             student = student.UpdateAll(parameters.FullName , parameters.SchoolId);
+            dbContext.SaveChanges();
             return student;
         }
     }

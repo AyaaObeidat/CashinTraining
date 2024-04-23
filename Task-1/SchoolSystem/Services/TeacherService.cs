@@ -18,7 +18,7 @@ namespace SchoolSystem.Services
         //=====================================================
         public Teacher Create(TeacherCreateParameters parameters)
         {
-            var teacher = Teacher.Create(parameters.FullName, parameters.SchoolId);
+            var teacher = Teacher.Create(parameters.FullName, parameters.SchoolId , parameters.IsManager);
             dbContext.Teachers.Add(teacher);
             dbContext.SaveChanges();
             return teacher;
@@ -72,6 +72,7 @@ namespace SchoolSystem.Services
             var teacher = dbContext.Teachers.FirstOrDefault(x => x.Id == parameters.Id);
             if (teacher == null) { return null; }
             teacher = teacher.UpdateAll(parameters.FullName, parameters.SchoolId);
+            dbContext.SaveChanges();
             return teacher;
         }
     }

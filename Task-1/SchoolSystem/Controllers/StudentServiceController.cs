@@ -29,7 +29,7 @@ namespace SchoolSystem.Controllers
         //================================================
         [HttpGet]
         [Route("GetAll/Details")]
-        public IActionResult GetSchoolsDetails()
+        public IActionResult GetStudentsDetails()
         {
             var students = _studentService.Details();
             if (students.Count == 0) { return NotFound(); }
@@ -38,7 +38,7 @@ namespace SchoolSystem.Controllers
         //================================================
         [HttpGet]
         [Route("GetAll/List")]
-        public IActionResult GetSchoolsListItem()
+        public IActionResult GetStudentsListItem()
         {
             var students = _studentService.List();
             if (students.Count == 0) { return NotFound(); }

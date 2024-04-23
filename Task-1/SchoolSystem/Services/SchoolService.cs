@@ -19,7 +19,7 @@ namespace SchoolSystem.Services
         //=====================================================
         public School Create(SchoolCreateParameters parameters)
         {
-            var school = School.Create(parameters.Name, parameters.Description);
+            var school = School.Create(parameters.Name, parameters.Description );
             dbContext.Schools.Add(school);
             dbContext.SaveChanges();
             return school;
@@ -72,6 +72,7 @@ namespace SchoolSystem.Services
             var school = dbContext.Schools.FirstOrDefault(x => x.Id == parameters.Id);
             if(school == null) { return null; }
             school  = school.UpdateAll(parameters.Name , parameters.Description);
+            dbContext.SaveChanges();
             return school;
         }
         //=====================================================
@@ -83,7 +84,7 @@ namespace SchoolSystem.Services
             var newManager = dbContext.Teachers.FirstOrDefault(x => x.SchoolId == schoolId && x.Id == managerId);
             if (newManager == null) { return null; }
 
-            var oldManager = dbContext.Teachers.FirstOrDefault(y => y.IsManager == true && y.SchoolId == schoolId);
+            var oldManager = dbContext.Teachers.FirstOrDefault(y => y.IsManager == true && y.SchoolId == schoolId );
             if (oldManager == null) { return null; }
 
             oldManager.UpdateIsManager(false);
