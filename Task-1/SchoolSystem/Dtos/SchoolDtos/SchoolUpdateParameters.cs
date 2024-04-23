@@ -2,8 +2,9 @@
 {
     public class SchoolUpdateParameters
     {
-        public string Name { get; private set; } = null!;
-        public string Description { get; private set; } = null!;
-        public Guid ManagerTeacherId { get; private set; }
+        public Guid Id { get; set; }
+        public string Name { get;  set; } 
+        public string Description { get;  set; } 
+    
     }
 }

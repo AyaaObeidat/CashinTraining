@@ -2,8 +2,8 @@
 {
     public class TeacherUpdateParameters
     {
-        public string FullName { get; private set; } = null!;
-        public bool IsManager { get; private set; }
+        public Guid Id { get; set; }
+        public string FullName { get;  set; } 
         public Guid SchoolId { get; private set; }
     }
 }

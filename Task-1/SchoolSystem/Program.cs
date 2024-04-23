@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolSystem.Data;
+using SchoolSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,10 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SchoolSystemDbContext>(Options =>
 Options.UseSqlServer(builder.Configuration.GetConnectionString("SchoolSystemConnectionString")));
 
+builder.Services.AddScoped<SchoolService>();
+builder.Services.AddScoped<StudentService>();
+builder.Services.AddScoped<SubjectService>();
+builder.Services.AddScoped<TeacherService>();
 
 var app = builder.Build();
 

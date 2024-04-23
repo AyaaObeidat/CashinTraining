@@ -1,6 +1,6 @@
-﻿namespace SchoolSystem.Dtos.TeacherDtos
+﻿namespace SchoolSystem.Dtos.StudentDtos
 {
-    public class TeacherListParameter
+    public class StudentListItem
     {
         public Guid Id { get; set; }
         public string FullName { get; set; }
