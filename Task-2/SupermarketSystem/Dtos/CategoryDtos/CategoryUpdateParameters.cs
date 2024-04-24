@@ -5,6 +5,6 @@ namespace SupermarketSystem.Dtos.CategoryDtos
     public class CategoryUpdateParameters
     {
         public Guid Id { get; set; }
-        public string Name { get;  set; }
+        public Guid ProductId { get; set; }
     }
 }

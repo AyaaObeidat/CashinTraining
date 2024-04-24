@@ -1,9 +1,11 @@
-﻿using SupermarketSystem.Models;
+﻿using SupermarketSystem.Dtos.ProductDtos;
+using SupermarketSystem.Models;
 
 namespace SupermarketSystem.Dtos.OrderDtos
 {
     public class OrderCreateParameters
     {
-        public List<Product> ProductsList { get;  set; }
+        public Guid ProductID { get; set; }
+        public int Quantity { get; set; }
     }
 }

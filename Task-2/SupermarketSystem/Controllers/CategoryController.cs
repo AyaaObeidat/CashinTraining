@@ -58,18 +58,18 @@ namespace SupermarketSystem.Controllers
        
         [HttpPatch]
         [Route("AddProduct")]
-        public IActionResult AddProduct(Guid id , Guid productId)
+        public IActionResult AddProduct(CategoryUpdateParameters parameters)
         {
-            var category = _categoryRepository.AddProduct(id , productId);
+            var category = _categoryRepository.AddProduct(parameters.Id , parameters.ProductId);
             return Ok(category);
         }
         //=================================================================
 
         [HttpPatch]
         [Route("RemoveProduct")]
-        public IActionResult RemoveProduct(Guid id, Guid productId)
+        public IActionResult RemoveProduct(CategoryUpdateParameters parameters)
         {
-            var category = _categoryRepository.RemoveProduct(id, productId);
+            var category = _categoryRepository.RemoveProduct(parameters.Id, parameters.ProductId);
             return Ok(category);
         }
     }

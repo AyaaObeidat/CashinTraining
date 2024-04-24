@@ -63,12 +63,13 @@ namespace SupermarketSystem.Repositories.Implementations
             return categories;
         }
 
-        public Category AddProduct(Guid id, Guid productId)
+        public Category AddProduct(CategoryUpdateParameters parameters)
         {
+
             List<Product> products = new List<Product>();
 
-            var category = _dbContext.Categories.FirstOrDefault(c => c.Id==id);
-            var product = _dbContext.Products.FirstOrDefault(p => p.Id==productId);
+            var category = _dbContext.Categories.FirstOrDefault(c => c.Id==parameters.Id);
+            var product = _dbContext.Products.FirstOrDefault(p => p.Id==parameters.ProductId);
             if (category == null || product == null) return null;
             
             products.Add(product);
@@ -77,12 +78,12 @@ namespace SupermarketSystem.Repositories.Implementations
             return category;
         }
 
-        public Category RemoveProduct(Guid id, Guid productId)
+        public Category RemoveProduct(CategoryUpdateParameters parameters)
         {
            
 
-            var category = _dbContext.Categories.FirstOrDefault(c => c.Id == id);
-            var product = _dbContext.Products.FirstOrDefault(p => p.Id == productId);
+            var category = _dbContext.Categories.FirstOrDefault(c => c.Id == parameters.Id);
+            var product = _dbContext.Products.FirstOrDefault(p => p.Id == parameters.ProductId);
             if (category == null || product == null) return null;
             
             category.ProductsList.Remove(product);

@@ -8,7 +8,7 @@ namespace SupermarketSystem.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public decimal TotalPrice { get; private set; }
+        public decimal TotalPrice { get; private set; } = 0;
         public List<Product> ProductsList { get; private set; }
 
         //===========================================================
@@ -19,12 +19,12 @@ namespace SupermarketSystem.Models
         public Order(List<Product> products)
         {
             ProductsList = products;
+            SetTotalPrice();
         }
 
         //=============================================================
-        public Order Create(List<Product> products)
-        {
-            if (products == null) throw new ArgumentNullException();
+        public static Order Create(List<Product> products)
+        { 
             return new Order(products);
         }
 

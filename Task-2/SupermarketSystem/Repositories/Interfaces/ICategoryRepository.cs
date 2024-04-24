@@ -13,7 +13,7 @@ namespace SupermarketSystem.Repositories.Interfaces
         public List<CategoryListItems> List();
         public Category GetById(Guid id);
         public int Delete(Guid id);
-        public Category AddProduct(Guid id ,Guid productId);
-        public Category RemoveProduct(Guid id, Guid productId);
+        public Category AddProduct(CategoryUpdateParameters parameters);
+        public Category RemoveProduct(CategoryUpdateParameters parameters);
     }
 }
