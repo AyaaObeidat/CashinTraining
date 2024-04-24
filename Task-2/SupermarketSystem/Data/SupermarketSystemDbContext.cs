@@ -11,6 +11,19 @@ namespace SupermarketSystem.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .Property(o => o.UnitPrice)
+                .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Order>()
+               .Property(o => o.TotalPrice)
+               .HasColumnType("decimal(18, 2)");
+
+            
+        }
     }
     
 }

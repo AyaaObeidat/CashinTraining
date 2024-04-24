@@ -8,6 +8,7 @@ namespace SupermarketSystem.Models
         public string Name { get; private set; } = null!;
         public decimal UnitPrice { get; private set; }
         public int Quantity { get; private set; }
+       
 
         //===================================================
         public Product() {}
@@ -26,12 +27,8 @@ namespace SupermarketSystem.Models
 
             return new Product(name, unitPrice, quantity);
         }
+
        
-        //public Product UpdateCategoryId(Guid categoryId)
-        //{
-        //    CategoryId = categoryId;
-        //    return this;
-        //}
         public Product UpdatePrice(decimal price)
         {
             UnitPrice = price;

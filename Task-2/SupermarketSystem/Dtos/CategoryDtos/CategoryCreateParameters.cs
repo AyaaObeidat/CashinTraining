@@ -1,4 +1,6 @@
-﻿namespace SupermarketSystem.Dtos.CategoryDtos
+﻿using SupermarketSystem.Models;
+
+namespace SupermarketSystem.Dtos.CategoryDtos
 {
     public class CategoryCreateParameters
     {

@@ -5,27 +5,28 @@
         public Guid Id { get; set; }
         public string Name { get; private set; } = null!;
 
-        public List<Product> ProductsList { get; private set; }
+        public List<Product> ProductsList { get; set; }
+
 
         //==================================================
         public Category()
         {
             
         }
-        public Category(string name )
+        public Category(string name)
         {
             Name = name;
         }
         //===================================================
-        public Category Create(string name)
+        public static Category Create(string name )
         {
             if(string.IsNullOrEmpty(name)) throw new ArgumentNullException();
-            return new Category(name);
+            return new Category(name );
         }
-
-        public void SetProductsList(List<Product> products)
+        public void SetProductList( List<Product> products )
         {
             ProductsList = products;
         }
+
     }
 }

@@ -4,6 +4,7 @@ namespace SupermarketSystem.Dtos.CategoryDtos
 {
     public class CategoryUpdateParameters
     {
-        public List<Product> ProductsList { get;  set; }
+        public Guid Id { get; set; }
+        public string Name { get;  set; }
     }
 }

@@ -56,7 +56,7 @@ namespace SupermarketSystem.Controllers
         //=================================================================
         [HttpPatch]
         [Route("UpdatePrice")]
-        public IActionResult UpdatePrice(ProductUpdateParameters parameters)
+        public IActionResult UpdatePrice([FromBody]ProductUpdateParameters parameters)
         {
             _productRepository.UpdatePrice(parameters);
              return Ok();
@@ -64,18 +64,11 @@ namespace SupermarketSystem.Controllers
         //=================================================================
         [HttpPatch]
         [Route("UpdateQuantity")]
-        public IActionResult UpdateQuantity(ProductUpdateParameters parameters)
+        public IActionResult UpdateQuantity([FromBody]ProductUpdateParameters parameters)
         {
             _productRepository.UpdateQuantity(parameters);
             return Ok();
         }
-        //=================================================================
-        [HttpPatch]
-        [Route("UpdateCategoryId")]
-        public IActionResult UpdateCategoryId(ProductUpdateParameters parameters)
-        {
-            _productRepository.UpdateCategoryId(parameters);
-            return Ok();
-        }
+       
     }
 }

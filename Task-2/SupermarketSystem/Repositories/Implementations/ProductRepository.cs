@@ -26,6 +26,7 @@ namespace SupermarketSystem.Repositories.Implementations
             var product = _dbContext.Products.FirstOrDefault(p => p.Id == id);
             if (product == null) { return -1; }
             _dbContext.Products.Remove(product);
+            _dbContext.SaveChanges();
             return 0;
         }
 
@@ -33,6 +34,7 @@ namespace SupermarketSystem.Repositories.Implementations
         {
             var products = _dbContext.Products.Select(p => new ProductDetails()
             {
+                Id = p.Id,
                 Name = p.Name,
                 Price = p.UnitPrice,
                 Quantity = p.Quantity,
@@ -41,15 +43,9 @@ namespace SupermarketSystem.Repositories.Implementations
             return products;
         }
 
-        public ProductDetails GetById(Guid id)
+        public Product GetById(Guid id)
         {
-            var product = _dbContext.Products.Select( p => new ProductDetails()
-            {
-                Name = p.Name,
-                Price = p.UnitPrice,
-                Quantity = p.Quantity,
-            }).FirstOrDefault(x => x.Id == id); 
-
+            var product = _dbContext.Products.FirstOrDefault(x => x.Id == id);
             if(product == null) { return null; }
             return product;
         }
@@ -70,18 +66,15 @@ namespace SupermarketSystem.Repositories.Implementations
             var product = _dbContext.Products.FirstOrDefault(p => p.Id == parameters.Id);
             if(product == null) { return; }
             product = product.UpdatePrice(parameters.UnitPrice);
+            _dbContext.SaveChanges();   
         }
         public void UpdateQuantity(ProductUpdateParameters parameters)
         {
             var product = _dbContext.Products.FirstOrDefault(p => p.Id == parameters.Id);
             if (product == null) { return; }
             product = product.UpdateQuantity(parameters.Quantity);
+            _dbContext.SaveChanges();
         }
-        public void UpdateCategoryId(ProductUpdateParameters parameters)
-        {
-            var product = _dbContext.Products.FirstOrDefault(p => p.Id == parameters.Id);
-            if (product == null) { return; }
-            product = product.UpdateCategoryId(parameters.CategoryId);
-        }
+       
     }
 }
