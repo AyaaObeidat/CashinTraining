@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using SupermarketSystem.Data;
+using SupermarketSystem.Repositories.Implementations;
+using SupermarketSystem.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SupermarketSystemDbContext>(Options =>
 Options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketSystemConnectionString")));
 
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

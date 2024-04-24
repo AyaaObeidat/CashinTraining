@@ -8,7 +8,6 @@ namespace SupermarketSystem.Models
         public string Name { get; private set; } = null!;
         public decimal UnitPrice { get; private set; }
         public int Quantity { get; private set; }
-        public Guid CategoryId { get; private set; }
 
         //===================================================
         public Product() {}
@@ -19,7 +18,7 @@ namespace SupermarketSystem.Models
             Quantity = quantity;
         }
         //====================================================
-        public Product Create(string name, decimal unitPrice, int quantity)
+        public static Product Create(string name, decimal unitPrice, int quantity)
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
             if(unitPrice < 0) throw new ArgumentOutOfRangeException();
@@ -28,10 +27,11 @@ namespace SupermarketSystem.Models
             return new Product(name, unitPrice, quantity);
         }
        
-        public void SetCategoryId(Guid categoryId)
-        {
-            CategoryId = categoryId;
-        }
+        //public Product UpdateCategoryId(Guid categoryId)
+        //{
+        //    CategoryId = categoryId;
+        //    return this;
+        //}
         public Product UpdatePrice(decimal price)
         {
             UnitPrice = price;
