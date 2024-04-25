@@ -11,6 +11,8 @@ namespace SupermarketSystem.Repositories.Interfaces
         public List<OrderListItems> List();
         public Order GetById(int id);
         public int Delete(int id);
-       
+        public Order AddProduct(OrderUpdateParameters parameters);
+
+        public Order RemoveProduct(OrderUpdateParameters parameters);
     }
 }

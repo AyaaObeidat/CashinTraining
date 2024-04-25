@@ -5,7 +5,7 @@
         public Guid Id { get; set; }
         public string Name { get; private set; } = null!;
 
-        public List<Product> ProductsList { get; set; }
+        public List<Product> ProductsList { get; private set; }
 
 
         //==================================================

@@ -32,8 +32,17 @@ namespace SupermarketSystem.Models
         {
             foreach(var product in ProductsList.ToList())
             {
+               
                 TotalPrice += product.UnitPrice;
+                
             }
+        }
+
+        public void SetProductList(List<Product> products)
+        {
+            ProductsList = products;
+            SetTotalPrice();
+
         }
     }
 }

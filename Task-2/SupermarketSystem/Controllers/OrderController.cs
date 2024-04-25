@@ -24,7 +24,7 @@ namespace SupermarketSystem.Controllers
         {
            var order = _orderRepository.Create(parameters);
            
-            return Ok(order.Id + order.TotalPrice);
+            return Ok(order);
         }
 
         //=================================================================
@@ -56,21 +56,21 @@ namespace SupermarketSystem.Controllers
         }
         //=================================================================
 
-        //[HttpPatch]
-        //[Route("AddProduct")]
-        //public IActionResult AddProduct(Guid id, Guid productId)
-        //{
-        //    var category = _categoryRepository.AddProduct(id, productId);
-        //    return Ok(category);
-        //}
+        [HttpPatch]
+        [Route("AddProduct")]
+        public IActionResult AddProduct(OrderUpdateParameters parameters)
+        {
+            var order = _orderRepository.AddProduct(parameters);
+            return Ok(order);
+        }
         ////=================================================================
 
-        //[HttpPatch]
-        //[Route("RemoveProduct")]
-        //public IActionResult RemoveProduct(Guid id, Guid productId)
-        //{
-        //    var category = _categoryRepository.RemoveProduct(id, productId);
-        //    return Ok(category);
-        //}
+        [HttpPatch]
+        [Route("RemoveProduct")]
+        public IActionResult RemoveProduct(OrderUpdateParameters parameters)
+        {
+            var order = _orderRepository.RemoveProduct(parameters);
+            return Ok(order);
+        }
     }
 }

@@ -26,7 +26,6 @@ namespace SupermarketSystem.Repositories.Implementations
             {
                 products.Add(product);
                
-
             }
             var order = Order.Create(products);
             _dbContext.Orders.Add(order);
@@ -74,5 +73,51 @@ namespace SupermarketSystem.Repositories.Implementations
             return orders;
         }
 
+        public Order AddProduct(OrderUpdateParameters parameters)
+        {
+            List<Product> products = new List<Product>();
+
+            var order = _dbContext.Orders.FirstOrDefault(o => o.Id == parameters.Id);
+            var product = _dbContext.Products.FirstOrDefault(p => p.Id == parameters.ProductId);
+            if (order == null || product == null || product.Quantity < parameters.Quantity) return null;
+            product = product.UpdateQuantity(product.Quantity - parameters.Quantity);
+
+            for (int i = 1; i <= parameters.Quantity; i++)
+            {
+                products.Add(product);
+
+            }
+            order.SetProductList(products);
+            order.SetTotalPrice();
+            _dbContext.SaveChanges();
+            return order;
+
+        }
+
+        public Order RemoveProduct(OrderUpdateParameters parameters)
+        {
+            List<Product> products = new List<Product>();
+
+            var order = _dbContext.Orders.FirstOrDefault(o => o.Id == parameters.Id);
+            var product = _dbContext.Products.FirstOrDefault(p => p.Id == parameters.ProductId);
+            if (order == null || product == null || order.TotalPrice==0) return null;
+
+            product = product.UpdateQuantity(product.Quantity + parameters.Quantity);
+            products = order.ProductsList.ToList();
+
+            for (int i = 1; i <= parameters.Quantity; i++)
+            {
+                products.Remove(product);
+
+            }
+            order.SetProductList(products);
+            _dbContext.SaveChanges();
+            order.SetTotalPrice();
+            _dbContext.SaveChanges();
+            return order;
+
+        }
     }
+
 }
+
