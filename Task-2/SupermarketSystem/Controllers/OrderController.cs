@@ -23,7 +23,8 @@ namespace SupermarketSystem.Controllers
         public IActionResult Add([FromBody]OrderCreateParameters parameters)
         {
            var order = _orderRepository.Create(parameters);
-            return Ok(order);
+           
+            return Ok(order.Id + order.TotalPrice);
         }
 
         //=================================================================
@@ -45,14 +46,14 @@ namespace SupermarketSystem.Controllers
             return Ok(order);
         }
         //=================================================================
-        //[HttpDelete]
-        //[Route("Delete")]
-        //public IActionResult Delete(Guid id)
-        //{
-        //    int result = _categoryRepository.Delete(id);
-        //    if (result == -1) { return BadRequest(); }
-        //    return Ok();
-        //}
+        [HttpDelete]
+        [Route("Delete")]
+        public IActionResult Delete(int id)
+        {
+            int result = _orderRepository.Delete(id);
+            if (result == -1) { return BadRequest(); }
+            return Ok();
+        }
         //=================================================================
 
         //[HttpPatch]

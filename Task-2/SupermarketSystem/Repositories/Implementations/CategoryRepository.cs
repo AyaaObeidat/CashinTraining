@@ -82,7 +82,7 @@ namespace SupermarketSystem.Repositories.Implementations
         {
            
 
-            var category = _dbContext.Categories.FirstOrDefault(c => c.Id == parameters.Id);
+            var category = _dbContext.Categories.FirstOrDefault(c => c.Id ==parameters.Id);
             var product = _dbContext.Products.FirstOrDefault(p => p.Id == parameters.ProductId);
             if (category == null || product == null) return null;
             

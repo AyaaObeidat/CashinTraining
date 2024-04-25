@@ -60,7 +60,7 @@ namespace SupermarketSystem.Controllers
         [Route("AddProduct")]
         public IActionResult AddProduct(CategoryUpdateParameters parameters)
         {
-            var category = _categoryRepository.AddProduct(parameters.Id , parameters.ProductId);
+            var category = _categoryRepository.AddProduct(parameters);
             return Ok(category);
         }
         //=================================================================
@@ -69,7 +69,7 @@ namespace SupermarketSystem.Controllers
         [Route("RemoveProduct")]
         public IActionResult RemoveProduct(CategoryUpdateParameters parameters)
         {
-            var category = _categoryRepository.RemoveProduct(parameters.Id, parameters.ProductId);
+            var category = _categoryRepository.RemoveProduct(parameters);
             return Ok(category);
         }
     }

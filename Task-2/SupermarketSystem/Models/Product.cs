@@ -10,6 +10,7 @@ namespace SupermarketSystem.Models
         public int Quantity { get; private set; }
        
 
+
         //===================================================
         public Product() {}
         public Product(string name , decimal unitPrice , int quantity)
