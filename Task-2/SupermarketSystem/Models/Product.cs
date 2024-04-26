@@ -9,9 +9,6 @@ namespace SupermarketSystem.Models
         public decimal UnitPrice { get; private set; }
         public int Quantity { get; private set; }
        
-
-
-        //===================================================
         public Product() {}
         public Product(string name , decimal unitPrice , int quantity)
         {
@@ -19,7 +16,7 @@ namespace SupermarketSystem.Models
             UnitPrice = unitPrice;
             Quantity = quantity;
         }
-        //====================================================
+      
         public static Product Create(string name, decimal unitPrice, int quantity)
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();

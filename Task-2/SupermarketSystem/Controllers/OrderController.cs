@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SupermarketSystem.Dtos.CategoryDtos;
 using SupermarketSystem.Dtos.OrderDtos;
-using SupermarketSystem.Repositories.Interfaces;
+using SupermarketSystem.Services;
 
 namespace SupermarketSystem.Controllers
 {
@@ -10,67 +10,43 @@ namespace SupermarketSystem.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
+        private readonly OrderService _orderService;
 
-        private readonly IOrderRepository _orderRepository;
-        public OrderController(IOrderRepository orderRepository)
+        public OrderController(OrderService orderService)
         {
-            _orderRepository = orderRepository;
+            _orderService = orderService;
         }
 
-        //=================================================================
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var order = await _orderService.GetAllAsync();
+            return Ok(order);
+        }
+
+        [HttpGet]
+        [Route("GetById")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var order = await _orderService.GetByIdAsync(id);
+            return Ok(order);
+        }
+
         [HttpPost]
         [Route("Add")]
-        public IActionResult Add([FromBody]OrderCreateParameters parameters)
+        public async Task<IActionResult> Add([FromBody] OrderCreateParameters parameters)
         {
-           var order = _orderRepository.Create(parameters);
-           
-            return Ok(order);
-        }
-
-        //=================================================================
-        [HttpPost]
-        [Route("GetAll")]
-        public IActionResult GetAll()
-        {
-            var order = _orderRepository.Details();
-            if (order == null) { return BadRequest(); }
-            return Ok(order);
-        }
-        //=================================================================
-        [HttpPost]
-        [Route("GetById")]
-        public IActionResult GetById(int id)
-        {
-            var order = _orderRepository.GetById(id);
-            if (order == null) { return BadRequest(); }
-            return Ok(order);
-        }
-        //=================================================================
-        [HttpDelete]
-        [Route("Delete")]
-        public IActionResult Delete(int id)
-        {
-            int result = _orderRepository.Delete(id);
-            if (result == -1) { return BadRequest(); }
+            await _orderService.AddAsync(parameters);
             return Ok();
         }
-        //=================================================================
 
-        [HttpPatch]
-        [Route("AddProduct")]
-        public IActionResult AddProduct(OrderUpdateParameters parameters)
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var order = _orderRepository.AddProduct(parameters);
-            return Ok(order);
-        }
-        ////=================================================================
-
-        [HttpPatch]
-        [Route("RemoveProduct")]
-        public IActionResult RemoveProduct(OrderUpdateParameters parameters)
-        {
-            var order = _orderRepository.RemoveProduct(parameters);
-            return Ok(order);
+            await _orderService.DeleteAsync(id);
+            return Ok();
         }
     }
 }

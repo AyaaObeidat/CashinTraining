@@ -1,18 +1,10 @@
-﻿using SupermarketSystem.Dtos.OrderDtos;
-using SupermarketSystem.Dtos.ProductDtos;
-using SupermarketSystem.Models;
+﻿using SupermarketSystem.Models;
 
 namespace SupermarketSystem.Repositories.Interfaces
 {
-    public interface IOrderRepository
+    public interface IOrderRepository : IGenericRepository<Order>
     {
-        public Order Create(OrderCreateParameters parameters);
-        public List<OrderDetails> Details();
-        public List<OrderListItems> List();
-        public Order GetById(int id);
-        public int Delete(int id);
-        public Order AddProduct(OrderUpdateParameters parameters);
-
-        public Order RemoveProduct(OrderUpdateParameters parameters);
+        Task<Order> GetByIdAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

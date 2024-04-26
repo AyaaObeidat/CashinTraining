@@ -8,7 +8,6 @@
         public List<Product> ProductsList { get; private set; }
 
 
-        //==================================================
         public Category()
         {
             
@@ -17,7 +16,7 @@
         {
             Name = name;
         }
-        //===================================================
+       
         public static Category Create(string name )
         {
             if(string.IsNullOrEmpty(name)) throw new ArgumentNullException();

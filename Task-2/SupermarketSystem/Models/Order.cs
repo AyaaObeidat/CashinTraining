@@ -10,8 +10,6 @@ namespace SupermarketSystem.Models
         public int Id { get; set; }
         public decimal TotalPrice { get; private set; } = 0;
         public List<Product> ProductsList { get; private set; }
-
-        //===========================================================
         public Order()
         {
             
@@ -21,8 +19,6 @@ namespace SupermarketSystem.Models
             ProductsList = products;
             SetTotalPrice();
         }
-
-        //=============================================================
         public static Order Create(List<Product> products)
         { 
             return new Order(products);

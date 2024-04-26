@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SupermarketSystem.Dtos.ProductDtos;
 using SupermarketSystem.Repositories.Implementations;
 using SupermarketSystem.Repositories.Interfaces;
+using SupermarketSystem.Services;
 
 namespace SupermarketSystem.Controllers
 {
@@ -10,65 +11,60 @@ namespace SupermarketSystem.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
-        public ProductController(IProductRepository productRepository)
+        private readonly ProductService _productService;
+
+        public ProductController(ProductService productService)
         {
-            _productRepository = productRepository;
+            _productService = productService;
         }
 
-        //=================================================================
-        [HttpPost]
-        [Route("Add")]
-        public IActionResult Add([FromBody]ProductCreateParameters parameters)
-        {
-            var product = _productRepository.Create(parameters);
-            if (product == null) { return BadRequest(); }
-            return Ok(product);
-        }
-
-        //=================================================================
-        [HttpPost]
+        [HttpGet]
         [Route("GetAll")]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            var products = _productRepository.Details();
-            if (products == null) { return BadRequest(); }
+            var products = await _productService.GetAllAsync();
             return Ok(products);
         }
-        //=================================================================
-        [HttpPost]
+
+        [HttpGet]
         [Route("GetById")]
-        public IActionResult GetById(Guid id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            var product = _productRepository.GetById(id);
-            if (product  == null) { return BadRequest(); }
+            var product = await _productService.GetByIdAsync(id);
             return Ok(product);
         }
-        //=================================================================
+
+        [HttpPost]
+        [Route("Add")]
+        public async Task<IActionResult> Add([FromBody]ProductCreateParameters parameters)
+        {
+            await _productService.AddAsync(parameters);
+            return Ok();    
+        }
+
         [HttpDelete]
         [Route("Delete")]
-        public IActionResult Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            int result = _productRepository.Delete(id);
-            if (result == -1) { return BadRequest(); }
+            await _productService.DeleteAsync(id);
             return Ok();
         }
-        //=================================================================
+
         [HttpPatch]
         [Route("UpdatePrice")]
-        public IActionResult UpdatePrice([FromBody]ProductUpdateParameters parameters)
+        public async Task< IActionResult> UpdatePrice([FromBody] ProductUpdateParameters parameters)
         {
-            _productRepository.UpdatePrice(parameters);
-             return Ok();
-        }
-        //=================================================================
-        [HttpPatch]
-        [Route("UpdateQuantity")]
-        public IActionResult UpdateQuantity([FromBody]ProductUpdateParameters parameters)
-        {
-            _productRepository.UpdateQuantity(parameters);
+            await _productService.UpdatePrice(parameters);
             return Ok();
         }
        
+
+        [HttpPatch]
+        [Route("UpdateQuantity")]
+        public async Task<IActionResult> UpdateQuantity([FromBody] ProductUpdateParameters parameters)
+        {
+            await _productService.UpdateQuantity(parameters);
+            return Ok();
+        }
     }
 }

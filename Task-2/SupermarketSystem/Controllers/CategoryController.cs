@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SupermarketSystem.Dtos.CategoryDtos;
 using SupermarketSystem.Dtos.ProductDtos;
-using SupermarketSystem.Repositories.Interfaces;
+using SupermarketSystem.Services;
 
 namespace SupermarketSystem.Controllers
 {
@@ -10,67 +10,59 @@ namespace SupermarketSystem.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        private readonly CategoryService _categoryService;
 
-        private readonly ICategoryRepository _categoryRepository;
-        public CategoryController(ICategoryRepository categoryRepository)
+        public CategoryController(CategoryService categoryService)
         {
-            _categoryRepository = categoryRepository;
+            _categoryService = categoryService;
         }
 
-        //=================================================================
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var products = await _categoryService.GetAllAsync();
+            return Ok(products);
+        }
+
+        [HttpGet]
+        [Route("GetById")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var category = await _categoryService.GetByIdAsync(id);
+            return Ok(category);
+        }
+
         [HttpPost]
         [Route("Add")]
-        public IActionResult Add([FromBody] CategoryCreateParameters parameters)
+        public async Task<IActionResult> Add([FromBody] CategoryCreateParameters parameters)
         {
-            var category = _categoryRepository.Create(parameters);
-            if (category == null) { return BadRequest(); }
-            return Ok(category);
-        }
-
-        //=================================================================
-        [HttpPost]
-        [Route("GetAll")]
-        public IActionResult GetAll()
-        {
-            var category = _categoryRepository.Details();
-            if (category == null) { return BadRequest(); }
-            return Ok(category);
-        }
-        //=================================================================
-        [HttpPost]
-        [Route("GetById")]
-        public IActionResult GetById(Guid id)
-        {
-            var category = _categoryRepository.GetById(id);
-            if (category == null) { return BadRequest(); }
-            return Ok(category);
-        }
-        //=================================================================
-        [HttpDelete]
-        [Route("Delete")]
-        public IActionResult Delete(Guid id)
-        {
-            int result = _categoryRepository.Delete(id);
-            if (result == -1) { return BadRequest(); }
+            await _categoryService.AddAsync(parameters);
             return Ok();
         }
-        //=================================================================
-       
+
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            await _categoryService.DeleteAsync(id);
+            return Ok();
+        }
+
         [HttpPatch]
         [Route("AddProduct")]
-        public IActionResult AddProduct(CategoryUpdateParameters parameters)
+        public async Task <IActionResult>AddProduct(CategoryUpdateParameters parameters)
         {
-            var category = _categoryRepository.AddProduct(parameters);
-            return Ok(category);
+           await _categoryService.AddProduct(parameters);
+            return Ok();
         }
-        //=================================================================
 
         [HttpPatch]
         [Route("RemoveProduct")]
-        public IActionResult RemoveProduct(CategoryUpdateParameters parameters)
+        public async Task<IActionResult> RemoveProduct(CategoryUpdateParameters parameters)
         {
-            var category = _categoryRepository.RemoveProduct(parameters);
-            return Ok(category);
+            await _categoryService.RemoveProduct(parameters);
+            return Ok();
         }
     }
-}
+    }
