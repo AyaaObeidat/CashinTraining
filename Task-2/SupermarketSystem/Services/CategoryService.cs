@@ -29,14 +29,15 @@ namespace SupermarketSystem.Services
             }).ToList();
         }
 
-        public async Task<CategoryListItems> GetByIdAsync(Guid id)
+        public async Task<CategoryDetails> GetByIdAsync(Guid id)
         {
             var category = await _categoryRepository.GetByIdAsync(id);
 
-            return new CategoryListItems
+            return new CategoryDetails
             {
                 Id = category.Id,
-                Name = category.Name,   
+                Name = category.Name,
+                ProductsList = category.ProductsList
             };
         }
 

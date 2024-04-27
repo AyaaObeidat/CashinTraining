@@ -15,7 +15,7 @@ namespace SupermarketSystem.Repositories.Implementations
 
         public async Task<Order> GetByIdAsync(int id)
         {
-            return await _dbcontext.Set<Order>().FindAsync(id);
+            return await _dbcontext.Orders.Include(o => o.ProductsList).FirstOrDefaultAsync(o => o.Id == id);
         }
         public async Task DeleteAsync(int id)
         {
@@ -24,10 +24,13 @@ namespace SupermarketSystem.Repositories.Implementations
             await _dbcontext.SaveChangesAsync();
         }
 
-
+        public override async Task<List<Order>> GetAllAsync()
+        {
+            return await _dbcontext.Orders.Include(o => o.ProductsList).ToListAsync();
+        }
 
 
 
 
     }
-    }
+}

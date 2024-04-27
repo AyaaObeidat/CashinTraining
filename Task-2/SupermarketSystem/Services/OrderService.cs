@@ -29,14 +29,16 @@ namespace SupermarketSystem.Services
                  
             }).ToList();
         }
-        public async Task<OrderListItems> GetByIdAsync(int id)
+        public async Task<OrderDetails> GetByIdAsync(int id)
         {
             var order = await _orderRepository.GetByIdAsync(id);
 
-            return new OrderListItems
+            return new OrderDetails
             {
                 Id = order.Id,
-                TotalPrice = order.TotalPrice
+                TotalPrice = order.TotalPrice,
+                ProductsList = order.ProductsList
+                
             };
         }
         public async Task AddAsync(OrderCreateParameters parameters)
@@ -44,14 +46,15 @@ namespace SupermarketSystem.Services
             List<Product> products = new List<Product>();
             Product product = await _productRepository.GetByIdAsync(parameters.ProductID);
             product = product.UpdateQuantity(product.Quantity - parameters.Quantity);
+            await _productRepository.UpdateAsync(product);
             if (product == null || product.Quantity < parameters.Quantity) return;
             for (int i = 1; i <= parameters.Quantity; i++)
             {
-                products.Add(product);
+                products.Add(product); 
 
             }
             Order order = Order.Create(products);
-            _orderRepository.AddAsync(order);
+            await _orderRepository.AddAsync(order);
         }
 
         public async Task DeleteAsync(int id)
@@ -59,8 +62,53 @@ namespace SupermarketSystem.Services
             await _orderRepository.DeleteAsync(id);
         }
 
+        public async Task AddProduct(OrderUpdateParameters parameters)
+        {
 
+            List<Product> products = new List<Product>();
 
+            var order = await _orderRepository.GetByIdAsync(parameters.Id);
+            var product = await _productRepository.GetByIdAsync(parameters.ProductId);
 
+            if (order == null || product == null || product.Quantity < parameters.Quantity) return;
+            product = product.UpdateQuantity(product.Quantity - parameters.Quantity);
+            await _productRepository.UpdateAsync(product);
+            products = order.ProductsList;
+            decimal totalPrice = order.TotalPrice;
+
+            for (int i = 1; i <= parameters.Quantity; i++)
+            {
+                products.Add(product);
+                totalPrice += product.UnitPrice;
+
+            }
+            order.SetTotalPrice(totalPrice);
+            order.SetProductList(products);
+            await _orderRepository.UpdateAsync(order);
+        }
+
+        public async Task RemoveProduct(OrderUpdateParameters parameters)
+        {
+            List<Product> products = new List<Product>();
+
+            var order = await _orderRepository.GetByIdAsync(parameters.Id);
+            var product = await _productRepository.GetByIdAsync(parameters.ProductId);
+            if (order == null || product == null || order.TotalPrice == 0) return;
+
+            product = product.UpdateQuantity(product.Quantity + parameters.Quantity);
+            await _productRepository.UpdateAsync(product);
+
+            products = order.ProductsList.ToList();
+            decimal totalPrice = order.TotalPrice;
+
+            for (int i = 1; i <= parameters.Quantity; i++)
+            {
+                products.Remove(product);
+                totalPrice -= product.UnitPrice;
+            }
+            order.SetTotalPrice(totalPrice);
+            order.SetProductList(products);
+            await _orderRepository.UpdateAsync(order);
+        }
     }
 }

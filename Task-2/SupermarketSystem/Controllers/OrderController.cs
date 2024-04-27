@@ -48,5 +48,21 @@ namespace SupermarketSystem.Controllers
             await _orderService.DeleteAsync(id);
             return Ok();
         }
+
+        [HttpPatch]
+        [Route("AddProduct")]
+        public async Task<IActionResult> AddProduct(OrderUpdateParameters parameters)
+        {
+            await _orderService.AddProduct(parameters);
+            return Ok();
+        }
+
+        [HttpPatch]
+        [Route("RemoveProduct")]
+        public async Task<IActionResult> RemoveProduct(OrderUpdateParameters parameters)
+        {
+            await _orderService.RemoveProduct(parameters);
+            return Ok();
+        }
     }
 }

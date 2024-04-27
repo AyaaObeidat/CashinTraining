@@ -17,15 +17,16 @@ namespace SupermarketSystem.Models
         public Order(List<Product> products)
         {
             ProductsList = products;
-            SetTotalPrice();
+            UpdateTotalPrice();
         }
         public static Order Create(List<Product> products)
         { 
             return new Order(products);
         }
 
-        public void SetTotalPrice()
+        public void UpdateTotalPrice()
         {
+           
             foreach(var product in ProductsList.ToList())
             {
                
@@ -33,12 +34,13 @@ namespace SupermarketSystem.Models
                 
             }
         }
-
+        public void SetTotalPrice(decimal totalPrice)
+        {
+            TotalPrice = totalPrice;
+        }
         public void SetProductList(List<Product> products)
         {
             ProductsList = products;
-            SetTotalPrice();
-
         }
     }
 }
