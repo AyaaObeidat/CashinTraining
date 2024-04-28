@@ -11,10 +11,12 @@ namespace SupermarketSystem.Services
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IProductRepository _productRepository;
-        public OrderService(IOrderRepository orderRepository , IProductRepository productRepository)
+        private readonly ICustomerRepository _customerRepository;
+        public OrderService(IOrderRepository orderRepository , IProductRepository productRepository , ICustomerRepository customerRepository)
         {
             _orderRepository = orderRepository;
             _productRepository = productRepository;
+            _customerRepository = customerRepository;
         }
 
         public async Task<List<OrderDetails>> GetAllAsync()
@@ -55,8 +57,8 @@ namespace SupermarketSystem.Services
             Product product = await _productRepository.GetByIdAsync(parameters.ProductID);
             product = product.UpdateQuantity(product.Quantity - parameters.Quantity);
             await _productRepository.UpdateAsync(product);
-           // Customer customer = await _customerRepository.GetByIdAsync(parameters.CustomerId);
-            if (product == null || product.Quantity < parameters.Quantity) return;
+            Customer customer = await _customerRepository.GetByIdAsync(parameters.CustomerId);
+            if (product == null || product.Quantity < parameters.Quantity || customer ==null) return;
             for (int i = 1; i <= parameters.Quantity; i++)
             {
                 products.Add(product); 
@@ -69,7 +71,6 @@ namespace SupermarketSystem.Services
         public async Task CancelledAsync(int id)
         {
             Order order = await _orderRepository.GetByIdAsync(id);
-            //await _orderRepository.DeleteAsync(id);
             order.UpdateStatus(OrderStatus.Cancelled);
             await _orderRepository.UpdateAsync(order);
         }
@@ -77,7 +78,6 @@ namespace SupermarketSystem.Services
         public async Task CheckoutAsync(int id)
         {
             Order order = await _orderRepository.GetByIdAsync(id);
-            //await _orderRepository.DeleteAsync(id);
             if(order.Status != OrderStatus.Cancelled)
             {
                 order.UpdateStatus(OrderStatus.Paid);

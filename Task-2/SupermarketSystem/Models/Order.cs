@@ -26,7 +26,7 @@ namespace SupermarketSystem.Models
         {
             ProductsList = products;
             CustomerId = customerId;
-            paymentType = paymentType;
+            PaymentType = paymentType;
             Type= type;
             UpdateTotalPrice();
         }

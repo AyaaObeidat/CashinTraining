@@ -4,22 +4,35 @@
     {
         public Guid Id { get; set; }
         public string Name { get; private set; } = null!;
-        public long NumberPhone { get;private set; } 
+        public long PhoneNumber { get;private set; } 
         public Guid AddressId { get; private set; }
-
+        public List<Order> OrdersList { get; private set; }
         private Customer() { }
-        private Customer ( string name, long numberPhone)
+        private Customer ( string name, long phoneNumber , Guid addressId)
         {
             
             Name = name;
-            NumberPhone = numberPhone;
+            PhoneNumber = phoneNumber;
+            AddressId = addressId;
         }
 
-        public static Customer Create( string name , long numberPhone)
+        public static Customer Create( string name , long phoneNumber, Guid addressId)
         {
             if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
-            if(numberPhone<10) { throw new ArgumentOutOfRangeException(); }
-            return new Customer ( name , numberPhone);
+            if(phoneNumber < 10) { throw new ArgumentOutOfRangeException(); }
+            return new Customer ( name , phoneNumber, addressId);
         } 
+
+        public void SetName (string name)
+        {
+            if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
+            Name = name; 
+        }
+        public void SetPhoneNumber(long phoneNumber)
+        {
+            if (phoneNumber < 10) { throw new ArgumentOutOfRangeException(); }
+            PhoneNumber = phoneNumber;
+        }
+
     }
 }

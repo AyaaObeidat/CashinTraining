@@ -12,7 +12,7 @@ using SupermarketSystem.Data;
 namespace SupermarketSystem.Migrations
 {
     [DbContext(typeof(SupermarketSystemDbContext))]
-    [Migration("20240428185342_Task2-Mig")]
+    [Migration("20240428223238_Task-2Mig")]
     partial class Task2Mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,7 +106,7 @@ namespace SupermarketSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("NumberPhone")
+                    b.Property<long>("PhoneNumber")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
@@ -139,6 +139,8 @@ namespace SupermarketSystem.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Orders");
                 });
@@ -189,6 +191,15 @@ namespace SupermarketSystem.Migrations
                     b.ToTable("Regions");
                 });
 
+            modelBuilder.Entity("SupermarketSystem.Models.Order", b =>
+                {
+                    b.HasOne("SupermarketSystem.Models.Customer", null)
+                        .WithMany("OrdersList")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("SupermarketSystem.Models.Product", b =>
                 {
                     b.HasOne("SupermarketSystem.Models.Category", null)
@@ -203,6 +214,11 @@ namespace SupermarketSystem.Migrations
             modelBuilder.Entity("SupermarketSystem.Models.Category", b =>
                 {
                     b.Navigation("ProductsList");
+                });
+
+            modelBuilder.Entity("SupermarketSystem.Models.Customer", b =>
+                {
+                    b.Navigation("OrdersList");
                 });
 
             modelBuilder.Entity("SupermarketSystem.Models.Order", b =>

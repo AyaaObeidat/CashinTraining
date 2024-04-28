@@ -24,6 +24,7 @@ builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
 builder.Services.AddScoped<IRegionRepository, RegionRepository>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<OrderService>();
@@ -31,6 +32,7 @@ builder.Services.AddScoped<CountryService>();
 builder.Services.AddScoped<CityService>();
 builder.Services.AddScoped<RegionService>();
 builder.Services.AddScoped<AddressService>();
+builder.Services.AddScoped<CustomerService>();
 
 var app = builder.Build();
 

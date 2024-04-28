@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SupermarketSystem.Dtos.CategoryDtos;
 using SupermarketSystem.Dtos.OrderDtos;
+using SupermarketSystem.Models;
 using SupermarketSystem.Services;
 
 namespace SupermarketSystem.Controllers
@@ -21,8 +22,8 @@ namespace SupermarketSystem.Controllers
         [Route("GetAll")]
         public async Task<IActionResult> GetAll()
         {
-            var order = await _orderService.GetAllAsync();
-            return Ok(order);
+            var orders = await _orderService.GetAllAsync();
+            return Ok(orders);
         }
 
         [HttpGet]

@@ -25,6 +25,7 @@ namespace SupermarketSystem.Services
                 CountryId = c.CountryId,
                 CityId = c.CityId,
                 RegionId = c.RegionId,
+                TextAddress = c.TextAddress,
 
             }).ToList();
         }
@@ -38,7 +39,7 @@ namespace SupermarketSystem.Services
                 CountryId = address.CountryId,
                 CityId = address.CityId,
                 RegionId = address.RegionId,
-
+                TextAddress = address.TextAddress,
             };
         }
 
