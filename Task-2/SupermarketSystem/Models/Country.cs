@@ -4,6 +4,7 @@
     {
         public Guid Id { get; set; }
         public string Name { get; private set; } = null!;
+
         private Country() { }
         private Country( string name)
         {
@@ -15,6 +16,11 @@
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
             return new Country( name);
+        }
+        public  void SetName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
+            Name = name;
         }
 
     }

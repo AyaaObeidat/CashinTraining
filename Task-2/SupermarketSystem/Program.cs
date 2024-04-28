@@ -20,11 +20,17 @@ Options.UseSqlServer(builder.Configuration.GetConnectionString("SupermarketSyste
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 builder.Services.AddScoped<ProductService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<OrderService>();
-
-
+builder.Services.AddScoped<CountryService>();
+builder.Services.AddScoped<CityService>();
+builder.Services.AddScoped<RegionService>();
+builder.Services.AddScoped<AddressService>();
 
 var app = builder.Build();
 

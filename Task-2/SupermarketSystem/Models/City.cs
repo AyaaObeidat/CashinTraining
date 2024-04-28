@@ -16,5 +16,10 @@
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
             return new City(name);
         }
+        public void SetName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
+            Name = name;
+        }
     }
 }

@@ -17,10 +17,19 @@
             RegionId = regionId;
         }
 
-        public static Address Creat(string textAddress, Guid countryId, Guid cityId, Guid regionId)
+        public static Address Create(string textAddress, Guid countryId, Guid cityId, Guid regionId)
         {
             if(string.IsNullOrEmpty(textAddress)) { throw  new ArgumentNullException(); }
             return new Address( textAddress, countryId, cityId, regionId);
+        }
+
+        public void Update(string textAddress, Guid countryId, Guid cityId, Guid regionId)
+        {
+            if (string.IsNullOrEmpty(textAddress)) { throw new ArgumentNullException(); }
+            TextAddress = textAddress;
+            CountryId = countryId;
+            CityId = cityId;
+            RegionId = regionId;
         }
     }
 }
