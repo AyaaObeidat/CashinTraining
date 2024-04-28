@@ -42,13 +42,19 @@ namespace SupermarketSystem.Controllers
         }
 
         [HttpDelete]
-        [Route("Delete")]
-        public async Task<IActionResult> Delete(int id)
+        [Route("Cancelled")]
+        public async Task<IActionResult> Cancelled(int id)
         {
-            await _orderService.DeleteAsync(id);
+            await _orderService.CancelledAsync(id);
             return Ok();
         }
-
+        [HttpPatch]
+        [Route("Checkout")]
+        public async Task<IActionResult> Checkout(int id)
+        {
+            await _orderService.CheckoutAsync(id);
+            return Ok();
+        }
         [HttpPatch]
         [Route("AddProduct")]
         public async Task<IActionResult> AddProduct(OrderUpdateParameters parameters)

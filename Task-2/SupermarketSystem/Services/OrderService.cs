@@ -26,6 +26,10 @@ namespace SupermarketSystem.Services
                 Id = c.Id,
                 ProductsList = c.ProductsList,
                 TotalPrice = c.TotalPrice,
+                Type = c.Type,
+                Status = c.Status,
+                PaymentType = c.PaymentType,
+                CustomerId = c.CustomerId
                  
             }).ToList();
         }
@@ -36,9 +40,13 @@ namespace SupermarketSystem.Services
             return new OrderDetails
             {
                 Id = order.Id,
+                ProductsList = order.ProductsList,
                 TotalPrice = order.TotalPrice,
-                ProductsList = order.ProductsList
-                
+                Type = order.Type,
+                Status = order.Status,
+                PaymentType = order.PaymentType,
+                CustomerId = order.CustomerId
+
             };
         }
         public async Task AddAsync(OrderCreateParameters parameters)
@@ -47,19 +55,35 @@ namespace SupermarketSystem.Services
             Product product = await _productRepository.GetByIdAsync(parameters.ProductID);
             product = product.UpdateQuantity(product.Quantity - parameters.Quantity);
             await _productRepository.UpdateAsync(product);
+           // Customer customer = await _customerRepository.GetByIdAsync(parameters.CustomerId);
             if (product == null || product.Quantity < parameters.Quantity) return;
             for (int i = 1; i <= parameters.Quantity; i++)
             {
                 products.Add(product); 
 
             }
-            Order order = Order.Create(products);
+            Order order = Order.Create(products , parameters.CustomerId , parameters.OrderType , parameters.PaymentType );
             await _orderRepository.AddAsync(order);
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task CancelledAsync(int id)
         {
-            await _orderRepository.DeleteAsync(id);
+            Order order = await _orderRepository.GetByIdAsync(id);
+            //await _orderRepository.DeleteAsync(id);
+            order.UpdateStatus(OrderStatus.Cancelled);
+            await _orderRepository.UpdateAsync(order);
+        }
+
+        public async Task CheckoutAsync(int id)
+        {
+            Order order = await _orderRepository.GetByIdAsync(id);
+            //await _orderRepository.DeleteAsync(id);
+            if(order.Status != OrderStatus.Cancelled)
+            {
+                order.UpdateStatus(OrderStatus.Paid);
+            }
+           
+            await _orderRepository.UpdateAsync(order);
         }
 
         public async Task AddProduct(OrderUpdateParameters parameters)
@@ -70,7 +94,7 @@ namespace SupermarketSystem.Services
             var order = await _orderRepository.GetByIdAsync(parameters.Id);
             var product = await _productRepository.GetByIdAsync(parameters.ProductId);
 
-            if (order == null || product == null || product.Quantity < parameters.Quantity) return;
+            if (order == null || product == null || product.Quantity < parameters.Quantity || order.Status==OrderStatus.Cancelled) return;
             product = product.UpdateQuantity(product.Quantity - parameters.Quantity);
             await _productRepository.UpdateAsync(product);
             products = order.ProductsList;
@@ -93,7 +117,7 @@ namespace SupermarketSystem.Services
 
             var order = await _orderRepository.GetByIdAsync(parameters.Id);
             var product = await _productRepository.GetByIdAsync(parameters.ProductId);
-            if (order == null || product == null || order.TotalPrice == 0) return;
+            if (order == null || product == null || order.TotalPrice == 0 || order.Status == OrderStatus.Cancelled) return;
 
             product = product.UpdateQuantity(product.Quantity + parameters.Quantity);
             await _productRepository.UpdateAsync(product);
