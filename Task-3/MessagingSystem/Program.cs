@@ -20,12 +20,11 @@ Options.UseSqlServer(builder.Configuration.GetConnectionString("MessagingSystemC
 builder.Services.AddScoped<IUserInterface,UserInterface>();
 builder.Services.AddScoped<IUserProfileInterface, UserProfileInterface>();
 builder.Services.AddScoped<IInboxInterface, InboxInterface>();
-
+builder.Services.AddScoped<IMessageInterface, MessageInterface>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<UserProfileService>();
 builder.Services.AddScoped<InboxService>();
-
-
+builder.Services.AddScoped<MessageService>();
 
 
 
