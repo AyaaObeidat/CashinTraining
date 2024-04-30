@@ -21,6 +21,7 @@
             Content = content;
             InboxId = inboxId;
             Status1 = CreatedMessageStatus.Unsending;
+            Status2 = mailedMessageStatus.UnRead;
             CreatedAt = DateTime.Now;
         }
         public static Message Create(string senderEmail, string receiverEmail, string content, Guid inboxId)
