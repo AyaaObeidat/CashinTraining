@@ -7,7 +7,7 @@ namespace MessagingSystem.Repositories.Implementations
 
     public abstract class GenericInterface<T> : IGenericInterface<T> where T : class
     {
-        private readonly MessagingSystemDbContext _dbContext;
+        protected  MessagingSystemDbContext _dbContext;
 
         public GenericInterface(MessagingSystemDbContext dbContext)
         {
@@ -27,12 +27,12 @@ namespace MessagingSystem.Repositories.Implementations
              await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public virtual async Task<List<T>> GetAllAsync()
         {
             return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
+        public virtual async Task<T> GetByIdAsync(Guid id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }

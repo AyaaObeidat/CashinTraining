@@ -33,14 +33,14 @@ namespace MessagingSystem.Controllers
         }
 
 
-        [HttpGet]
+        [HttpPost]
         [Route("Add")]
-        public async Task<IActionResult> Add(UserCreateParameters parameters)
+        public async Task<IActionResult> Add([FromBody]UserCreateParameters parameters)
         {
             await _userService.AddAsync(parameters);
             return Ok();
         }
-        [HttpGet]
+        [HttpDelete]
         [Route("Delete")]
         public async Task<IActionResult> Delete(Guid id)
         {

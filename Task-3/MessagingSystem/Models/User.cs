@@ -27,6 +27,11 @@
 
             return new User(firstName, lastName, email, password);
         }
+
+        public void SetUserProfileId(Guid id)
+        {
+            UserProfileId = id;
+        }
     }
 }
 

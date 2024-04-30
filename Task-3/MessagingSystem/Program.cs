@@ -1,4 +1,7 @@
 using MessagingSystem.Data;
+using MessagingSystem.Repositories.Implementations;
+using MessagingSystem.Repositories.Interfaces;
+using MessagingSystem.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -13,6 +16,19 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MessagingSystemDbContext>(Options => 
 Options.UseSqlServer(builder.Configuration.GetConnectionString("MessagingSystemConnectionString")));
+
+builder.Services.AddScoped<IUserInterface,UserInterface>();
+builder.Services.AddScoped<IUserProfileInterface, UserProfileInterface>();
+builder.Services.AddScoped<IInboxInterface, InboxInterface>();
+
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<UserProfileService>();
+builder.Services.AddScoped<InboxService>();
+
+
+
+
+
 
 var app = builder.Build();
 

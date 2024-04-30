@@ -1,4 +1,6 @@
-﻿namespace MessagingSystem.Models
+﻿using System.Diagnostics.Contracts;
+
+namespace MessagingSystem.Models
 {
     public class UserProfile
     {
@@ -23,6 +25,23 @@
             if (string.IsNullOrEmpty(email)) { throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(bio)) { throw new ArgumentNullException(); }
             return new UserProfile(userId, fullName, email, bio);
+        }
+
+        public void SetName(string name)
+        {
+            FullName = name;
+        }
+        public void SetEmail(string email)
+        {
+            Email = email;
+        }
+        public void SetBio(string bio)
+        {
+            Bio = bio;
+        }
+        public void SetInboxId(Guid id)
+        {
+            InboxId = id;
         }
     }
 }
