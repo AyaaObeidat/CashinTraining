@@ -1,18 +1,18 @@
-﻿namespace Messaging_System.Models
+﻿namespace MessagingSystem.Models
 {
-    public enum MessageStatus { Read , UnRead , Archived}
+    public enum MessageStatus { Read, UnRead, Archived }
     public class Message
     {
         public Guid Id { get; set; }
-        public Guid SenderId { get;private set; }
-        public Guid RecreceiverId { get;private set; }
+        public Guid SenderId { get; private set; }
+        public Guid RecreceiverId { get; private set; }
         public string Content { get; private set; } = null!;
-        public MessageStatus Status { get; private set;}
+        public MessageStatus Status { get; private set; }
         public DateTime CreatedAt { get; private set; }
         public Guid InboxId { get; private set; }
 
-        public Message () { }
-        public Message (Guid senderId , Guid receiverId , string content , Guid inboxId)
+        public Message() { }
+        public Message(Guid senderId, Guid receiverId, string content, Guid inboxId)
         {
             SenderId = senderId;
             RecreceiverId = receiverId;

@@ -1,5 +1,6 @@
-using Messaging_System.Data;
+using MessagingSystem.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,10 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<MessagingSystemDbContext>(Options =>
+builder.Services.AddDbContext<MessagingSystemDbContext>(Options => 
 Options.UseSqlServer(builder.Configuration.GetConnectionString("MessagingSystemConnectionString")));
-
-
 
 var app = builder.Build();
 
@@ -23,8 +22,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
