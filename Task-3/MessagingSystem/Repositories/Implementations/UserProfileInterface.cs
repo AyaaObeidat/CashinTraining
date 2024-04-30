@@ -11,7 +11,10 @@ namespace MessagingSystem.Repositories.Implementations
         {
         }
 
-      
+        public async Task<UserProfile> GetByUserEmail(string email)
+        {
+            return await _dbContext.Profiles.FirstAsync(p => p.Email == email); 
+        }
 
     }
 }

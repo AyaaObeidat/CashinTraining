@@ -30,6 +30,7 @@ namespace MessagingSystem.Services
         public async Task<UserDetails> GetByIdAsync(Guid id)
         {
             var user = await _userInterface.GetByIdAsync(id);
+            if (user == null) return null;
             return new UserDetails
             {
                 Id = user.Id,
@@ -50,6 +51,7 @@ namespace MessagingSystem.Services
         public async Task DeleteAsync(Guid id)
         {
             var user = await _userInterface.GetByIdAsync(id);
+            if (user == null) return;
             await _userInterface.DeleteAsync(user);
         }
     }

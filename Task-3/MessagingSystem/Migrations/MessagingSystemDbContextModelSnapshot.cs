@@ -52,13 +52,19 @@ namespace MessagingSystem.Migrations
                     b.Property<Guid>("InboxId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("RecreceiverId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("RecreceiverEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SenderId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("SenderEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("Status1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status2")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

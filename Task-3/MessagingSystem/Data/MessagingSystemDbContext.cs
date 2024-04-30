@@ -20,7 +20,11 @@ namespace MessagingSystem.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Message>()
-           .Property(o => o.Status)
+           .Property(o => o.Status1)
+           .HasConversion<string>();
+
+            modelBuilder.Entity<Message>()
+           .Property(o => o.Status2)
            .HasConversion<string>();
 
         }

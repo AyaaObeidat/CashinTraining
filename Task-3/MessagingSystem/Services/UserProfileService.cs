@@ -34,6 +34,7 @@ namespace MessagingSystem.Services
         public async Task<UserProfileDetails> GetByIdAsync(Guid id)
         {
             var profile  = await _userProfileInterface.GetByIdAsync(id);
+            if (profile == null) return null;
             return new UserProfileDetails
             {
                 Id = profile.Id,
@@ -48,6 +49,7 @@ namespace MessagingSystem.Services
         public async Task AddAsync(UserProfileCreateParameters parameters)
         {
             var user = await _userInterface.GetByIdAsync(parameters.UserId);
+            if (user == null) return;
             var profile = UserProfile.Create(parameters.UserId, user.FirstName + " " + user.LastName, user.Email, parameters.Bio);
             await _userProfileInterface.AddAsync(profile);
             user.SetUserProfileId(profile.Id);
@@ -57,24 +59,28 @@ namespace MessagingSystem.Services
         public async Task DeleteAsync(Guid id)
         {
             var profile = await _userProfileInterface.GetByIdAsync(id);
+            if (profile == null) return;
             await _userProfileInterface.DeleteAsync(profile);
         }
 
         public async Task UpdateFullNameAsync(UserProfileUpdateParameters parameters)
         {
             var profile = await _userProfileInterface.GetByIdAsync(parameters.Id);
+            if (profile == null) return;
             profile.SetName(parameters.FullName);
             await _userProfileInterface.UpdateAsync(profile);
         }
         public async Task UpdateEmailAsync(UserProfileUpdateParameters parameters)
         {
             var profile = await _userProfileInterface.GetByIdAsync(parameters.Id);
+            if (profile == null) return;
             profile.SetEmail(parameters.Email);
             await _userProfileInterface.UpdateAsync(profile);
         }
         public async Task UpdateBioAsync(UserProfileUpdateParameters parameters)
         {
             var profile = await _userProfileInterface.GetByIdAsync(parameters.Id);
+            if (profile == null) return;
             profile.SetBio(parameters.Bio);
             await _userProfileInterface.UpdateAsync(profile);
         }

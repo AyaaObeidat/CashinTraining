@@ -58,10 +58,11 @@ namespace MessagingSystem.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SenderId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RecreceiverId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SenderEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RecreceiverEmail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status2 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     InboxId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },

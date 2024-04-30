@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MessagingSystem.Migrations
 {
     [DbContext(typeof(MessagingSystemDbContext))]
-    [Migration("20240430133819_Task-3Mig")]
+    [Migration("20240430191344_Task-3Mig")]
     partial class Task3Mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,13 +54,19 @@ namespace MessagingSystem.Migrations
                     b.Property<Guid>("InboxId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("RecreceiverId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("RecreceiverEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SenderId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("SenderEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("Status1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status2")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

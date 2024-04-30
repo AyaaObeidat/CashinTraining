@@ -22,6 +22,7 @@ namespace MessagingSystem.Controllers
         public async Task<IActionResult> GetAll()
         {
             var profiles = await _userProfileService.GetAllAsync();
+
             return Ok(profiles);
         }
 

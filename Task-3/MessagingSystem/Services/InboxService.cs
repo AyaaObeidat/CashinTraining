@@ -30,6 +30,7 @@ namespace MessagingSystem.Services
         public async Task<InboxDetails> GetByIdAsync(Guid id)
         {
             var inbox = await _inbox.GetByIdAsync(id);
+            if (inbox == null) return null;
             return new InboxDetails
             {
                 Id = inbox.Id,
@@ -40,9 +41,10 @@ namespace MessagingSystem.Services
 
         public async Task AddAsync(InboxCreateParameters parameters)
         {
+            var profile = await _userProfile.GetByIdAsync(parameters.UserProfileId);
+            if (profile == null) return;
             var inbox = Inbox.Create(parameters.UserProfileId);
             await _inbox.AddAsync(inbox);
-            var profile = await _userProfile.GetByIdAsync(parameters.UserProfileId);
             profile.SetInboxId(inbox.Id);
             await _userProfile.UpdateAsync(profile);
         }
@@ -50,6 +52,7 @@ namespace MessagingSystem.Services
         public async Task DeleteAsync(Guid id)
         {
             var inbox = await _inbox.GetByIdAsync(id);
+            if (inbox == null) return;
             await _inbox.DeleteAsync(inbox);
         }
     }
