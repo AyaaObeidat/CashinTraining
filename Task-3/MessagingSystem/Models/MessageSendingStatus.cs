@@ -1,6 +1,6 @@
 ﻿public enum MessageSendingStatus
 {
-    Sent = 1,
+    Sent ,
     Draft
 
 }

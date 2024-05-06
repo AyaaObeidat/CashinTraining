@@ -2,8 +2,8 @@
 {
     public class MessageDistinationCreateParameters
     {
-        public Guid SenderId { get; set; }
-        public Guid RecevierId { get; set; }
-        public Guid MessageId { get; set; }
+        public Guid UserId { get; set; }
+        public Guid MessageId { get;  set; }
+        public MessageBox Box { get; set; }
     }
 }

@@ -26,8 +26,7 @@ namespace MessagingSystem.Services
             return messageDistinations.Select(u => new MessageDistinationDetails
             {
                Id = u.Id,
-               SenderId = u.SenderId,
-               RecevierId = u.RecevierId,
+               UserId = u.UserId,
                MessageId = u.MessageId,
                Box = u.Box,
                Read = u.Read
@@ -40,8 +39,7 @@ namespace MessagingSystem.Services
             return new MessageDistinationDetails
             {
                 Id = messageDistination.Id,
-                SenderId = messageDistination.SenderId,
-                RecevierId = messageDistination.RecevierId,
+                UserId = messageDistination.UserId,
                 MessageId = messageDistination.MessageId,
                 Box = messageDistination.Box,
                 Read = messageDistination.Read
@@ -50,10 +48,44 @@ namespace MessagingSystem.Services
 
         public async Task SendMessage(MessageDistinationCreateParameters parameters)
         {
-      
-            var messageDistination = MessageDistination.Create(parameters.SenderId , parameters.RecevierId , parameters.MessageId );
-
+            var message = await _messageInterface.GetByIdAsync(parameters.MessageId);
+            var messageDistination = MessageDistination.Create(parameters.UserId , parameters.MessageId , parameters.Box);
+            message.SetMessageSendingStatus(MessageSendingStatus.Sent);
+            await _messageInterface.UpdateAsync(message);
             await _messageDistinationInterface.AddAsync(messageDistination);
         }
+
+        public async Task TrashMessageAsync(Guid userId, Guid messageId)
+        {
+
+            var user = await _userInterface.GetByIdAsync(userId);
+            var trashMessage = user.Messages.FirstOrDefault(m => m.MessageId==messageId);
+            trashMessage.SetBox(MessageBox.TrashBox);
+            await _messageDistinationInterface.UpdateAsync(trashMessage);
+
+            
+        }
+        public async Task<List<MessageDistination>> GetAllTrashMessagesAsync(Guid userId)
+        {
+
+            var user = await _userInterface.GetByIdAsync(userId);
+            var trashMessages = user.Messages.Where(m => m.Box==MessageBox.TrashBox).ToList();
+            return trashMessages;
+        }
+        public async Task<List<MessageDistination>> GetAllInboxMessagesAsync(Guid userId)
+        {
+
+            var user = await _userInterface.GetByIdAsync(userId);
+            var trashMessages = user.Messages.Where(m => m.Box == MessageBox.Inbox).ToList();
+            return trashMessages;
+        }
+        public async Task<List<MessageDistination>> GetAllOutboxMessagesAsync(Guid userId)
+        {
+
+            var user = await _userInterface.GetByIdAsync(userId);
+            var trashMessages = user.Messages.Where(m => m.Box == MessageBox.OutBox).ToList();
+            return trashMessages;
+        }
+
     }
 }

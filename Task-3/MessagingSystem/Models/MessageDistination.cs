@@ -3,31 +3,27 @@
     public class MessageDistination
     {
         public Guid Id { get; set; }
-        public Guid SenderId { get; private set; }
-        public Guid RecevierId { get; private set; }
+        public Guid UserId { get; set; }
         public Guid MessageId { get; private set; }
-        public bool Read { get;  set; } = false;
+        public bool Read { get; private set; } = false;
         public MessageBox Box { get; private set; }
 
         private MessageDistination() { }
 
-        private MessageDistination(Guid senderId , Guid recevierId , Guid messageId)
+        private MessageDistination(Guid userId , Guid messageId, MessageBox box)
         {
-           SenderId = senderId;
-           RecevierId = recevierId;
-           MessageId = messageId;
-           
+            UserId = userId;
+            MessageId = messageId;
+            Box = box;
         }
 
-        public static MessageDistination Create(Guid senderId, Guid recevierId, Guid messageId)
+        public static MessageDistination Create(Guid userId, Guid messageId, MessageBox box)
         {
-            return new MessageDistination(senderId, recevierId, messageId);
+            return new MessageDistination(userId, messageId, box);
         }
 
-        public void SetMessageBox (MessageBox box)
-        {
-             Box = box;
-        }
+        public void SetBox(MessageBox box)
+        { Box = box; }
     }
 }
 

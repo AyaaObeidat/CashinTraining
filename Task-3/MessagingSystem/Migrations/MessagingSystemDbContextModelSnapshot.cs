@@ -61,13 +61,7 @@ namespace MessagingSystem.Migrations
                     b.Property<bool>("Read")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("RecevierId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SenderId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("UserId")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -108,7 +102,9 @@ namespace MessagingSystem.Migrations
 
                     b.HasOne("MessagingSystem.Models.User", null)
                         .WithMany("Messages")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("MessagingSystem.Models.Message", b =>

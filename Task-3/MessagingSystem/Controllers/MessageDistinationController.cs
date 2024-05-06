@@ -36,8 +36,37 @@ namespace MessagingSystem.Controllers
         [Route("Add")]
         public async Task<IActionResult> AddAsync([FromBody] MessageDistinationCreateParameters parameters)
         {
-            await _messageDistinationService.AddAsync(parameters);
+            await _messageDistinationService.SendMessage(parameters);
             return Ok();
+        }
+
+        [HttpPatch]
+        [Route("TrashMessage")]
+        public async Task<IActionResult> TrashMessageAsync(Guid userId , Guid messageId)
+        {
+            await _messageDistinationService.TrashMessageAsync(userId,messageId);
+            return Ok();
+        }
+        [HttpGet]
+        [Route("GetAllTrashMessages")]
+        public async Task<IActionResult> GetAllTrashMessagesAsync(Guid userId)
+        {
+            return Ok(await _messageDistinationService.GetAllTrashMessagesAsync(userId));
+           
+        }
+        [HttpGet]
+        [Route("GetAllInboxMessages")]
+        public async Task<IActionResult> GetAllInboxMessagesAsync(Guid userId)
+        {
+            return Ok(await _messageDistinationService.GetAllInboxMessagesAsync(userId));
+
+        }
+        [HttpGet]
+        [Route("GetAllOutboxMessages")]
+        public async Task<IActionResult> GetAllOutboxMessagesAsync(Guid userId)
+        {
+            return Ok(await _messageDistinationService.GetAllOutboxMessagesAsync(userId));
+
         }
     }
 }

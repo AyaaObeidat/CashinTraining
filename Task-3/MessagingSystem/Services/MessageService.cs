@@ -41,7 +41,7 @@ namespace MessagingSystem.Services
 
         public async Task Create(MessageCreateParameters parameters)
         {
-            var message = Message.Create(parameters.Subject , parameters.ContentBody , parameters.Status);
+            var message = Message.Create(parameters.Subject , parameters.ContentBody , MessageSendingStatus.Draft);
             await _messageInterface.AddAsync(message);
         }
 
