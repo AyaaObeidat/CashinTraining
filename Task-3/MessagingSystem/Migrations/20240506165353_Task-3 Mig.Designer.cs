@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MessagingSystem.Migrations
 {
     [DbContext(typeof(MessagingSystemDbContext))]
-    [Migration("20240506114104_Task-3 Mig")]
+    [Migration("20240506165353_Task-3 Mig")]
     partial class Task3Mig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -63,7 +63,13 @@ namespace MessagingSystem.Migrations
                     b.Property<bool>("Read")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<Guid>("RecevierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SenderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -96,21 +102,15 @@ namespace MessagingSystem.Migrations
 
             modelBuilder.Entity("MessagingSystem.Models.MessageDistination", b =>
                 {
-                    b.HasOne("MessagingSystem.Models.Message", "Message")
+                    b.HasOne("MessagingSystem.Models.Message", null)
                         .WithMany("Distinations")
                         .HasForeignKey("MessageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MessagingSystem.Models.User", "User")
+                    b.HasOne("MessagingSystem.Models.User", null)
                         .WithMany("Messages")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Message");
-
-                    b.Navigation("User");
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MessagingSystem.Models.Message", b =>

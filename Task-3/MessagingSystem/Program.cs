@@ -1,6 +1,7 @@
 using MessagingSystem.Data;
 using MessagingSystem.Repositories.Implementations;
 using MessagingSystem.Repositories.Interfaces;
+using MessagingSystem.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,11 @@ Options.UseSqlServer(builder.Configuration.GetConnectionString("MessagingSystemC
 
 builder.Services.AddScoped<IUserInterface, UserInterface>();
 builder.Services.AddScoped<IMessageInterface, MessageInterface>();
-builder.Services.AddScoped<IMessageDistenationInterface, MessageDistenationInterface>();
+builder.Services.AddScoped<IMessageDistinationInterface, MessageDistinationInterface>();
+
+builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<MessageService>();
+builder.Services.AddScoped<MessageDistinationService>();
 
 var app = builder.Build();
 

@@ -14,19 +14,21 @@ namespace MessagingSystem.Repositories.Implementations
         public async Task AddAsync(T entity)
         {
             await dbContext.Set<T>().AddAsync(entity);
+            await dbContext.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(T entity)
         {
             dbContext.Set<T>().Remove(entity);
+            await dbContext.SaveChangesAsync();
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public virtual async Task<List<T>> GetAllAsync()
         {
             return await dbContext.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
+        public virtual async Task<T> GetByIdAsync(Guid id)
         {
             return await dbContext.Set<T>().FindAsync(id);
         }
@@ -34,6 +36,7 @@ namespace MessagingSystem.Repositories.Implementations
         public async Task UpdateAsync(T entity)
         {
             dbContext.Set<T>().Update(entity);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

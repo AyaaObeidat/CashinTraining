@@ -25,5 +25,23 @@
             if (string.IsNullOrEmpty(contentBody)) { throw new ArgumentNullException(); }
             return new Message(subject, contentBody, status);
         }
+        public void SetDistinations(List<MessageDistination> distinations)
+        {
+            Distinations = distinations;
+        }
+
+        public void SetMessageSendingStatus(MessageSendingStatus status) 
+        {
+            Status = status;
+        }
+        public void SetContentBody(string contentBody)
+        {
+            ContentBody = contentBody;
+        }
+        public void SetSubject(string subject)
+        {
+            Subject = subject;
+        }
+
     }
 }
