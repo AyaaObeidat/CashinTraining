@@ -2,7 +2,7 @@
 
 namespace MessagingSystem.Repositories.Interfaces
 {
-    public interface IInboxInterface : IGenericInterface<Inbox>
+    public interface IMessageDistenationInterface : IGenericInterface<MessageDistination>
     {
     }
 }

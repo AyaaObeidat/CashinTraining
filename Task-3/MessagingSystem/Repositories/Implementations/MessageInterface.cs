@@ -6,7 +6,7 @@ namespace MessagingSystem.Repositories.Implementations
 {
     public class MessageInterface : GenericInterface<Message>, IMessageInterface
     {
-        public MessageInterface(MessagingSystemDbContext dbContext) : base(dbContext)
+        public MessageInterface(MessagingSystemDbContext context) : base(context)
         {
         }
     }

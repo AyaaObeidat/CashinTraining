@@ -4,43 +4,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MessagingSystem.Repositories.Implementations
 {
-
-    public abstract class GenericInterface<T> : IGenericInterface<T> where T : class
+    public class GenericInterface<T> : IGenericInterface<T> where T : class
     {
-        protected  MessagingSystemDbContext _dbContext;
-
-        public GenericInterface(MessagingSystemDbContext dbContext)
+        protected readonly MessagingSystemDbContext dbContext;
+        public GenericInterface(MessagingSystemDbContext context)
         {
-            _dbContext = dbContext;
+            dbContext = context;
         }
-
         public async Task AddAsync(T entity)
         {
-            await _dbContext.Set<T>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
+            await dbContext.Set<T>().AddAsync(entity);
         }
 
         public async Task DeleteAsync(T entity)
         {
-            
-             _dbContext.Set<T>().Remove(entity);
-             await _dbContext.SaveChangesAsync();
+            dbContext.Set<T>().Remove(entity);
         }
 
-        public virtual async Task<List<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync()
         {
-            return await _dbContext.Set<T>().ToListAsync();
+            return await dbContext.Set<T>().ToListAsync();
         }
 
-        public virtual async Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
-            return await _dbContext.Set<T>().FindAsync(id);
+            return await dbContext.Set<T>().FindAsync(id);
         }
 
         public async Task UpdateAsync(T entity)
         {
-             _dbContext.Set<T>().Update(entity);
-            await _dbContext.SaveChangesAsync();
+            dbContext.Set<T>().Update(entity);
         }
     }
 }

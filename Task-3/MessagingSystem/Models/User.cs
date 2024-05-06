@@ -3,35 +3,27 @@
     public class User
     {
         public Guid Id { get; set; }
-        public string FirstName { get; private set; } = null!;
-        public string LastName { get; private set; } = null!;
+        public string FullName { get; private set; } = null!;
         public string Email { get; private set; } = null!;
-        public string Password { get; private set; } = null!;
-        public Guid UserProfileId { get; private set; }
+        public List<MessageDistination> Messages { get; private set; }
 
-        public User() { }
-        public User(string firstName, string lastName, string email, string password)
+        private User() { }
+        private User(string fullName, string email)
         {
-            FirstName = firstName;
-            LastName = lastName;
+            FullName = fullName;
             Email = email;
-            Password = password;
         }
-
-        public static User Create(string firstName, string lastName, string email, string password)
+        public static User Create(string name, string email)
         {
-            if (string.IsNullOrEmpty(firstName)) { throw new ArgumentNullException(); }
-            if (string.IsNullOrEmpty(lastName)) { throw new ArgumentNullException(); }
+
+            if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(email)) { throw new ArgumentNullException(); }
-            if (string.IsNullOrEmpty(password)) { throw new ArgumentNullException(); }
-
-            return new User(firstName, lastName, email, password);
+            return new User(name, email);
         }
 
-        public void SetUserProfileId(Guid id)
+        public void SetMessages(List<MessageDistination> messages)
         {
-            UserProfileId = id;
+            Messages = messages;
         }
     }
 }
-
