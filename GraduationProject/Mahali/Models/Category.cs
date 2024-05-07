@@ -6,7 +6,7 @@ namespace Mahali.Models
     {
         public Guid Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; private set; } = null!;
 
         private Category() { }
