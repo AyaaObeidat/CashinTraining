@@ -10,19 +10,19 @@ namespace Mahali.Models
         public Guid ProductId { get; set; }
 
         [Required]
-        public Colors Color { get; set; }
+        public Sizes Size { get; set; }
 
         private ProductSizes() { }
-        private ProductSizes(Guid productId, Colors color)
+        private ProductSizes(Guid productId, Sizes size)
         {
             ProductId = productId;
-            Color = color;
+            Size = size;
         }
 
-        public static ProductSizes Create(Guid productId, Colors color)
+        public static ProductSizes Create(Guid productId, Sizes size)
         {
             if (productId != Guid.Empty) { throw new ArgumentException(); }
-            return new ProductSizes(productId, color);
+            return new ProductSizes(productId, size);
         }
     }
 }

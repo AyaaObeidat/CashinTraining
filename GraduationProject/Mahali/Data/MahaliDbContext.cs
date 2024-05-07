@@ -41,12 +41,12 @@ namespace Mahali.Data
            .Property(o => o.Color)
            .HasConversion<string>();
 
-            modelBuilder.Entity<Product>()
-           .Property(o => o.SizesList)
+            modelBuilder.Entity<ProductColors>()
+           .Property(o => o.Color)
            .HasConversion<string>();
 
-            modelBuilder.Entity<Product>()
-           .Property(o => o.ColorsList)
+            modelBuilder.Entity<ProductSizes>()
+           .Property(o => o.Size)
            .HasConversion<string>();
 
         }

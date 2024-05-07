@@ -175,6 +175,46 @@ namespace Mahali.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Mahali.Models.ProductColors", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductColors");
+                });
+
+            modelBuilder.Entity("Mahali.Models.ProductSizes", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Size")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductSizes");
+                });
+
             modelBuilder.Entity("Mahali.Models.Shop", b =>
                 {
                     b.Property<Guid>("Id")
@@ -260,6 +300,24 @@ namespace Mahali.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mahali.Models.ProductColors", b =>
+                {
+                    b.HasOne("Mahali.Models.Product", null)
+                        .WithMany("ColorsList")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Mahali.Models.ProductSizes", b =>
+                {
+                    b.HasOne("Mahali.Models.Product", null)
+                        .WithMany("SizesList")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Mahali.Models.WishListProducts", b =>
                 {
                     b.HasOne("Mahali.Models.Product", null)
@@ -283,6 +341,10 @@ namespace Mahali.Migrations
             modelBuilder.Entity("Mahali.Models.Product", b =>
                 {
                     b.Navigation("Carts");
+
+                    b.Navigation("ColorsList");
+
+                    b.Navigation("SizesList");
 
                     b.Navigation("WishLists");
                 });
