@@ -20,6 +20,7 @@ namespace Mahali.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Decimal
             modelBuilder.Entity<Cart>()
            .Property(p => p.TotalAmount)
            .HasColumnType("decimal(18, 2)");
@@ -32,7 +33,15 @@ namespace Mahali.Data
            .Property(p => p.Price)
            .HasColumnType("decimal(18, 2)");
 
-            
+            modelBuilder.Entity<Order>()
+           .Property(p => p.TotalAmount)
+           .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<OrderProducts>()
+           .Property(p => p.UnitPrice)
+           .HasColumnType("decimal(18, 2)");
+
+            //Enum
             modelBuilder.Entity<CartProducts>()
            .Property(o => o.Size)
            .HasConversion<string>();
@@ -48,6 +57,22 @@ namespace Mahali.Data
             modelBuilder.Entity<ProductSizes>()
            .Property(o => o.Size)
            .HasConversion<string>();
+
+            modelBuilder.Entity<Order>()
+           .Property(o => o.Type)
+           .HasConversion<string>();
+
+            modelBuilder.Entity<Order>()
+           .Property(o => o.Status)
+           .HasConversion<string>();
+
+            modelBuilder.Entity<OrderProducts>()
+          .Property(o => o.Size)
+          .HasConversion<string>();
+
+            modelBuilder.Entity<OrderProducts>()
+          .Property(o => o.Color)
+          .HasConversion<string>();
 
         }
 
