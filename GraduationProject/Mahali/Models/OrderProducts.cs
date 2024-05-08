@@ -7,7 +7,7 @@ namespace Mahali.Models
         public Guid Id { get; set; }
 
         [Required]
-        public Guid OrderId { get; private set; }
+        public int OrderId { get; private set; }
 
         [Required]
         public Guid ProductId { get; private set; }
@@ -25,7 +25,7 @@ namespace Mahali.Models
         public Sizes Size { get; private set; }
 
         private OrderProducts() { }
-        private OrderProducts(Guid orderId, Guid productId, int quantity, decimal unitPrice, Colors color, Sizes size)
+        private OrderProducts(int orderId, Guid productId, int quantity, decimal unitPrice, Colors color, Sizes size)
         {
 
             OrderId = orderId;
@@ -36,9 +36,9 @@ namespace Mahali.Models
             Size = size;
         }
 
-        public static OrderProducts Create(Guid orderId, Guid productId, int quantity, decimal unitPrice, Colors color, Sizes size)
+        public static OrderProducts Create(int orderId, Guid productId, int quantity, decimal unitPrice, Colors color, Sizes size)
         {
-            if (orderId == Guid.Empty) { throw new ArgumentNullException(); }
+            if (orderId < 0) { throw new ArgumentNullException(); }
             if (productId == Guid.Empty) { throw new ArgumentNullException(); }
             if (unitPrice <= 0) { throw new ArgumentOutOfRangeException(); }
             if (quantity < 0) { throw new ArgumentOutOfRangeException(); }

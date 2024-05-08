@@ -27,10 +27,13 @@ namespace Mahali.Models
 
         [Required(ErrorMessage = "Phone number is required.")]
         [Range(10, 10, ErrorMessage = "PNumber must be equal to 10.")]
-        public long PhoneNumber { get; set; }
+        public long PhoneNumber { get;private set; }
 
         [Required]
-        public Guid LocationId { get; set; }
+        public Guid LocationId { get;private set; }
+
+        public List<ShopOrders> Orders { get;private set; }
+        public List<ReviewRequest> Reviews { get;private set; }
 
         private Shop() { }
         private Shop(string name , string description , string password , string email , long phoneNumber , Guid locationId) 
@@ -72,6 +75,16 @@ namespace Mahali.Models
         public void SetPhoneNumber(string phoneNumber)
         {
             PhoneNumber = PhoneNumber;
+        }
+
+        public void SetOrders(List<ShopOrders> orders)
+        {
+            Orders = orders;
+        }
+
+        public void SetReviews(List<ReviewRequest> reviews)
+        {
+            Reviews = reviews;
         }
     }
 }

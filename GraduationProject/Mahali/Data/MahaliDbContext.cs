@@ -12,11 +12,23 @@ namespace Mahali.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Cart> Carts { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<WishList> wishLists { get; set; }
+        public DbSet<WishList> WishLists { get; set; }
         public DbSet<CartProducts> CartProducts { get; set; }
         public DbSet<WishListProducts> WishListProducts { get; set; }
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Location> Locations { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderProducts> OrderProducts { get; set; }
+        public DbSet<ShopOrders> ShopOrders { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<ReviewRequest> ReviewRequests { get; set; }
+        public DbSet<Discount> Discounts { get; set; }
+        public DbSet<LatestProductsVisited> latestProductsVisiteds { get; set; }
+        public DbSet<Admin> Admins { get; set; }
+        public DbSet<Report> Reports { get; set; }
+        public DbSet<ShopRequest> ShopRequests { get; set; }
+        public DbSet<ProductColors> ProductColors { get; set; }
+        public DbSet<ProductSizes> ProductSizes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +51,10 @@ namespace Mahali.Data
 
             modelBuilder.Entity<OrderProducts>()
            .Property(p => p.UnitPrice)
+           .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Discount>()
+           .Property(p => p.DiscountPercentage)
            .HasColumnType("decimal(18, 2)");
 
             //Enum
@@ -73,6 +89,14 @@ namespace Mahali.Data
             modelBuilder.Entity<OrderProducts>()
           .Property(o => o.Color)
           .HasConversion<string>();
+
+            modelBuilder.Entity<ReviewRequest>()
+           .Property(o => o.Status)
+           .HasConversion<string>();
+
+            modelBuilder.Entity<ShopRequest>()
+           .Property(o => o.Status)
+           .HasConversion<string>();
 
         }
 

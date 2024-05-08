@@ -15,7 +15,7 @@ namespace Mahali.Models
         public OrderType Type { get; private set; }
         public OrderStatus Status { get; private set; }
         public List<OrderProducts> Products { get; private set; }
-
+        public List<ShopOrders> Shops { get; private set; }
 
         private Order() { }
         private Order(Guid customerId, OrderType type, OrderStatus status)
@@ -35,6 +35,11 @@ namespace Mahali.Models
         public void SetProducts(List<OrderProducts> products)
         {
             Products = products;
+        }
+
+        public void SetShops(List<ShopOrders> shops)
+        {
+            Shops = shops;
         }
 
         public void SetTotalAmount()

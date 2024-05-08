@@ -39,6 +39,7 @@ namespace Mahali.Models
         public List<CartProducts> Carts {  get; private set; }
         public List<WishListProducts> WishLists { get; private set; }
         public List<OrderProducts> Orders { get; private set; }
+        public List<ReviewRequest> Reviews { get; private set; }
 
         private Product() { }
         private Product(string name , string description , int quantity , decimal price , 
@@ -112,6 +113,10 @@ namespace Mahali.Models
         public void SetSizesList(List<ProductSizes> sizes)
         {
             SizesList = sizes;
+        }
+        public void SetReviews(List<ReviewRequest> reviews)
+        {
+            Reviews = reviews;
         }
     }
 }
