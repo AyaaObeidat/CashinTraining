@@ -1,4 +1,6 @@
 using Mahali.Data;
+using Mahali.Repositories.Implementations;
+using Mahali.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,51 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MahaliDbContext>(Options =>
 Options.UseSqlServer(builder.Configuration.GetConnectionString("MahaliConnectionString")));
+
+//Repositories
+builder.Services.AddScoped<ICustomerInterface,CustomerInterface>();
+builder.Services.AddScoped<ICategoryInterface, CategoryInterface>();
+builder.Services.AddScoped<ICartInterface, CartInterface>();
+builder.Services.AddScoped<ICartProductsInterface, CartProductsInterface>();
+builder.Services.AddScoped<IWishListInterface, WishListInterface>();
+builder.Services.AddScoped<IWishListProductsInterface, WishListProductsInterface>();
+builder.Services.AddScoped<IProductInterface, ProductInterface>();
+builder.Services.AddScoped<IShopInterface, ShopInterface>();
+builder.Services.AddScoped<ILocationInterface, LocationInterface>();
+builder.Services.AddScoped<IOrderInterface, OrderInterface>();
+builder.Services.AddScoped<IOrderProductsInterface, OrderProductsInterface>();
+builder.Services.AddScoped<IShopOrdersInterface, ShopOrdersInterface>();
+builder.Services.AddScoped<IPaymentInterface, PaymentInterface>();
+builder.Services.AddScoped<IReviewRequestInterface, ReviewRequestInterface>();
+builder.Services.AddScoped<IDiscountInterface, DiscountInterface>();
+builder.Services.AddScoped<ILatestProductVisitedInterface, LatestProductsVisitedInterface>();
+builder.Services.AddScoped<IAdminInterface, AdminInterface>();
+builder.Services.AddScoped<IReportInterface, ReportInterface>();
+builder.Services.AddScoped<IShopRecuestInterface, ShopRecuestInterface>();
+builder.Services.AddScoped<IProductColorInterface, ProductColorInterface>();
+builder.Services.AddScoped<IProductSizeInterface, ProductSizeInterface>();
+
+//Services
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var app = builder.Build();
 

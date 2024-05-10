@@ -4,7 +4,6 @@ namespace Mahali.Models
 {
     public class Admin
     {
-        //17. Admin (Id , Name , Password , Email )
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Shop name is required.")]
