@@ -4,7 +4,7 @@ namespace Mahali.Models
 {
     public class Location
     {
-        //9. Location ( Id , AddressText , AddressDirection , ShopId(Fk Ref on Shop (id))  )
+        
         public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Address text is required.")]
