@@ -6,7 +6,7 @@
 
         public Guid Id { get; set; }
         public int OrderId { get;private set; }
-        public PaymentType Type { get; set; }
+        public PaymentType Type { get; private set; }
         private Payment() { }
         private Payment(int orderId , PaymentType type)
         {

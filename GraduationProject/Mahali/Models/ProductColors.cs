@@ -7,10 +7,10 @@ namespace Mahali.Models
         public Guid Id { get; set; }
 
         [Required]
-        public Guid ProductId { get; set; }
+        public Guid ProductId { get;private set; }
 
         [Required]
-        public Colors Color { get; set; }
+        public Colors Color { get;private set; }
 
         private ProductColors() { }
         private ProductColors(Guid productId, Colors color)

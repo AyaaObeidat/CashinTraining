@@ -7,10 +7,10 @@ namespace Mahali.Models
         public Guid Id { get; set; }
 
         [Required]
-        public Guid ProductId { get; set; }
+        public Guid ProductId { get;private set; }
 
         [Required]
-        public Sizes Size { get; set; }
+        public Sizes Size { get;private set; }
 
         private ProductSizes() { }
         private ProductSizes(Guid productId, Sizes size)
