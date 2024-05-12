@@ -36,7 +36,7 @@ namespace Mahali.Models
         public List<ReviewRequest> Reviews { get;private set; }
 
         private Shop() { }
-        private Shop(string name , string description , string password , string email , long phoneNumber , Guid locationId) 
+        private Shop(string name , string description , string email, string password, long phoneNumber , Guid locationId) 
         { 
             Name = name;
             Description = description;
@@ -46,7 +46,7 @@ namespace Mahali.Models
             LocationId = locationId;
         }
 
-        public static Shop Create(string name, string description, string password, string email, long phoneNumber, Guid locationId)
+        public static Shop Create(string name, string description, string email, string password, long phoneNumber, Guid locationId)
         {
             if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(description)) { throw new ArgumentNullException(); }
