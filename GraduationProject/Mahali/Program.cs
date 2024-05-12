@@ -1,6 +1,7 @@
 using Mahali.Data;
 using Mahali.Repositories.Implementations;
 using Mahali.Repositories.Interfaces;
+using Mahali.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,32 +35,12 @@ builder.Services.AddScoped<IDiscountInterface, DiscountInterface>();
 builder.Services.AddScoped<ILatestProductVisitedInterface, LatestProductsVisitedInterface>();
 builder.Services.AddScoped<IAdminInterface, AdminInterface>();
 builder.Services.AddScoped<IReportInterface, ReportInterface>();
-builder.Services.AddScoped<IShopRecuestInterface, ShopRecuestInterface>();
+builder.Services.AddScoped<IShopRequestInterface, ShopReqestInterface>();
 builder.Services.AddScoped<IProductColorInterface, ProductColorInterface>();
 builder.Services.AddScoped<IProductSizeInterface, ProductSizeInterface>();
 
 //Services
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+builder.Services.AddScoped<AdminService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

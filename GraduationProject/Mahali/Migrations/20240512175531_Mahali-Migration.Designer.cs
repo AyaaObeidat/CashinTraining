@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mahali.Migrations
 {
     [DbContext(typeof(MahaliDbContext))]
-    [Migration("20240508204118_Mahali-Migration")]
+    [Migration("20240512175531_Mahali-Migration")]
     partial class MahaliMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
