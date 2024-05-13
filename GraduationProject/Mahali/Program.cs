@@ -41,6 +41,8 @@ builder.Services.AddScoped<IProductSizeInterface, ProductSizeInterface>();
 
 //Services
 builder.Services.AddScoped<AdminService>();
+//builder.Services.AddScoped<ShopRequestService>();
+//builder.Services.AddScoped<ShopService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

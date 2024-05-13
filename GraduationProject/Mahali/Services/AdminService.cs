@@ -1,4 +1,6 @@
 ﻿using Mahali.Dtos.AdminDtos;
+using Mahali.Dtos.ReportDtos;
+using Mahali.Dtos.ShopRecuestDtos;
 using Mahali.Models;
 using Mahali.Repositories.Interfaces;
 using System.Runtime.InteropServices;
@@ -8,11 +10,13 @@ namespace Mahali.Services
     public class AdminService
     {
         private readonly IAdminInterface _adminInterface;
-        //public static Admin admin;
-
-        public AdminService(IAdminInterface adminInterface)
+        private readonly IShopInterface _shopInterface;
+        private readonly IReportInterface _reportInterface;
+        public AdminService(IAdminInterface adminInterface , IShopInterface shopInterface, IReportInterface reportInterface)
         {
             _adminInterface = adminInterface;
+            _shopInterface = shopInterface;
+            _reportInterface = reportInterface;
         }
 
         public async Task<AdminDetails?> RegisterAsync(AdminRegister parameters)
@@ -39,13 +43,13 @@ namespace Mahali.Services
 
         public async Task<AdminDetails?> LoginAsync(string userName_Email , string password)
         {
-            var admin = await _adminInterface.GetByIdAsync();
-
-            if((userName_Email == admins.First().UserName || userName_Email==admins.First().Email) && password==admins.First().Password)
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            if(admin==null)
+            if((userName_Email == admin.UserName || userName_Email==admin.Email) && password==admin.Password)
             {
                 return new AdminDetails
                 {
-                    Id = admi.Id,
+                    Id = admin.Id,
                     UserName = admin.UserName,
                     Email = admin.Email,
                     Password = admin.Password,
@@ -55,6 +59,78 @@ namespace Mahali.Services
                 };
             }
             return null;
+        }
+
+        public  async Task<List<ShopRequestListItems>> GetAllShopRequestAsync()
+        {
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            return admin.ShopRequests.Select( x => new ShopRequestListItems
+            {
+                ShopId = x.ShopId,
+                RequestStatus = x.Status
+
+            }).ToList();
+            return null;
+        }
+
+        public async Task<List<ReportListItems>> GetAllReportsAsync()
+        {
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            return admin.Reports.Select(x => new ReportListItems
+            {
+               ShopId = x.ShopId,
+               ReportText = x.ReportText,
+               CreatedAt = x.CreatedAt,
+               LastModifiedTime = x.LastModifiedTime,
+
+            }).ToList();
+            return null;
+        }
+
+        public async Task ModifyAccountUserNameAsync(AdminUpdateParameters parameters)
+        {
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            admin.SetUserName(parameters.UserName);
+            await _adminInterface.UpdateAsync(admin);
+        }
+        public async Task ModifyAccountPasswordAsync(AdminUpdateParameters parameters)
+        {
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            if (admin.Password == parameters.CurrentPassword)
+            {
+                admin.SetPassword(parameters.NewPassword);
+                await _adminInterface.UpdateAsync(admin);
+            }
+            else return;
+        }
+
+        public async Task WriteReportAsync(ReportCreateParameters parameters)
+        {
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            var shop = await _shopInterface.GetByName(parameters.ShopName);
+            var report = Report.Create(admin.Id, shop.Id, parameters.ReportText);
+            await _reportInterface.AddAsync(report);
+        }
+        public async Task EditReportTextAsync(ReportUpdateParameters parameters)
+        {
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            var shop = await _shopInterface.GetByName(parameters.ShopName);
+            if (shop == null) return;
+            var reports = await _reportInterface.GetAllAsync();
+            var report = reports.FirstOrDefault(x => x.ShopId== shop.Id && x.AdminId==admin.Id);
+            if (report == null) return;
+            report.SetReportText(parameters.ReportText);
+            await _reportInterface.UpdateAsync(report);
+        }
+        public async Task DeleteReportAsync(string shopName)
+        {
+            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            var shop = await _shopInterface.GetByName(shopName);
+            if (shop == null) return;
+            var reports = await _reportInterface.GetAllAsync();
+            var report = reports.FirstOrDefault(x => x.ShopId == shop.Id && x.AdminId == admin.Id);
+            if (report == null) return;
+            await _reportInterface.DeleteAsync(report);
         }
     }
 }
