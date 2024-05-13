@@ -1,4 +1,5 @@
 ﻿using Mahali.Dtos.AdminDtos;
+using Mahali.Dtos.ReportDtos;
 using Mahali.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,62 @@ namespace Mahali.Controllers
             var admin = await _adminService.LoginAsync(userName_Email , password);
             if (admin == null) { BadRequest(); }
             return Ok(admin);
+        }
+
+        [HttpGet]
+        [Route("GetAllShops")]
+        public async Task<IActionResult> GetAllShopsAsync()
+        {
+            return Ok(await _adminService.GetAllShopRequestAsync());
+        }
+
+        [HttpGet]
+        [Route("GetReports")]
+        public async Task<IActionResult> GetAllReportsAsync()
+        {
+            return Ok(await _adminService.GetAllReportsAsync());
+        }
+
+        [HttpPatch]
+        [Route("ModifyAccountUserName")]
+        public async Task<IActionResult> ModifyAccountUserNameAsync(AdminUpdateParameters parameters)
+        {
+            await _adminService.ModifyAccountUserNameAsync(parameters);
+            return Ok();
+        }
+
+        [HttpPatch]
+        [Route("ModifyAccountPassword")]
+        public async Task<IActionResult> ModifyAccountPasswordAsync(AdminUpdateParameters parameters)
+        {
+            await _adminService.ModifyAccountPasswordAsync(parameters);
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [Route("WriteReport")]
+        public async Task<IActionResult> WriteReportAsync(ReportCreateParameters parameters)
+        {
+            await _adminService.WriteReportAsync(parameters);
+            return Ok();
+        }
+
+        [HttpPatch]
+        [Route("EditReportText")]
+        public async Task<IActionResult> EditReportTextAsync(ReportUpdateParameters parameters)
+        {
+            await _adminService.EditReportTextAsync(parameters);
+            return Ok();
+        }
+
+
+        [HttpDelete]
+        [Route("DeleteReport")]
+        public async Task<IActionResult> DeleteReportAsync(string shopName)
+        {
+            await _adminService.DeleteReportAsync(shopName);
+            return Ok();
         }
     }
 }

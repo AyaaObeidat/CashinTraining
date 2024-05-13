@@ -27,7 +27,7 @@ namespace Mahali.Models
 
         [Required(ErrorMessage = "Phone number is required.")]
         [Range(10, 10, ErrorMessage = "PNumber must be equal to 10.")]
-        public long PhoneNumber { get;private set; }
+        public long PhoneNumber { get; private set; } = 10;
 
         [Required]
         public Guid LocationId { get;private set; }
@@ -36,25 +36,25 @@ namespace Mahali.Models
         public List<ReviewRequest> Reviews { get;private set; }
 
         private Shop() { }
-        private Shop(string name , string description , string email, string password, long phoneNumber , Guid locationId) 
+        private Shop(string name , string description , string email, string password, long phoneNumber ) 
         { 
             Name = name;
             Description = description;
             Password = password;
             Email = email;
             PhoneNumber = phoneNumber;
-            LocationId = locationId;
+            //LocationId = locationId;
         }
 
-        public static Shop Create(string name, string description, string email, string password, long phoneNumber, Guid locationId)
+        public static Shop Create(string name, string description, string email, string password, long phoneNumber)
         {
             if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(description)) { throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(password)) {  throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(email)) { throw new ArgumentNullException(); }
-            if(locationId == Guid.Empty) { throw new ArgumentNullException(); }
+            //if(locationId == Guid.Empty) { throw new ArgumentNullException(); }
 
-            return new Shop(name, description, password, email, phoneNumber, locationId);
+            return new Shop(name, description, email, password, phoneNumber);
         }
         public void SetName(string name)
         {
@@ -85,6 +85,10 @@ namespace Mahali.Models
         public void SetReviews(List<ReviewRequest> reviews)
         {
             Reviews = reviews;
+        }
+        public void SetLocationId(Guid id)
+        {
+            LocationId = id;
         }
     }
 }
