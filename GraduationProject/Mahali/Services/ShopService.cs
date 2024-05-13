@@ -8,6 +8,7 @@ using Mahali.Dtos.ShopRecuestDtos;
 using Mahali.Models;
 using Mahali.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore.Query.Internal;
+using Mahali.Repositories.Implementations;
 
 namespace Mahali.Services
 {
@@ -65,68 +66,24 @@ namespace Mahali.Services
             return null;
         }
 
-        public async Task<List<ShopOrdersDetails>> GetAllShopOrdersAsync(string shopName)
-        {
-            var shop = await _shopInterface.GetByNameAsync(shopName);
-            var orders = shop.Orders.ToList();
-            return orders.Select(x => new ShopOrdersDetails
-            { 
-                Id = x.Id,
-                ShopId = x.ShopId,
-                OrderId = x.OrderId,
-            }).ToList();    
-        }
-
-        public async Task<List<ProductListItems>> GetAllShopProductsAsync(string shopName)
-        {
-            var shop = await _shopInterface.GetByNameAsync(shopName);
-            var products = shop.Products.ToList();
-            return products.Select(x => new ProductListItems
-            {
-               Id = x.Id,
-               Name = x.Name,
-               Description = x.Description,
-               Quantity = x.Quantity,
-               Price = x.Price,
-               ImageUri = x.ImageUri,
-               ColorsList = x.ColorsList,
-               SizesList = x.SizesList,
-            }).ToList();
-        }
-
-        public async Task<List<ReviewRequestDetails>> GetAllReviewsListAsync(string shopName)
-        {
-            var shop = await _shopInterface.GetByNameAsync(shopName);
-            var reviews = shop.Reviews.ToList();
-            return reviews.Select(x => new ReviewRequestDetails
-            {
-               Id= x.Id,
-               CustomerId = x.CustomerId,
-               ProductId = x.ProductId,
-               ReviewContentBody = x.ReviewContentBody,
-               CreatedAt = x.CreatedAt,
-               Status = x.Status,
-            }).ToList();
-        }
-    }
-
+       
         public async Task ModifyShopNameAsync(ShopUpdateParameters parameters)
         {
-            var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
-            var shops = await _shopInterface.GetAllAsync();
-            if(request.Status == RequestStatus.Approved )
-            {
-                foreach(var shop in shops)
-                {
-                    if (shop.Name != parameters.Name) { continue; }
-                    else break;
-                }
-                var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
-                selectedShop.SetName(parameters.Name);
-                await _shopInterface.UpdateAsync(selectedShop);
-            }
-        }
 
+           var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
+           var shops = await _shopInterface.GetAllAsync();
+           if (request.Status == RequestStatus.Approved)
+           {
+              foreach (var shop in shops)
+              {
+                if (shop.Name != parameters.Name) { continue; }
+                else break;
+              }
+              var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
+              selectedShop.SetName(parameters.Name);
+              await _shopInterface.UpdateAsync(selectedShop);
+           }
+        }
         public async Task ModifyShopPasswordAsync(ShopUpdateParameters parameters)
         {
             var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
@@ -139,20 +96,22 @@ namespace Mahali.Services
                     else break;
                 }
                 var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
-                if(selectedShop.Password == parameters.CurrentPassword)
+                if (selectedShop.Password == parameters.CurrentPassword)
                 {
                     selectedShop.SetPassword(parameters.NewPassword);
                     await _shopInterface.UpdateAsync(selectedShop);
                 }
-              
+
             }
         }
+
 
         public async Task ModifyShopPhoneNumberAsync(ShopUpdateParameters parameters)
         {
             var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
             var shops = await _shopInterface.GetAllAsync();
             if (request.Status == RequestStatus.Approved)
+
             {
                 foreach (var shop in shops)
                 {
@@ -170,13 +129,57 @@ namespace Mahali.Services
             var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
             if (request.Status == RequestStatus.Approved)
             {
-                
+
                 var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
                 selectedShop.SetDescription(parameters.Description);
                 await _shopInterface.UpdateAsync(selectedShop);
             }
         }
 
-      
+        public async Task<List<ShopOrdersDetails>> GetAllShopOrdersAsync(string shopName)
+        {
+            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var orders = shop.Orders.ToList();
+            return orders.Select(x => new ShopOrdersDetails
+            {
+                Id = x.Id,
+                ShopId = x.ShopId,
+                OrderId = x.OrderId,
+            }).ToList();
+        }
+
+        public async Task<List<ProductListItems>> GetAllShopProductsAsync(string shopName)
+        {
+            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var products = shop.Products.ToList();
+            return products.Select(x => new ProductListItems
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Description = x.Description,
+                Quantity = x.Quantity,
+                Price = x.Price,
+                ImageUri = x.ImageUri,
+                ColorsList = x.ColorsList,
+                SizesList = x.SizesList,
+            }).ToList();
+        }
+
+        public async Task<List<ReviewRequestDetails>> GetAllReviewsListAsync(string shopName)
+        {
+            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var reviews = shop.Reviews.ToList();
+            return reviews.Select(x => new ReviewRequestDetails
+            {
+                Id = x.Id,
+                CustomerId = x.CustomerId,
+                ProductId = x.ProductId,
+                ReviewContentBody = x.ReviewContentBody,
+                CreatedAt = x.CreatedAt,
+                Status = x.Status,
+            }).ToList();
+        }
+
     }
-    }
+}
+   
