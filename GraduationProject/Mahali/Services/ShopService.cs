@@ -1,14 +1,9 @@
-﻿using Mahali.Dtos.AdminDtos;
-using Mahali.Dtos.ProductDtos;
+﻿using Mahali.Dtos.ProductDtos;
 using Mahali.Dtos.ReviewsRequestDtos;
-using Mahali.Dtos.OrderDtos;
 using Mahali.Dtos.ShopDtos;
 using Mahali.Dtos.ShopOrdersDtos;
-using Mahali.Dtos.ShopRecuestDtos;
 using Mahali.Models;
 using Mahali.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using Mahali.Repositories.Implementations;
 
 namespace Mahali.Services
 {

@@ -1,7 +1,6 @@
 ﻿using Mahali.Dtos.AdminDtos;
 using Mahali.Dtos.ReportDtos;
 using Mahali.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Mahali.Controllers

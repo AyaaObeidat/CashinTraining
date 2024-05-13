@@ -3,7 +3,6 @@ using Mahali.Dtos.ReportDtos;
 using Mahali.Dtos.ShopRecuestDtos;
 using Mahali.Models;
 using Mahali.Repositories.Interfaces;
-using System.Runtime.InteropServices;
 
 namespace Mahali.Services
 {
