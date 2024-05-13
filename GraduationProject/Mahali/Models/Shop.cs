@@ -26,7 +26,7 @@ namespace Mahali.Models
         public string Email { get; private set; } = null!;
 
         [Required(ErrorMessage = "Phone number is required.")]
-        [Range(10, 10, ErrorMessage = "PNumber must be equal to 10.")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public long PhoneNumber { get; private set; } = 10;
 
         [Required]
@@ -34,6 +34,8 @@ namespace Mahali.Models
 
         public List<ShopOrders> Orders { get;private set; }
         public List<ReviewRequest> Reviews { get;private set; }
+
+        public List<Product> Products { get; private set; } 
 
         private Shop() { }
         private Shop(string name , string description , string email, string password, long phoneNumber ) 
@@ -89,6 +91,10 @@ namespace Mahali.Models
         public void SetLocationId(Guid id)
         {
             LocationId = id;
+        }
+        public void SetProducts(List<Product> products)
+        {
+            products = products;
         }
     }
 }

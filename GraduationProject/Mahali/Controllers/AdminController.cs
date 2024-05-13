@@ -90,5 +90,13 @@ namespace Mahali.Controllers
             await _adminService.DeleteReportAsync(shopName);
             return Ok();
         }
+
+        [HttpPatch]
+        [Route("UpdateShopRequestStatus")]
+        public async Task<IActionResult> UpdateShopRequestStatus(string shopName , RequestStatus status)
+        {
+            await _adminService.UpdateShopRequestStatusAsync(shopName, status);
+            return Ok();
+        }
     }
 }
