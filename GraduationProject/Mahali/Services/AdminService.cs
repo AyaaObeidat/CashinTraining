@@ -12,11 +12,13 @@ namespace Mahali.Services
         private readonly IAdminInterface _adminInterface;
         private readonly IShopInterface _shopInterface;
         private readonly IReportInterface _reportInterface;
-        public AdminService(IAdminInterface adminInterface , IShopInterface shopInterface, IReportInterface reportInterface)
+        private readonly IShopRequestInterface _shopRequestInterface;
+        public AdminService(IAdminInterface adminInterface , IShopInterface shopInterface, IReportInterface reportInterface , IShopRequestInterface shopRequestInterface)
         {
             _adminInterface = adminInterface;
             _shopInterface = shopInterface;
             _reportInterface = reportInterface;
+            _shopRequestInterface = shopRequestInterface;
         }
 
         public async Task<AdminDetails?> RegisterAsync(AdminRegister parameters)
@@ -108,8 +110,13 @@ namespace Mahali.Services
         {
             var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
             var shop = await _shopInterface.GetByName(parameters.ShopName);
-            var report = Report.Create(admin.Id, shop.Id, parameters.ReportText);
-            await _reportInterface.AddAsync(report);
+            var request = await _shopRequestInterface.GetRequestByShopIdAsync(shop.Id);
+            if(request.Status == RequestStatus.Approved)
+            {
+                var report = Report.Create(admin.Id, shop.Id, parameters.ReportText);
+                await _reportInterface.AddAsync(report);
+            }
+            
         }
         public async Task EditReportTextAsync(ReportUpdateParameters parameters)
         {
@@ -131,6 +138,20 @@ namespace Mahali.Services
             var report = reports.FirstOrDefault(x => x.ShopId == shop.Id && x.AdminId == admin.Id);
             if (report == null) return;
             await _reportInterface.DeleteAsync(report);
+        }
+
+        public async Task UpdateShopRequestStatusAsync(string shopName , RequestStatus status)
+        {
+            var shop = await _shopInterface.GetByName(shopName);
+            var request = await _shopRequestInterface.GetRequestByShopIdAsync(shop.Id);
+            if (request.Status == RequestStatus.Pending)
+            {
+                if (status == RequestStatus.Approved) request.SetRequestStatus(RequestStatus.Approved);
+                else if (status == RequestStatus.Rejected) request.SetRequestStatus(RequestStatus.Rejected);
+                else return;
+                await _shopRequestInterface.UpdateAsync(request);
+            }
+            else return;
         }
     }
 }
