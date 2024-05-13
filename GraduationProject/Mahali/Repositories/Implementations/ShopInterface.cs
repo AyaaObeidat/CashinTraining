@@ -14,5 +14,7 @@ namespace Mahali.Repositories.Implementations
         {
             return await _dbContext.Set<Shop>().Include(x => x.Orders).Include(x => x.Reviews).FirstOrDefaultAsync(a => a.Name == name);
         }
+        
+       
     }
 }
