@@ -10,9 +10,9 @@ namespace Mahali.Repositories.Implementations
         public ShopInterface(MahaliDbContext dbContext) : base(dbContext)
         {
         }
-        public async Task<Shop?> GetByName(string name)
+        public async Task<Shop?> GetByNameAsync(string shopName)
         {
-            return await _dbContext.Set<Shop>().Include(x => x.Orders).Include(x => x.Reviews).FirstOrDefaultAsync(a => a.Name == name);
+            return await _dbContext.Set<Shop>().Include(x => x.Orders).Include(x => x.Reviews).Include(x => x.Products).FirstOrDefaultAsync(a => a.Name == shopName);
         }
     }
 }

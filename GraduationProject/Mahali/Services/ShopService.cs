@@ -1,4 +1,6 @@
 ﻿using Mahali.Dtos.AdminDtos;
+using Mahali.Dtos.ProductDtos;
+using Mahali.Dtos.ReviewsRequestDtos;
 using Mahali.Dtos.ShopDtos;
 using Mahali.Dtos.ShopOrdersDtos;
 using Mahali.Models;
@@ -60,5 +62,49 @@ namespace Mahali.Services
             }
             return null;
         }
+
+        public async Task<List<ShopOrdersDetails>> GetAllShopOrdersAsync(string shopName)
+        {
+            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var orders = shop.Orders.ToList();
+            return orders.Select(x => new ShopOrdersDetails
+            { 
+                Id = x.Id,
+                ShopId = x.ShopId,
+                OrderId = x.OrderId,
+            }).ToList();    
         }
+
+        public async Task<List<ProductListItems>> GetAllShopProductsAsync(string shopName)
+        {
+            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var products = shop.Products.ToList();
+            return products.Select(x => new ProductListItems
+            {
+               Id = x.Id,
+               Name = x.Name,
+               Description = x.Description,
+               Quantity = x.Quantity,
+               Price = x.Price,
+               ImageUri = x.ImageUri,
+               ColorsList = x.ColorsList,
+               SizesList = x.SizesList,
+            }).ToList();
+        }
+
+        public async Task<List<ReviewRequestDetails>> GetAllReviewsListAsync(string shopName)
+        {
+            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var reviews = shop.Reviews.ToList();
+            return reviews.Select(x => new ReviewRequestDetails
+            {
+               Id= x.Id,
+               CustomerId = x.CustomerId,
+               ProductId = x.ProductId,
+               ReviewContentBody = x.ReviewContentBody,
+               CreatedAt = x.CreatedAt,
+               Status = x.Status,
+            }).ToList();
+        }
+    }
     }
