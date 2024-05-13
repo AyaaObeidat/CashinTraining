@@ -24,7 +24,7 @@ namespace Mahali.Dtos.ShopDtos
 
 
         [Required(ErrorMessage = "Phone number is required.")]
-        [Range(10, 10, ErrorMessage = "PNumber must be equal to 10.")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Phone number must be exactly 10 digits.")]
         public long PhoneNumber { get;  set; }
 
         //[Required]
