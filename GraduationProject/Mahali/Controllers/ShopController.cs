@@ -22,6 +22,7 @@ namespace Mahali.Controllers
             await _shopService.RegisterAsync(parameters);
             return Ok();
         }
+
         [HttpGet]
         [Route("Login")]
         public async Task<IActionResult> LoginAsync(string userName_Email , string password)
@@ -29,6 +30,33 @@ namespace Mahali.Controllers
             var shop = await _shopService.LoginAsync(userName_Email, password);
             if (shop == null) { return BadRequest(); }
             return Ok(shop);
+        }
+
+        [HttpGet]
+        [Route("GetAllShopOrders")]
+        public async Task<IActionResult> GetAllShopOrdersAsync(string shopName)
+        {
+            var orders = await _shopService.GetAllShopOrdersAsync(shopName);
+            if (orders == null) { return BadRequest(); }
+            return Ok(orders);
+        }
+
+        [HttpGet]
+        [Route("GetAllShopProducts")]
+        public async Task<IActionResult> GetAllShopProductsAsync(string shopName)
+        {
+            var products = await _shopService.GetAllShopProductsAsync(shopName);
+            if (products == null) { return BadRequest(); }
+            return Ok(products);
+        }
+
+        [HttpGet]
+        [Route("GetAllReviewsList")]
+        public async Task<IActionResult> GetAllReviewsListAsync(string shopName)
+        {
+            var reviews = await _shopService.GetAllReviewsListAsync(shopName);
+            if (reviews == null) { return BadRequest(); }
+            return Ok(reviews);
         }
     }
 }

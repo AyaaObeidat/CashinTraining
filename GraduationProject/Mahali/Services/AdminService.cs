@@ -109,7 +109,7 @@ namespace Mahali.Services
         public async Task WriteReportAsync(ReportCreateParameters parameters)
         {
             var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
-            var shop = await _shopInterface.GetByName(parameters.ShopName);
+            var shop = await _shopInterface.GetByNameAsync(parameters.ShopName);
             var request = await _shopRequestInterface.GetRequestByShopIdAsync(shop.Id);
             if(request.Status == RequestStatus.Approved)
             {
@@ -121,7 +121,7 @@ namespace Mahali.Services
         public async Task EditReportTextAsync(ReportUpdateParameters parameters)
         {
             var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
-            var shop = await _shopInterface.GetByName(parameters.ShopName);
+            var shop = await _shopInterface.GetByNameAsync(parameters.ShopName);
             if (shop == null) return;
             var reports = await _reportInterface.GetAllAsync();
             var report = reports.FirstOrDefault(x => x.ShopId== shop.Id && x.AdminId==admin.Id);
@@ -132,7 +132,7 @@ namespace Mahali.Services
         public async Task DeleteReportAsync(string shopName)
         {
             var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
-            var shop = await _shopInterface.GetByName(shopName);
+            var shop = await _shopInterface.GetByNameAsync(shopName);
             if (shop == null) return;
             var reports = await _reportInterface.GetAllAsync();
             var report = reports.FirstOrDefault(x => x.ShopId == shop.Id && x.AdminId == admin.Id);
@@ -142,7 +142,7 @@ namespace Mahali.Services
 
         public async Task UpdateShopRequestStatusAsync(string shopName , RequestStatus status)
         {
-            var shop = await _shopInterface.GetByName(shopName);
+            var shop = await _shopInterface.GetByNameAsync(shopName);
             var request = await _shopRequestInterface.GetRequestByShopIdAsync(shop.Id);
             if (request.Status == RequestStatus.Pending)
             {
