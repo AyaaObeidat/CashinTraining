@@ -74,9 +74,9 @@ namespace Mahali.Models
         {
             Password = password;
         }
-        public void SetPhoneNumber(string phoneNumber)
+        public void SetPhoneNumber(long phoneNumber)
         {
-            PhoneNumber = PhoneNumber;
+            PhoneNumber = phoneNumber;
         }
 
         public void SetOrders(List<ShopOrders> orders)
@@ -94,7 +94,7 @@ namespace Mahali.Models
         }
         public void SetProducts(List<Product> products)
         {
-            products = products;
+            Products = products;
         }
     }
 }
