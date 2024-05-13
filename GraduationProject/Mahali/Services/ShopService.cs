@@ -1,6 +1,8 @@
 ﻿using Mahali.Dtos.AdminDtos;
+using Mahali.Dtos.OrderDtos;
 using Mahali.Dtos.ShopDtos;
 using Mahali.Dtos.ShopOrdersDtos;
+using Mahali.Dtos.ShopRecuestDtos;
 using Mahali.Models;
 using Mahali.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore.Query.Internal;
@@ -60,5 +62,74 @@ namespace Mahali.Services
             }
             return null;
         }
+
+        public async Task ModifyShopNameAsync(ShopUpdateParameters parameters)
+        {
+            var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
+            var shops = await _shopInterface.GetAllAsync();
+            if(request.Status == RequestStatus.Approved )
+            {
+                foreach(var shop in shops)
+                {
+                    if (shop.Name != parameters.Name) { continue; }
+                    else break;
+                }
+                var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
+                selectedShop.SetName(parameters.Name);
+                await _shopInterface.UpdateAsync(selectedShop);
+            }
         }
+
+        public async Task ModifyShopPasswordAsync(ShopUpdateParameters parameters)
+        {
+            var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
+            var shops = await _shopInterface.GetAllAsync();
+            if (request.Status == RequestStatus.Approved)
+            {
+                foreach (var shop in shops)
+                {
+                    if (shop.Password != parameters.NewPassword) { continue; }
+                    else break;
+                }
+                var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
+                if(selectedShop.Password == parameters.CurrentPassword)
+                {
+                    selectedShop.SetPassword(parameters.NewPassword);
+                    await _shopInterface.UpdateAsync(selectedShop);
+                }
+              
+            }
+        }
+
+        public async Task ModifyShopPhoneNumberAsync(ShopUpdateParameters parameters)
+        {
+            var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
+            var shops = await _shopInterface.GetAllAsync();
+            if (request.Status == RequestStatus.Approved)
+            {
+                foreach (var shop in shops)
+                {
+                    if (shop.PhoneNumber != parameters.PhoneNumber) { continue; }
+                    else break;
+                }
+                var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
+                selectedShop.SetPhoneNumber(parameters.PhoneNumber);
+                await _shopInterface.UpdateAsync(selectedShop);
+            }
+        }
+
+        public async Task ModifyShopDescriptionAsync(ShopUpdateParameters parameters)
+        {
+            var request = await _shopRequestInterface.GetRequestByShopIdAsync(parameters.Id);
+            if (request.Status == RequestStatus.Approved)
+            {
+                
+                var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
+                selectedShop.SetDescription(parameters.Description);
+                await _shopInterface.UpdateAsync(selectedShop);
+            }
+        }
+
+      
+    }
     }
