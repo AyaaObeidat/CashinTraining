@@ -43,8 +43,11 @@ builder.Services.AddScoped<IProductSizeInterface, ProductSizeInterface>();
 //Services
 builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<ReportService>();
-builder.Services.AddScoped<ShopService>();
 builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<ShopService>();
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ProductColorService>();
+builder.Services.AddScoped<ProductSizeService>();
 
 var app = builder.Build();
 

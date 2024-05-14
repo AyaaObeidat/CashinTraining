@@ -114,5 +114,10 @@ namespace Mahali.Models
         {
             Reviews = reviews;
         }
+        public void SetCategoryId(Guid categoryId)
+        {
+            if (categoryId == Guid.Empty) throw new ArgumentNullException();
+            CategoryId = categoryId;
+        }
     }
 }

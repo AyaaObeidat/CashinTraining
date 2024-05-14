@@ -1,4 +1,5 @@
 ﻿using Mahali.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Mahali.Dtos.ProductDtos
 {
@@ -10,5 +11,9 @@ namespace Mahali.Dtos.ProductDtos
         public List<ProductColors> ColorsList { get; set; }
         public List<ProductSizes> SizesList { get; set; }
         public Guid ShopId { get; set; }
+        public List<CartProducts> Carts { get;  set; }
+        public List<WishListProducts> WishLists { get;  set; }
+        public List<OrderProducts> Orders { get;  set; }
+        public List<ReviewRequest> Reviews { get;  set; }
     }
 }

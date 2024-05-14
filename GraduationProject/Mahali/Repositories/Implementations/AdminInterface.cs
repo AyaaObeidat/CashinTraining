@@ -11,12 +11,7 @@ namespace Mahali.Repositories.Implementations
         {
         }
 
-        //public async Task<Admin?> GetByUserName(string userName)
-        //{
-        //   
-        //}
-
-        
+       
         public override async Task<List<Admin>> GetAllAsync()
         {
             return await _dbContext.Set<Admin>().Include(x => x.ShopRequests).Include(x => x.Reports).ToListAsync();
