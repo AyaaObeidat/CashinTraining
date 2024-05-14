@@ -4,7 +4,8 @@ namespace Mahali.Dtos.CategoryDtos
 {
     public class CategoryUpdateParameters
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; } = null!;
+        
+        public Guid CategoryId { get; set; }
+        public string UpdatedName { get; set; }
     }
 }

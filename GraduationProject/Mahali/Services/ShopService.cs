@@ -30,27 +30,26 @@ namespace Mahali.Services
             }
             var newShop = Shop.Create(parameters.Name, parameters.Description, parameters.Email, parameters.Password, parameters.PhoneNumber);
             await _shopInterface.AddAsync(newShop);
-            var admin = await _adminInterface.GetByUserName(await _adminInterface.GetUserName());
+            var admin = await _adminInterface.GetByIdAsync(await _adminInterface.GetIdAsync());
             var request = ShopRequest.Create(admin.Id, newShop.Id);
             await _shopRequestInterface.AddAsync(request);
         }
-        public async Task<ShopDetails?> LoginAsync(string userName_Email, string password)
+
+        public async Task<ShopListItems?> LoginAsync(ShopLogin login )
         {
             var shops = await _shopInterface.GetAllAsync();
             foreach (var shop in shops)
             {
-                if( ( shop.Name == userName_Email ||  shop.Email == userName_Email) && shop.Password == password)
+                if( ( shop.Name == login.UserName_Email ||  shop.Email == login.UserName_Email) && shop.Password == login.Password)
                 {
                     var request = await _shopRequestInterface.GetRequestByShopIdAsync(shop.Id);
                     if(request.Status == RequestStatus.Approved )
                     {
-                        return new ShopDetails
+                        return new ShopListItems
                         {
-                            Id = shop.Id,
+                            
                             Name = shop.Name,
                             Description = shop.Description,
-                            Email = shop.Email,
-                            Password = password,
                             PhoneNumber = shop.PhoneNumber,
                             Orders = shop.Orders,
                             Reviews = shop.Reviews,
@@ -131,50 +130,73 @@ namespace Mahali.Services
             }
         }
 
-        public async Task<List<ShopOrdersDetails>> GetAllShopOrdersAsync(string shopName)
+        public async Task<List<ShopOrdersDetails>> GetShopOrdersAsync(ShopGetByParameter parameter)
         {
-            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var shop = await _shopInterface.GetByIdAsync(parameter.ShopId);
             var orders = shop.Orders.ToList();
             return orders.Select(x => new ShopOrdersDetails
             {
-                Id = x.Id,
                 ShopId = x.ShopId,
                 OrderId = x.OrderId,
             }).ToList();
         }
 
-        public async Task<List<ProductListItems>> GetAllShopProductsAsync(string shopName)
+        public async Task<List<ProductListItems>> GetShopProductsAsync(ShopGetByParameter parameter)
         {
-            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var shop = await _shopInterface.GetByIdAsync(parameter.ShopId);
             var products = shop.Products.ToList();
             return products.Select(x => new ProductListItems
             {
-                Id = x.Id,
+               
                 Name = x.Name,
                 Description = x.Description,
-                Quantity = x.Quantity,
                 Price = x.Price,
-                ImageUri = x.ImageUri,
                 ColorsList = x.ColorsList,
                 SizesList = x.SizesList,
             }).ToList();
         }
 
-        public async Task<List<ReviewRequestDetails>> GetAllReviewsListAsync(string shopName)
+        public async Task<List<ReviewRequestListItems>> GetReviewsListAsync(ShopGetByParameter parameter)
         {
-            var shop = await _shopInterface.GetByNameAsync(shopName);
+            var shop = await _shopInterface.GetByIdAsync(parameter.ShopId);
             var reviews = shop.Reviews.ToList();
-            return reviews.Select(x => new ReviewRequestDetails
+            return reviews.Select(x => new ReviewRequestListItems
             {
-                Id = x.Id,
+                
                 CustomerId = x.CustomerId,
                 ProductId = x.ProductId,
                 ReviewContentBody = x.ReviewContentBody,
                 CreatedAt = x.CreatedAt,
                 Status = x.Status,
+
             }).ToList();
         }
 
+        public async Task<ShopListItems> GetByIdAsync (ShopGetByParameter parameter)
+        {
+            var shop = await _shopInterface.GetByIdAsync (parameter.ShopId);
+            return new ShopListItems
+            {
+                Name = shop.Name,
+                Description = shop.Description,
+                PhoneNumber = shop.PhoneNumber,
+                Orders = shop.Orders,
+                Reviews = shop.Reviews,
+            };
+        }
+
+        public async Task<List<ShopListItems>> GetAllAsync()
+        {
+            var shops = await _shopInterface.GetAllAsync();
+            return shops.Select(s => new ShopListItems
+            {
+                Name = s.Name,
+                Description = s.Description,
+                PhoneNumber = s.PhoneNumber,
+                Orders = s.Orders,
+                Reviews = s.Reviews,
+            }).ToList();
+        }
     }
 }
    

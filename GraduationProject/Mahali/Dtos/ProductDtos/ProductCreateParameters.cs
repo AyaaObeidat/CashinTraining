@@ -24,16 +24,8 @@ namespace Mahali.Dtos.ProductDtos
         public string ImageUri { get;  set; } = null!;
 
         [Required]
-        public Guid CategoryId { get;  set; }
+        public Guid shopId { get; set; }
 
-        [Required]
-        public Guid ShopId { get;  set; }
-
-        [Required(ErrorMessage = "Colors of Product is required.")]
-        public List<ProductColors> ColorsList { get;  set; }
-
-        [Required(ErrorMessage = "Sisez of Product is required.")]
-        public List<ProductSizes> SizesList { get;  set; }
-
+ 
     }
 }

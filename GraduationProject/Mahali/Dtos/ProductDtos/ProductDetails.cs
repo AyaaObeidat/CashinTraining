@@ -12,7 +12,6 @@ namespace Mahali.Dtos.ProductDtos
         public decimal Price { get;  set; } 
         public string ImageUri { get;  set; } 
         public Guid CategoryId { get;  set; }
-        public Guid ShopId { get;  set; }
         public List<ProductColors> ColorsList { get;  set; }
         public List<ProductSizes> SizesList { get;  set; }
         public List<CartProducts> Carts { get;  set; }

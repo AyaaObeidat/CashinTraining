@@ -1,5 +1,6 @@
 ﻿using Mahali.Dtos.AdminDtos;
 using Mahali.Dtos.ReportDtos;
+using Mahali.Dtos.ShopRecuestDtos;
 using Mahali.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,27 +28,13 @@ namespace Mahali.Controllers
 
         [HttpGet]
         [Route("Login")]
-        public async Task<IActionResult> LoginAsync(string userName_Email , string password)
+        public async Task<IActionResult> LoginAsync(AdminLogin adminLogin)
         {
-            var admin = await _adminService.LoginAsync(userName_Email , password);
+            var admin = await _adminService.LoginAsync(adminLogin);
             if (admin == null) { BadRequest(); }
             return Ok(admin);
         }
-
-        [HttpGet]
-        [Route("GetAllShops")]
-        public async Task<IActionResult> GetAllShopsAsync()
-        {
-            return Ok(await _adminService.GetAllShopRequestAsync());
-        }
-
-        [HttpGet]
-        [Route("GetReports")]
-        public async Task<IActionResult> GetAllReportsAsync()
-        {
-            return Ok(await _adminService.GetAllReportsAsync());
-        }
-
+        
         [HttpPatch]
         [Route("ModifyAccountUserName")]
         public async Task<IActionResult> ModifyAccountUserNameAsync(AdminUpdateParameters parameters)
@@ -65,36 +52,18 @@ namespace Mahali.Controllers
         }
 
 
-        [HttpPost]
-        [Route("WriteReport")]
-        public async Task<IActionResult> WriteReportAsync(ReportCreateParameters parameters)
+        [HttpGet]
+        [Route("GetAllShops")]
+        public async Task<IActionResult> GetAllShopsAsync()
         {
-            await _adminService.WriteReportAsync(parameters);
-            return Ok();
-        }
-
-        [HttpPatch]
-        [Route("EditReportText")]
-        public async Task<IActionResult> EditReportTextAsync(ReportUpdateParameters parameters)
-        {
-            await _adminService.EditReportTextAsync(parameters);
-            return Ok();
-        }
-
-
-        [HttpDelete]
-        [Route("DeleteReport")]
-        public async Task<IActionResult> DeleteReportAsync(string shopName)
-        {
-            await _adminService.DeleteReportAsync(shopName);
-            return Ok();
+            return Ok(await _adminService.GetAllShopRequestAsync());
         }
 
         [HttpPatch]
         [Route("UpdateShopRequestStatus")]
-        public async Task<IActionResult> UpdateShopRequestStatus(string shopName , RequestStatus status)
+        public async Task<IActionResult> UpdateShopRequestStatus(ShopRequestUpdateParameters parameters)
         {
-            await _adminService.UpdateShopRequestStatusAsync(shopName, status);
+            await _adminService.UpdateShopRequestStatusAsync(parameters);
             return Ok();
         }
     }

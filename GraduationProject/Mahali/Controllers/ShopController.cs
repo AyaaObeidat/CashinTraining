@@ -13,6 +13,7 @@ namespace Mahali.Controllers
         {
             _shopService = shopService;
         }
+
         [HttpPost]
         [Route("Register")]
         public async Task<IActionResult> RegisterAsync([FromBody] ShopRegister parameters)
@@ -23,9 +24,9 @@ namespace Mahali.Controllers
 
         [HttpGet]
         [Route("Login")]
-        public async Task<IActionResult> LoginAsync(string userName_Email, string password)
+        public async Task<IActionResult> LoginAsync(ShopLogin login)
         {
-            var shop = await _shopService.LoginAsync(userName_Email, password);
+            var shop = await _shopService.LoginAsync( login);
             if (shop == null) { return BadRequest(); }
             return Ok(shop);
         }
@@ -53,6 +54,7 @@ namespace Mahali.Controllers
             await _shopService.ModifyShopPhoneNumberAsync(parameters);
             return Ok();
         }
+
         [HttpPatch]
         [Route("ModifyShopDescription")]
         public async Task<IActionResult> ModifyShopDescriptionAsync(ShopUpdateParameters parameters)
@@ -64,29 +66,44 @@ namespace Mahali.Controllers
 
         [HttpGet]
         [Route("GetAllShopOrders")]
-        public async Task<IActionResult> GetAllShopOrdersAsync(string shopName)
+        public async Task<IActionResult> GetShopOrdersAsync(ShopGetByParameter parameter)
         {
-            var orders = await _shopService.GetAllShopOrdersAsync(shopName);
+            var orders = await _shopService.GetShopOrdersAsync(parameter);
             if (orders == null) { return BadRequest(); }
             return Ok(orders);
         }
 
         [HttpGet]
         [Route("GetAllShopProducts")]
-        public async Task<IActionResult> GetAllShopProductsAsync(string shopName)
+        public async Task<IActionResult> GetShopProductsAsync(ShopGetByParameter parameter)
         {
-            var products = await _shopService.GetAllShopProductsAsync(shopName);
+            var products = await _shopService.GetShopProductsAsync(parameter);
             if (products == null) { return BadRequest(); }
             return Ok(products);
         }
 
         [HttpGet]
         [Route("GetAllReviewsList")]
-        public async Task<IActionResult> GetAllReviewsListAsync(string shopName)
+        public async Task<IActionResult> GetReviewsListAsync(ShopGetByParameter parameter)
         {
-            var reviews = await _shopService.GetAllReviewsListAsync(shopName);
+            var reviews = await _shopService.GetReviewsListAsync(parameter);
             if (reviews == null) { return BadRequest(); }
             return Ok(reviews);
+        }
+
+
+        [HttpGet]
+        [Route("GetAll")]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            return Ok(await _shopService.GetAllAsync());
+        }
+
+        [HttpGet]
+        [Route("GetById")]
+        public async Task<IActionResult> GetByIdAsync(ShopGetByParameter parameter)
+        {
+            return Ok(await _shopService.GetByIdAsync(parameter));
         }
     }
 }

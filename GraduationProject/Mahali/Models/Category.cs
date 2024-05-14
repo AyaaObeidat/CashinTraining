@@ -8,6 +8,7 @@ namespace Mahali.Models
 
         [Required(ErrorMessage = "Name is required.")]
         public string Name { get; private set; } = null!;
+        public List<Product> Products { get; private set; }
 
         private Category() { }
         private Category(string name)
@@ -24,6 +25,11 @@ namespace Mahali.Models
         public void SetName(string name) 
         { 
             Name = name;
-        }   
+        }
+
+        public void SetProducts(List<Product> products)
+        {
+            Products = products;
+        }
     }
 }

@@ -43,32 +43,28 @@ namespace Mahali.Models
 
         private Product() { }
         private Product(string name , string description , int quantity , decimal price , 
-            string imageUri , List<ProductColors> colors , List<ProductSizes> sizes , Guid categoryId , Guid shopId)
+            string imageUri , Guid shopId)
         {
             Name = name;
             Description = description;
             Quantity = quantity;
             Price = price;
             ImageUri = imageUri;
-            ColorsList = colors;
-            SizesList = sizes;
-            CategoryId = categoryId;
             ShopId = shopId;
 
         }
 
         public static Product Create(string name, string description, int quantity, decimal price,
-            string imageUri, List<ProductColors> colors, List<ProductSizes> sizes, Guid categoryId, Guid shopId)
+            string imageUri, Guid shopId)
         {
             if (string.IsNullOrEmpty(name)) { throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(description)) { throw new ArgumentNullException(); }
             if (quantity < 0) { throw new ArgumentOutOfRangeException(); }
             if (price <= 0) { throw new ArgumentOutOfRangeException(); }
+            if(shopId == Guid.Empty) { throw new ArgumentNullException(); }
             if (string.IsNullOrEmpty(imageUri)) { throw new ArgumentNullException(); }
-            if(colors == null) { throw new ArgumentNullException(); }
-            if (sizes == null) { throw new ArgumentNullException(); }
 
-            return new Product(name , description, quantity, price, imageUri, colors, sizes, categoryId, shopId);
+            return new Product(name , description, quantity, price, imageUri,shopId);
 
         }
 

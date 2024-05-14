@@ -11,17 +11,26 @@ namespace Mahali.Repositories.Implementations
         {
         }
 
-        public async Task<Admin?> GetByUserName(string userName)
+        //public async Task<Admin?> GetByUserName(string userName)
+        //{
+        //   
+        //}
+
+        
+        public override async Task<List<Admin>> GetAllAsync()
         {
-            return await _dbContext.Set<Admin>().Include(x => x.ShopRequests).Include(x => x.Reports).FirstOrDefaultAsync(a => a.UserName == userName);
+            return await _dbContext.Set<Admin>().Include(x => x.ShopRequests).Include(x => x.Reports).ToListAsync();
         }
 
-        public async Task<string> GetUserName()
+        public override async Task<Admin?> GetByIdAsync(Guid id)
+        {
+            return await _dbContext.Set<Admin>().Include(x => x.ShopRequests).Include(x => x.Reports).FirstOrDefaultAsync(x => x.Id==id);
+        }
+        public async Task<Guid> GetIdAsync()
         {
             var admin = await GetAllAsync();
-            return admin.First().UserName;  
+            return admin.First().Id;  
         }
-
     }
 }
 

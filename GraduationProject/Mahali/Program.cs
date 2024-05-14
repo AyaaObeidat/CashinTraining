@@ -1,4 +1,5 @@
 using Mahali.Data;
+using Mahali.Models;
 using Mahali.Repositories.Implementations;
 using Mahali.Repositories.Interfaces;
 using Mahali.Services;
@@ -41,8 +42,10 @@ builder.Services.AddScoped<IProductSizeInterface, ProductSizeInterface>();
 
 //Services
 builder.Services.AddScoped<AdminService>();
-//builder.Services.AddScoped<ShopRequestService>();
+builder.Services.AddScoped<ReportService>();
 builder.Services.AddScoped<ShopService>();
+builder.Services.AddScoped<CategoryService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -4,7 +4,7 @@ namespace Mahali.Dtos.ReportDtos
 {
     public class ReportUpdateParameters
     {
-        public string ShopName { get; set; }
+        public Guid ShopId { get; set; }
         public string ReportText { get;  set; } 
     }
 }
