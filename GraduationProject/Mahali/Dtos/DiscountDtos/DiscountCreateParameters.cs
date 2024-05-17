@@ -9,10 +9,11 @@ namespace Mahali.Dtos.DiscountDtos
 
         [Required(ErrorMessage = "Start date of discount is required")]
         [RegularExpression(@"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$", ErrorMessage = "Date and time must be in the format yyyy-MM-dd HH:mm:ss")]
-        public DateTime StartDate { get; private set; }
+        public string StartDate { get; private set; }
 
         [Required(ErrorMessage = "End date of discount is required")]
-        public DateTime EndDate { get; private set; }
+        [RegularExpression(@"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$", ErrorMessage = "Date and time must be in the format yyyy-MM-dd HH:mm:ss")]
+        public string EndDate { get; private set; }
         public Guid ProductId { get; private set; }
     }
 }

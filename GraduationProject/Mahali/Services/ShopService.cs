@@ -26,7 +26,7 @@ namespace Mahali.Services
             foreach (var shop in shops)
             {
                 if (shop.Name != parameters.Name && shop.Email != parameters.Email && shop.Password != parameters.Password) continue;
-                else break;
+                else return;
             }
             var newShop = Shop.Create(parameters.Name, parameters.Description, parameters.Email, parameters.Password, parameters.PhoneNumber);
             await _shopInterface.AddAsync(newShop);
@@ -71,7 +71,7 @@ namespace Mahali.Services
               foreach (var shop in shops)
               {
                 if (shop.Name != parameters.Name) { continue; }
-                else break;
+                else return;
               }
               var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
               selectedShop.SetName(parameters.Name);
@@ -87,7 +87,7 @@ namespace Mahali.Services
                 foreach (var shop in shops)
                 {
                     if (shop.Password != parameters.NewPassword) { continue; }
-                    else break;
+                    else return;
                 }
                 var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
                 if (selectedShop.Password == parameters.CurrentPassword)
@@ -110,7 +110,7 @@ namespace Mahali.Services
                 foreach (var shop in shops)
                 {
                     if (shop.PhoneNumber != parameters.PhoneNumber) { continue; }
-                    else break;
+                    else return;
                 }
                 var selectedShop = await _shopInterface.GetByIdAsync(parameters.Id);
                 selectedShop.SetPhoneNumber(parameters.PhoneNumber);

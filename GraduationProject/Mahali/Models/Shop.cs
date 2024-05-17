@@ -34,7 +34,6 @@ namespace Mahali.Models
 
         public List<ShopOrders> Orders { get;private set; }
         public List<ReviewRequest> Reviews { get;private set; }
-
         public List<Product> Products { get; private set; } 
 
         private Shop() { }

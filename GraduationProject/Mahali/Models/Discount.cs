@@ -19,14 +19,17 @@ namespace Mahali.Models
         public Guid ProductId { get;private set; }
 
         private Discount() { }
-        private Discount (Guid productId, decimal discountPercentage , string startDate , string endDate)
+        private Discount(Guid productId, decimal discountPercentage, string startDate, string endDate)
         {
             ProductId = productId;
             DiscountPercentage = discountPercentage;
             StartDate = DateTime.ParseExact(startDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
             EndDate = DateTime.ParseExact(endDate, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            if (EndDate < StartDate)
+            {
+                throw new ArgumentException();
+            }
         }
-
         public static Discount Create(Guid productId, decimal discountPercentage, string startDate, string endDate)
         {
             if(productId==Guid.Empty) { throw new ArgumentException(); }

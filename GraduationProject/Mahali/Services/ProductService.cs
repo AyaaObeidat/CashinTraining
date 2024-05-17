@@ -21,7 +21,7 @@ namespace Mahali.Services
             foreach(var product in shop.Products.ToList())
             {
                 if (product.Name != parameters.Name) continue;
-                else break;
+                else return;
             }
             var newProduct = Product.Create(parameters.Name, parameters.Description, parameters.Quantity, parameters.Price, parameters.ImageUri, shop.Id);
             await _productInterface.AddAsync(newProduct);
@@ -78,7 +78,7 @@ namespace Mahali.Services
             var shop =await _shopInterface.GetByIdAsync(selectedProduct.ShopId);
             foreach(var product in shop.Products.ToList())
             {
-                if (product.Name == parameters.NewName) break;
+                if (product.Name == parameters.NewName) return;
                 else continue;
             }
 
@@ -120,7 +120,7 @@ namespace Mahali.Services
             var shop = await _shopInterface.GetByIdAsync(selectedProduct.ShopId);
             foreach (var product in shop.Products.ToList())
             {
-                if (product.ImageUri == parameters.NewImageUri) break;
+                if (product.ImageUri == parameters.NewImageUri) return;
                 else continue;
             }
 

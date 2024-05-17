@@ -19,7 +19,7 @@ namespace Mahali.Services
             var categories = await _categoryInterface.GetAllAsync();
             foreach(var category in categories) 
             {
-                if (category.Name == parameters.Name) break;
+                if (category.Name == parameters.Name) return;
                 else continue;
             }
             var newCategory = Category.Create(parameters.Name);
@@ -42,7 +42,7 @@ namespace Mahali.Services
             var categories = await _categoryInterface.GetAllAsync();
             foreach (var category in categories)
             {
-                if (category.Name == parameters.UpdatedName) break;
+                if (category.Name == parameters.UpdatedName) return;
                 else continue;
             }
             selectedCategory.SetName(parameters.UpdatedName);
