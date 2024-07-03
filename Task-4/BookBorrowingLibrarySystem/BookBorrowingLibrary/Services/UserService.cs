@@ -2,6 +2,7 @@
 using BookBorrowingLibrary.Repositories.Interfaces;
 using BookBorrowingLibraryDtos.BookDtos;
 using BookBorrowingLibraryDtos.UserDtos;
+using System.Runtime.CompilerServices;
 namespace BookBorrowingLibrary.Services
 {
     public class UserService
@@ -33,23 +34,16 @@ namespace BookBorrowingLibrary.Services
                 if(u.Email == user.Email && u.Password == user.Password)
                 {
                     var currentUser = await _userRepository.GetByIdAsync(u.Id);
-                    currentUser.SetBooks(currentUser.Books);
-                    await _userRepository.UpdateAsync(currentUser);
 
-                    var books = currentUser.Books.Select(x => new BookDetails
-                    {
-                        Name = x.Name,
-                        NumberOfCopies = x.NumberOfCopies,
-                        Classification = x.Classification,
-                        Status = x.Status,
-                    });
+                    var books = currentUser.Books.ToList();
 
                     return new UserDetails
                     {
+                        Id = u.Id,
                         TripleName = u.TripleName,
                         Gender = u.Gender,
                         Email = u.Email,
-                        Books = books.ToList()
+                        
                     };
                 }
 
@@ -65,14 +59,7 @@ namespace BookBorrowingLibrary.Services
                 TripleName = x.TripleName,
                 Gender = x.Gender,
                 Email = x.Email,
-                Books = x.Books.Select(u => new BookDetails
-                {
-                    Name = u.Name,
-                    NumberOfCopies = u.NumberOfCopies,
-                    Classification = u.Classification,
-                    Status = u.Status,
-
-                }).ToList()
+           
             }).ToList();
         }
 
@@ -80,20 +67,14 @@ namespace BookBorrowingLibrary.Services
         {
             var user = await _userRepository.GetByIdAsync(parameter.Id);
             if (user == null) return null;
-            var books = user.Books.Select(x => new BookDetails
-            {
-                Name = x.Name,
-                NumberOfCopies = x.NumberOfCopies,
-                Classification = x.Classification,
-                Status = x.Status,
-            });
+          
 
             return new UserDetails
             {
                 TripleName = user.TripleName,
                 Gender = user.Gender,
                 Email = user.Email,
-                Books = books.ToList()
+                
             };
         }
 

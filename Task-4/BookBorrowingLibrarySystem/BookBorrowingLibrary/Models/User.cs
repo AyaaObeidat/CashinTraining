@@ -10,7 +10,7 @@ namespace BookBorrowingLibrary.Models
         public UserGender Gender { get; private set; } 
         public string Email { get; private set; } = null!;
         public string Password { get; private set; } = null!;
-        public List<Book>  Books { get; private set; }
+        public List<BorrowingTransaction>  Books { get; private set; }
         private User()
         {
 
@@ -59,7 +59,7 @@ namespace BookBorrowingLibrary.Models
             Password = password;
         }
 
-        public void SetBooks (List<Book> books)
+        public void SetBooks (List<BorrowingTransaction> books)
         {
             Books = books;
         }

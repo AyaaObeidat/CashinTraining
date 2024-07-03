@@ -1,5 +1,6 @@
 ﻿
 using BookBorrowingLibraryDtos.BookDtos;
+using BookBorrowingLibraryDtos.BorrowingTransactionDtos;
 using BookBorrowingLibraryEnums;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,10 @@ namespace BookBorrowingLibraryDtos.UserDtos
 {
     public class UserDetails
     {
+        public Guid Id { get; set; }
         public string TripleName { get;  set; } 
         public UserGender Gender { get;  set; }
         public string Email { get;  set; } 
-        public List<BookDetails>? Books { get;  set; }
+        public List<BorrowingTransactionDetails>? Books { get;  set; }
     }
 }

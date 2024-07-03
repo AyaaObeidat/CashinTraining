@@ -12,7 +12,7 @@ namespace BookBorrowingLibrary.Repositories.Implementations
         }
         public override async Task<User?> GetByIdAsync(Guid id)
         {
-            return await _dbContext.Set<User>().Include(x => x.Books).FirstOrDefaultAsync(u => u.Id == id);
+            return await _dbContext.Set<User>().Include(x => x.Books).FirstOrDefaultAsync(x => x.Id == id);
 
         }
 

@@ -10,7 +10,7 @@ namespace BookBorrowingLibrary.Models
         public BookClassification Classification { get; private set; } 
         public BookStatus Status { get; private set; }
 
-        public List<User> Users { get; private set; }
+        public List<BorrowingTransaction> Users { get; private set; }
         private Book() { }
         private Book( string name, int numberOfCopies, BookClassification classification)
         {
@@ -48,7 +48,7 @@ namespace BookBorrowingLibrary.Models
             Status = status;
         }
 
-        public void SetUsers(List<User> users)
+        public void SetUsers(List<BorrowingTransaction> users)
         {
             Users = users;
         }

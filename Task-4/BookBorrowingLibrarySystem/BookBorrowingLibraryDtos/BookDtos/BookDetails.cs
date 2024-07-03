@@ -1,4 +1,5 @@
 ﻿
+using BookBorrowingLibraryDtos.BorrowingTransactionDtos;
 using BookBorrowingLibraryDtos.UserDtos;
 using BookBorrowingLibraryEnums;
 using System;
@@ -16,7 +17,7 @@ namespace BookBorrowingLibraryDtos.BookDtos
         public int NumberOfCopies { get; set; }     
         public BookClassification Classification { get; set; }
         public BookStatus Status { get; set; }
-        public List<UserDetails> Users { get;  set; }
+        public List<BorrowingTransactionDetails> Users { get;  set; }
 
     }
 }

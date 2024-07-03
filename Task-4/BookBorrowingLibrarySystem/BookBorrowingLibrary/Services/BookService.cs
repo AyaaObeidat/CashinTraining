@@ -36,13 +36,7 @@ namespace BookBorrowingLibrary.Services
                 NumberOfCopies = b.NumberOfCopies,
                 Classification = b.Classification,
                 Status = b.Status,
-                Users = b.Users.ToList().Select(u => new UserDetails
-                {
-                    TripleName = u.TripleName,
-                    Gender = u.Gender,
-                    Email = u.Email,
-
-                }).ToList()
+               
             }).ToList();
         }
 
@@ -56,12 +50,7 @@ namespace BookBorrowingLibrary.Services
                 NumberOfCopies = book.NumberOfCopies,
                 Classification = book.Classification,
                 Status = book.Status,
-                Users = book.Users.ToList().Select(u => new UserDetails
-                {
-                    TripleName = u.TripleName,
-                    Gender = u.Gender,
-                    Email = u.Email,
-                }).ToList(),
+               
             };
         }
 
