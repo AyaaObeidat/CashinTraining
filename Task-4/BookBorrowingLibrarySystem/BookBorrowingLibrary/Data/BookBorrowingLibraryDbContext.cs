@@ -19,6 +19,10 @@ namespace BookBorrowingLibrary.Data
            .Property(o => o.Status)
            .HasConversion<string>();
 
+            modelBuilder.Entity<BorrowingTransaction>()
+           .Property(o => o.ReturnStatus)
+           .HasConversion<string>();
+
             modelBuilder.Entity<Book>()
            .Property(o => o.Classification)
            .HasConversion<string>();
@@ -26,6 +30,18 @@ namespace BookBorrowingLibrary.Data
            modelBuilder.Entity<User>()
           .Property(o => o.Gender)
           .HasConversion<string>();
+
+           modelBuilder.Entity<User>()
+           .Property(o => o.TotalPriceOfBorrowingBooks)
+           .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity< Book>()
+             .Property(o => o.Price)
+             .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<BorrowingTransaction>()
+          .Property(o => o.ArrangedFine)
+          .HasColumnType("decimal(18, 2)");
         }
 
     }

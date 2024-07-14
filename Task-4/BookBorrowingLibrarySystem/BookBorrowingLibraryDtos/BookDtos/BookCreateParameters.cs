@@ -12,5 +12,6 @@ namespace BookBorrowingLibraryDtos.BookDtos
         public string Name { get;  set; } 
         public int NumberOfCopies { get;  set; } 
         public BookClassification Classification { get;  set; }
+        public decimal Price { get; set; }
     }
 }

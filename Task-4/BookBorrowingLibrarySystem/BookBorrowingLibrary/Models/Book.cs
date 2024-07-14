@@ -9,23 +9,25 @@ namespace BookBorrowingLibrary.Models
         public int NumberOfCopies { get;private set; } = 0!;
         public BookClassification Classification { get; private set; } 
         public BookStatus Status { get; private set; }
-
+        public Decimal Price { get; private set; }
         public List<BorrowingTransaction> Users { get; private set; }
         private Book() { }
-        private Book( string name, int numberOfCopies, BookClassification classification)
+        private Book( string name, int numberOfCopies, BookClassification classification, decimal price)
         {
             
             Name = name;
             NumberOfCopies = numberOfCopies;
             Classification = classification;
             Status = BookStatus.NotBorrowed;
+            Price = price;
         }
 
-        public static Book Create(string name, int numberOfCopies, BookClassification classification)
+        public static Book Create(string name, int numberOfCopies, BookClassification classification ,  decimal price)
         {
             if (string.IsNullOrEmpty(name)) throw new ArgumentNullException();
             if (numberOfCopies < 0) throw new ArgumentOutOfRangeException();
-            return new Book(name, numberOfCopies,classification);
+            if(price < 0) throw new ArgumentOutOfRangeException();
+            return new Book(name, numberOfCopies,classification,price);
         }
 
         public void SetName(string name)

@@ -11,6 +11,7 @@ namespace BookBorrowingLibrary.Models
         public string Email { get; private set; } = null!;
         public string Password { get; private set; } = null!;
         public List<BorrowingTransaction>  Books { get; private set; }
+        public decimal TotalPriceOfBorrowingBooks { get; private set; }
         private User()
         {
 
@@ -22,6 +23,7 @@ namespace BookBorrowingLibrary.Models
             Gender = gender;
             Email = email;
             Password = password;
+            TotalPriceOfBorrowingBooks = 0;
         }
 
         public static User Create (string tripleName, UserGender gender, string email, string password)
@@ -62,6 +64,11 @@ namespace BookBorrowingLibrary.Models
         public void SetBooks (List<BorrowingTransaction> books)
         {
             Books = books;
+        }
+
+        public void SetTotalPriceOfBorrowingBooks(decimal totalPrice)
+        {
+            TotalPriceOfBorrowingBooks = totalPrice;
         }
     }
 }

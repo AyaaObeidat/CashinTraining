@@ -39,6 +39,9 @@ namespace BookBorrowingLibrary.Migrations
                     b.Property<int>("NumberOfCopies")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -54,14 +57,24 @@ namespace BookBorrowingLibrary.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("ActualReturnDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ArrangedFine")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("BookId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BorrowedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ReturnedDate")
+                    b.Property<DateTime>("RequiredReturnDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ReturnStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -92,6 +105,9 @@ namespace BookBorrowingLibrary.Migrations
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPriceOfBorrowingBooks")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("TripleName")
                         .IsRequired()

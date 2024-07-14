@@ -18,6 +18,7 @@ namespace BookBorrowingLibraryDtos.BookDtos
         public BookClassification Classification { get; set; }
         public BookStatus Status { get; set; }
         public List<BorrowingTransactionDetails> Users { get;  set; }
+        public decimal Price { get; set; }
 
     }
 }

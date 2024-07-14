@@ -9,5 +9,7 @@ namespace BookBorrowingLibrary.Repositories.Implementations
         public BorrowingTransactionRepository(BookBorrowingLibraryDbContext dbContext) : base(dbContext)
         {
         }
+      
+         
     }
 }

@@ -16,6 +16,7 @@ namespace BookBorrowingLibraryDtos.UserDtos
         public string TripleName { get;  set; } 
         public UserGender Gender { get;  set; }
         public string Email { get;  set; } 
+        public decimal TotalOfBorrowingPrice { get; set; }
         public List<BorrowingTransactionDetails>? Books { get;  set; }
     }
 }

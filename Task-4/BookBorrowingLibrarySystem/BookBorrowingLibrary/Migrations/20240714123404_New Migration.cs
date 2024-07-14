@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookBorrowingLibrary.Migrations
 {
-    public partial class BookBorrowingLibraryMigration : Migration
+    public partial class NewMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,26 +17,12 @@ namespace BookBorrowingLibrary.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NumberOfCopies = table.Column<int>(type: "int", nullable: false),
                     Classification = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Books", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BorrowingTransactions",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    BorrowedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ReturnedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BorrowingTransactions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,7 +33,8 @@ namespace BookBorrowingLibrary.Migrations
                     TripleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TotalPriceOfBorrowingBooks = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,40 +42,48 @@ namespace BookBorrowingLibrary.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookUser",
+                name: "BorrowingTransactions",
                 columns: table => new
                 {
-                    BooksId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    UsersId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BookId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BorrowedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    RequiredReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ActualReturnDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ArrangedFine = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ReturnStatus = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookUser", x => new { x.BooksId, x.UsersId });
+                    table.PrimaryKey("PK_BorrowingTransactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BookUser_Books_BooksId",
-                        column: x => x.BooksId,
+                        name: "FK_BorrowingTransactions_Books_BookId",
+                        column: x => x.BookId,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookUser_Users_UsersId",
-                        column: x => x.UsersId,
+                        name: "FK_BorrowingTransactions_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookUser_UsersId",
-                table: "BookUser",
-                column: "UsersId");
+                name: "IX_BorrowingTransactions_BookId",
+                table: "BorrowingTransactions",
+                column: "BookId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BorrowingTransactions_UserId",
+                table: "BorrowingTransactions",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "BookUser");
-
             migrationBuilder.DropTable(
                 name: "BorrowingTransactions");
 

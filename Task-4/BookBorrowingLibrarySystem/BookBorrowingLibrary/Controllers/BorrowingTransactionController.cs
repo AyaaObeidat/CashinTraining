@@ -1,6 +1,7 @@
 ﻿using BookBorrowingLibrary.Services;
 using BookBorrowingLibraryDtos.BookDtos;
 using BookBorrowingLibraryDtos.BorrowingTransactionDtos;
+using BookBorrowingLibraryDtos.UserDtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,15 +24,21 @@ namespace BookBorrowingLibrary.Controllers
         [Authorize]
         public async Task<IActionResult> BorrowingBookAsync([FromBody] BorrowingTransactionCreateParameters parameters)
         {
-            await _transactionService.BorrowingBookAsync(parameters);
-            return Ok();
+            UserGetByParameter userGetByParameter = new UserGetByParameter();
+            userGetByParameter.Id = parameters.UserId;
+            if(await _transactionService.CanBorrowBookAsync(userGetByParameter))
+            {
+                await _transactionService.BorrowingBookAsync(parameters);
+                return Ok();
+            }
+            return BadRequest("User cannot borrow more than 2 books.");
         }
 
 
         [HttpPost]
         [Route("ReturningBook")]
         [Authorize]
-        public async Task<IActionResult> ReturningBookAsync([FromBody] BookGetByParameters parameters)
+        public async Task<IActionResult> ReturningBookAsync([FromBody] BorrowingTransactionGetByParameter parameters)
         {
             await _transactionService.ReturningBookAsync(parameters);
             return Ok();

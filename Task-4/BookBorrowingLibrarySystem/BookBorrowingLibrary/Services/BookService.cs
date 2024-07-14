@@ -1,6 +1,7 @@
 ﻿using BookBorrowingLibrary.Models;
 using BookBorrowingLibrary.Repositories.Interfaces;
 using BookBorrowingLibraryDtos.BookDtos;
+using BookBorrowingLibraryDtos.BorrowingTransactionDtos;
 using BookBorrowingLibraryDtos.UserDtos;
 
 namespace BookBorrowingLibrary.Services
@@ -16,7 +17,7 @@ namespace BookBorrowingLibrary.Services
 
         public async Task AddAsync(BookCreateParameters book)
         {
-            var newBook = Book.Create(book.Name, book.NumberOfCopies, book.Classification);
+            var newBook = Book.Create(book.Name, book.NumberOfCopies, book.Classification,book.Price);
             await _bookRepository.AddAsync(newBook);
         }
 
@@ -36,7 +37,12 @@ namespace BookBorrowingLibrary.Services
                 NumberOfCopies = b.NumberOfCopies,
                 Classification = b.Classification,
                 Status = b.Status,
-               
+                Price = b.Price,
+                Users = b.Users.Select( x => new BorrowingTransactionDetails
+                {
+                    UserId = x.UserId
+                }).ToList(),
+                
             }).ToList();
         }
 
@@ -50,7 +56,12 @@ namespace BookBorrowingLibrary.Services
                 NumberOfCopies = book.NumberOfCopies,
                 Classification = book.Classification,
                 Status = book.Status,
-               
+                Price= book.Price,
+                Users = book.Users.Select(x => new BorrowingTransactionDetails
+                {
+                    UserId = x.UserId,
+                }).ToList(),
+
             };
         }
 

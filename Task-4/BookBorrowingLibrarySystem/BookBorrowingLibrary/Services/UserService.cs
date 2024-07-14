@@ -1,6 +1,7 @@
 ﻿using BookBorrowingLibrary.Models;
 using BookBorrowingLibrary.Repositories.Interfaces;
 using BookBorrowingLibraryDtos.BookDtos;
+using BookBorrowingLibraryDtos.BorrowingTransactionDtos;
 using BookBorrowingLibraryDtos.UserDtos;
 using System.Runtime.CompilerServices;
 namespace BookBorrowingLibrary.Services
@@ -43,7 +44,11 @@ namespace BookBorrowingLibrary.Services
                         TripleName = u.TripleName,
                         Gender = u.Gender,
                         Email = u.Email,
-                        
+                        TotalOfBorrowingPrice = u.TotalPriceOfBorrowingBooks,
+                        Books = u.Books.Select(x => new BorrowingTransactionDetails
+                        {
+                            BookId = x.Id,
+                        }).ToList(),
                     };
                 }
 
@@ -59,7 +64,11 @@ namespace BookBorrowingLibrary.Services
                 TripleName = x.TripleName,
                 Gender = x.Gender,
                 Email = x.Email,
-           
+                TotalOfBorrowingPrice = x.TotalPriceOfBorrowingBooks,
+                Books = x.Books.Select(b => new BorrowingTransactionDetails
+                {
+                    BookId = b.BookId,
+                }).ToList(),
             }).ToList();
         }
 
@@ -74,7 +83,11 @@ namespace BookBorrowingLibrary.Services
                 TripleName = user.TripleName,
                 Gender = user.Gender,
                 Email = user.Email,
-                
+                TotalOfBorrowingPrice = user.TotalPriceOfBorrowingBooks,
+                Books = user.Books.Select(b => new BorrowingTransactionDetails
+                {
+                    BookId = b.BookId,
+                }).ToList(),
             };
         }
 

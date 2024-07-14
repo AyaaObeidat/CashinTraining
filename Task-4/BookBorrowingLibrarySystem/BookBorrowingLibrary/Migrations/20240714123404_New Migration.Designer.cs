@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookBorrowingLibrary.Migrations
 {
     [DbContext(typeof(BookBorrowingLibraryDbContext))]
-    [Migration("20240702134829_BookBorrowingLibrary-Migration")]
-    partial class BookBorrowingLibraryMigration
+    [Migration("20240714123404_New Migration")]
+    partial class NewMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,6 +41,9 @@ namespace BookBorrowingLibrary.Migrations
                     b.Property<int>("NumberOfCopies")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -56,19 +59,33 @@ namespace BookBorrowingLibrary.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<DateTime>("ActualReturnDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ArrangedFine")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("BookId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("BorrowedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("ReturnedDate")
+                    b.Property<DateTime>("RequiredReturnDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ReturnStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("BorrowingTransactions");
                 });
@@ -91,6 +108,9 @@ namespace BookBorrowingLibrary.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("TotalPriceOfBorrowingBooks")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("TripleName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -100,34 +120,29 @@ namespace BookBorrowingLibrary.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("BookUser", b =>
-                {
-                    b.Property<Guid>("BooksId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UsersId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("BooksId", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("BookUser");
-                });
-
-            modelBuilder.Entity("BookUser", b =>
+            modelBuilder.Entity("BookBorrowingLibrary.Models.BorrowingTransaction", b =>
                 {
                     b.HasOne("BookBorrowingLibrary.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
+                        .WithMany("Users")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookBorrowingLibrary.Models.User", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
+                        .WithMany("Books")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BookBorrowingLibrary.Models.Book", b =>
+                {
+                    b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("BookBorrowingLibrary.Models.User", b =>
+                {
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }
