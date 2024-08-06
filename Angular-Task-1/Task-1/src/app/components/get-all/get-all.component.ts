@@ -13,11 +13,14 @@ import { CommonModule } from '@angular/common';
 export class GetAllComponent implements OnInit {
 
   users: any[] = [];
+  private _getAllService: GetAllService;
 
-  constructor(private getAllService: GetAllService) { }
+  constructor(getAllService: GetAllService) {
+    this._getAllService=getAllService;
+   }
 
   ngOnInit(): void {
-    this.getAllService.getAll().subscribe(
+    this._getAllService.getAll().subscribe(
       res => {
         this.users = res;
         console.log(this.users);

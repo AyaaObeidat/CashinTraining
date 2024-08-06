@@ -8,20 +8,14 @@ import { catchError } from 'rxjs/operators';
 })
 export class GetAllService {
 
-  private apiUrl = 'https://localhost:44305/api/User/GetAll';
+  private _http: HttpClient;
 
-  constructor(private http: HttpClient) { }
-
-  getAll(): Observable<any> {
-    return this.http.get<any>(this.apiUrl)
-      .pipe(
-        catchError(this.handleError) // Optional error handling
-      );
+  constructor(http : HttpClient ) { 
+    this._http = http;
   }
 
-  private handleError(error: any): Observable<never> {
-    // Customize error handling here
-    console.error('An error occurred:', error);
-    throw error;
+  getAll(): Observable<any> {
+    return this._http.get<any>("https://localhost:44305/api/User/GetAll")
+      
   }
 }
