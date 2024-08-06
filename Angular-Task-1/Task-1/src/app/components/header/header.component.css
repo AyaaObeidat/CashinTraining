@@ -1,0 +1,11 @@
+/* Example custom styles */
+.navbar-brand img {
+    margin-right: 5px;
+  }
+  
+  .btn-warning {
+    color: #000;
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  

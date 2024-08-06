@@ -32,7 +32,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+});
 
 
 
@@ -90,6 +99,9 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthentication();
 app.UseHttpsRedirection();
+
+app.UseCors("AllowAll");
+
 
 app.UseAuthorization();
 
