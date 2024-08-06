@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { GetAllService } from '../../services/get-all.service';
 import { HeaderComponent } from "../header/header.component";
 import { CommonModule } from '@angular/common';
+import { AppComponent } from "../../app.component";
 
 @Component({
   selector: 'app-get-all',
   standalone: true,
-  imports: [HeaderComponent, CommonModule],
+  imports: [HeaderComponent, CommonModule, AppComponent],
   templateUrl: './get-all.component.html',
   styleUrls: ['./get-all.component.css'] // Corrected to styleUrls
 })
