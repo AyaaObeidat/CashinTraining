@@ -108,8 +108,8 @@ namespace BookBorrowingLibrary.Services
             if (userBooks.Count < 2) return true;
             else
             {
-                var notReturnedBooks = userBooks.Where(x => x.ReturnStatus == BookReturnStatus.NotReturned).ToList();
-                if(notReturnedBooks.Count < 2) return true;
+                var notReturnedBooks = userBooks.Count(x => x.ReturnStatus == BookReturnStatus.NotReturned);
+                if(notReturnedBooks < 2) return true;
             }
             return false;
         }
