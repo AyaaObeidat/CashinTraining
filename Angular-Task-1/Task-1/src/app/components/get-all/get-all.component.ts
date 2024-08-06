@@ -1,32 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GetAllService } from '../../services/get-all.service';
 import { HeaderComponent } from "../header/header.component";
 import { CommonModule } from '@angular/common';
 
-
 @Component({
   selector: 'app-get-all',
   standalone: true,
-  imports: [HeaderComponent,CommonModule],
+  imports: [HeaderComponent, CommonModule],
   templateUrl: './get-all.component.html',
-  styleUrl: './get-all.component.css'
+  styleUrls: ['./get-all.component.css'] // Corrected to styleUrls
 })
-export class GetAllComponent {
+export class GetAllComponent implements OnInit {
 
-  users : any[] = [];
-  private readonly _getAllService : GetAllService;
-  constructor(getAllService : GetAllService)
-  {
-     this._getAllService = getAllService;
-     this._getAllService.GetAll().subscribe
-    (
+  users: any[] = [];
+
+  constructor(private getAllService: GetAllService) { }
+
+  ngOnInit(): void {
+    this.getAllService.getAll().subscribe(
       res => {
         this.users = res;
+        console.log(this.users);
       },
+      err => {
+        console.error('Error fetching users:', err); // Optional error handling
+      }
     );
-    console.log(this.users);
   }
-
-  
-
 }
