@@ -61,6 +61,8 @@ namespace BookBorrowingLibrary.Services
             var users = await _userRepository.GetAllAsync();
             return users.ToList().Select(x => new UserDetails
             {
+
+                Id=x.Id,    
                 TripleName = x.TripleName,
                 Gender = x.Gender,
                 Email = x.Email,
@@ -80,6 +82,7 @@ namespace BookBorrowingLibrary.Services
 
             return new UserDetails
             {
+                Id = user.Id,
                 TripleName = user.TripleName,
                 Gender = user.Gender,
                 Email = user.Email,

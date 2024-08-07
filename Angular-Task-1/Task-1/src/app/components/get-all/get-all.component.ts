@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { GetAllService } from '../../services/get-all.service';
+import { GetAllService } from '../../services/getAllService/get-all.service';
 import { HeaderComponent } from "../header/header.component";
 import { CommonModule } from '@angular/common';
-import { AppComponent } from "../../app.component";
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-get-all',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, AppComponent],
+  imports: [HeaderComponent, CommonModule, RouterOutlet, ],
   templateUrl: './get-all.component.html',
   styleUrls: ['./get-all.component.css'] // Corrected to styleUrls
 })

@@ -1,1 +1,84 @@
-<p>create works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="form-wrapper">
+        <form class="p-4 border rounded shadow-sm bg-white">
+          <h2 class="mb-4 text-center">Sign Up</h2>
+
+          <div class="form-group mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter Your Name"
+              [(ngModel)]="user.tripleName"
+              [ngModelOptions]="{ standalone: true }"
+              id="fullName"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter email"
+              [(ngModel)]="user.email"
+              [ngModelOptions]="{ standalone: true }"
+              id="email"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              [(ngModel)]="user.password"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <div class="form-check form-check-inline ml-3">
+              <!-- ml-3 adds left margin -->
+              <input
+                type="radio"
+                id="male"
+                class="form-check-input"
+                [(ngModel)]="user.gender"
+                [ngModelOptions]="{ standalone: true }"
+                [value]="0"
+              />
+              <label class="form-check-label" for="male"> Male</label>
+            </div>
+
+            <div class="form-check form-check-inline ml-3">
+              <!-- ml-3 adds left margin -->
+              <input
+                type="radio"
+                id="female"
+                class="form-check-input"
+                [(ngModel)]="user.gender"
+                [ngModelOptions]="{ standalone: true }"
+                [value]="1"
+              />
+              <label class="form-check-label" for="female">Female</label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-dark w-100" (click)="Create()">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
