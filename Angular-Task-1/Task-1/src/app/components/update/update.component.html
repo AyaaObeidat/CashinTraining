@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="form-wrapper">
+        <form class="p-4 border rounded shadow-sm bg-white">
+          <h2 class="mb-4 text-center">Edit Your Info</h2>
+          <hr>
+          <div class="form-group mb-3">
+            <label for="current-password" class="form-label"
+              >Current Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Enter Your Current Password"
+              id="current-password"
+              [(ngModel)]="data.currentPassword"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="new-password" class="form-label">New Password</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Enter Your New Password"
+              id="new-password"
+              [(ngModel)]="data.newPassword"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="confirm-password" class="form-label"
+              >Confirm Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="confirm-password"
+              placeholder="Password"
+              [(ngModel)]="confirmPassword"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-dark w-100" (click)="UpdateUserData()">Save</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

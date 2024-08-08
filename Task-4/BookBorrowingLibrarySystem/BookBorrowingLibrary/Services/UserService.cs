@@ -83,6 +83,7 @@ namespace BookBorrowingLibrary.Services
             return new UserDetails
             {
                 Id = user.Id,
+                Password = user.Password,
                 TripleName = user.TripleName,
                 Gender = user.Gender,
                 Email = user.Email,

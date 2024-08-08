@@ -6,13 +6,15 @@ import { HeaderComponent } from "./components/header/header.component";
 import { CreateService } from './services/createService/create.service';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { ViewService } from './services/viewService/view.service';
+import { UpdateService } from './services/updateService/update.service';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HttpClientModule, HeaderComponent , FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers:[GetAllService,CreateService],
+  providers:[GetAllService,CreateService,ViewService,UpdateService],
   
 })
 export class AppComponent {

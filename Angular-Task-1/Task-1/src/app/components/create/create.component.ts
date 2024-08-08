@@ -8,12 +8,11 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-create',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, RouterOutlet,FormsModule],
+  imports: [HeaderComponent, CommonModule, RouterOutlet, FormsModule],
   templateUrl: './create.component.html',
-  styleUrl: './create.component.css'
+  styleUrl: './create.component.css',
 })
 export class CreateComponent {
-  
   user = {
     tripleName: '',
     email: '',
@@ -26,15 +25,13 @@ export class CreateComponent {
     this._createService = createService;
   }
 
-  Create():void {
+  Create(): void {
     if (
       this.user.tripleName &&
       this.user.email &&
       this.user.password &&
       this.user.gender !== null
     ) {
-
-      
       this._createService.Create(this.user).subscribe(
         (res) => {
           alert('User created successfully');

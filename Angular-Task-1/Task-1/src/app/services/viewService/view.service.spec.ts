@@ -1,12 +1,12 @@
+import { ViewService } from './view.service';
 import { TestBed } from '@angular/core/testing';
-import { GetAllService } from './get-all.service';
 
-describe('GetAllService', () => {
-  let service: GetAllService;
+describe('ViewService', () => {
+  let service: ViewService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GetAllService);
+    service = TestBed.inject(ViewService);
   });
 
   it('should be created', () => {

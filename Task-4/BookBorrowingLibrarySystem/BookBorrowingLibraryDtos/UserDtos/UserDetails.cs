@@ -13,6 +13,7 @@ namespace BookBorrowingLibraryDtos.UserDtos
     public class UserDetails
     {
         public Guid Id { get; set; }
+        public string Password { get; set; }
         public string TripleName { get;  set; } 
         public UserGender Gender { get;  set; }
         public string Email { get;  set; } 

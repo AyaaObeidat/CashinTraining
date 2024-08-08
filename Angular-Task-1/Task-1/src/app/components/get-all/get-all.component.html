@@ -4,16 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- Include Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
   </head>
   <body class="container">
-    <!-- Header Component -->
-
-    <!-- Table Container -->
     <div class="table-container table-responsive">
       <table class="table table-bordered table-hover">
         <thead class="thead-dark">
@@ -31,24 +27,17 @@
             <td>{{ user.gender === 0 ? "Male" : "Female" }}</td>
             <td>
               <div style="display: flex; justify-content: space-between">
-                <a
-                 
-                  href="update"
-                  style="text-decoration: underline; margin-right: 1px"
-                  >Update</a
-                >
-                <a
-                  href="view"
-                  style="text-decoration: underline"
-                  >View</a
-                >
+                <button class="btn btn-warning" (click)="UpdateUser(user)">
+                  Update
+                </button>
+                <button class="btn btn-warning" (click)="viewUser(user)">
+                  View
+                </button>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-
-    <!-- Include Bootstrap JS and dependencies -->
   </body>
 </html>
