@@ -8,13 +8,14 @@ import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { ViewService } from './services/viewService/view.service';
 import { UpdateService } from './services/updateService/update.service';
+import { LoginService } from './services/loginService/login.service';
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, HttpClientModule, HeaderComponent , FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers:[GetAllService,CreateService,ViewService,UpdateService],
+  providers:[GetAllService,CreateService,ViewService,UpdateService,LoginService],
   
 })
 export class AppComponent {

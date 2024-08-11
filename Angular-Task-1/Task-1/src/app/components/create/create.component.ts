@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CreateService } from '../../services/createService/create.service';
 import { HeaderComponent } from '../header/header.component';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -20,10 +20,7 @@ export class CreateComponent {
     gender: Number,
   };
 
-  private _createService: CreateService;
-  constructor(createService: CreateService) {
-    this._createService = createService;
-  }
+  constructor(private _createService: CreateService, private _router: Router) {}
 
   Create(): void {
     if (
@@ -34,7 +31,7 @@ export class CreateComponent {
     ) {
       this._createService.Create(this.user).subscribe(
         (res) => {
-          alert('User created successfully');
+          this._router.navigate(['login']);
         },
         (err) => {
           alert('Error creating user');

@@ -13,12 +13,8 @@ import { CommonModule } from '@angular/common';
 export class ViewComponent implements OnInit {
   userId: any;
   user: any = null;
-   _route: ActivatedRoute;
-   _viewService: ViewService;
-  constructor( route: ActivatedRoute,viewService: ViewService) {
-    this._route = route;
-    this._viewService = viewService;
-  }
+ 
+  constructor(private _route: ActivatedRoute,private _viewService: ViewService) {}
 
   ngOnInit(): void {
     this._route.paramMap.subscribe((params) => {

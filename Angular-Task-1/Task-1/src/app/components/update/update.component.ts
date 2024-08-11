@@ -67,10 +67,10 @@ export class UpdateComponent {
       if (this.data.newPassword == this.confirmPassword) {
         this._updateService.UpdateUser(this.data).subscribe(
           (res) => alert('Successfuly Updated'),
-          (err) => alert('Faild Updated')
+          (err) => alert('Failed')
         );
       } else {
-        alert('the password not mach');
+        alert('Password is not similar');
       }
     } else {
       alert('not found');
