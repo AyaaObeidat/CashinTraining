@@ -65,7 +65,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 // Configure Swagger to use JWT authentication
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Book Borrowing Office API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Email System Api", Version = "v1" });
 
     var securityScheme = new OpenApiSecurityScheme
     {
