@@ -9,9 +9,11 @@ namespace EmailSystemDtos.MessageDtos
 {
     public class MessageDetails
     {
+        public Guid Id { get; set; }
         public string? Subject { get;  set; }
         public string ContentBody { get;  set; } 
         public DateTime? SentDate { get;  set; }
+        public DateTime? CreatedDate { get; set; }
         public Guid SenderId { get;  set; }
         public MessageStatus Status { get; set; }
     }

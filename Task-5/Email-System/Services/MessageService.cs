@@ -74,7 +74,7 @@ namespace Email_System.Services
 
         }
 
-        public async Task MoveMessageToTrash(TrashMessageCreateParameters parameter)
+        public async Task MoveMessageToTrashAsync(TrashMessageCreateParameters parameter)
         {
             var message = await _messageRepository.GetByIdAsync(parameter.MessageId);
             var trash = await _trashRepository.GetByIdAsync(parameter.TrashId);
@@ -84,6 +84,8 @@ namespace Email_System.Services
 
             var trashMessage = TrashMessages.Create(parameter.TrashId, parameter.MessageId);
             await _trashMessagesRepository.AddAsync(trashMessage);
+            trashMessage.SetCreatedDate();
+            await _trashMessagesRepository.UpdateAsync(trashMessage);
 
             var inboxMessages = await _inboxMessagesRepository.GetAllAsync();
             foreach (var inboxMessage in inboxMessages)
@@ -107,26 +109,26 @@ namespace Email_System.Services
 
         }
 
-        public async Task<MessageDetails?> GetMessageById(MessageGetByParameter parameter)
+        public async Task<MessageDetails?> GetMessageByIdAsync(MessageGetByParameter parameter)
         {
             var message = await _messageRepository.GetByIdAsync(parameter.Id);
-            if (message == null ) { return null; }
+            if (message == null) { return null; }
             return new MessageDetails
             {
                 SenderId = message.SenderId,
                 Subject = message.Subject,
                 ContentBody = message.ContentBody,
                 SentDate = message.SentDate,
-                Status  = message.Status,
+                Status = message.Status,
             };
         }
 
-        public async Task EditMessageSubject(MessageUpdateParameter parameter)
+        public async Task EditMessageSubjectAsync(MessageUpdateParameter parameter)
         {
             var message = await _messageRepository.GetByIdAsync(parameter.MessageId);
             if (message == null) { return; }
 
-            if (message.Status == MessageStatus.Draft)
+            if (IsDraft(message))
             {
                 message.SetSubject(parameter.Subject);
                 await _messageRepository.UpdateAsync(message);
@@ -135,15 +137,22 @@ namespace Email_System.Services
         }
 
 
-        public async Task EditMessageContentBodyt(MessageUpdateParameter parameter)
+        public async Task EditMessageContentBodyAsync(MessageUpdateParameter parameter)
         {
             var message = await _messageRepository.GetByIdAsync(parameter.MessageId);
             if (message == null) { return; }
-            if (message.Status == MessageStatus.Draft)
+            if (IsDraft(message))
             {
                 message.SetContentBody(parameter.ContentBody);
                 await _messageRepository.UpdateAsync(message);
             }
+        }
+
+
+        //BV
+        public  bool IsDraft(Message message)
+        {
+            return message.Status == MessageStatus.Draft;
         }
 
     }

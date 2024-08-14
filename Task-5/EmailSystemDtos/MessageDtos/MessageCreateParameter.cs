@@ -16,6 +16,6 @@ namespace EmailSystemDtos.MessageDtos
         public string? Subject { get;  set; }
 
         [Required(ErrorMessage ="ContentBody is required")]
-        public string ContentBody { get;  set; } 
+        public string ContentBody { get;  set; }
     }
 }

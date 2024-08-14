@@ -1,7 +1,13 @@
-﻿using Email_System.Services;
+﻿using Email_System.Models;
+using Email_System.Services;
 using EmailSystemDtos.UserDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Email_System.Controllers
 {
@@ -10,9 +16,12 @@ namespace Email_System.Controllers
     public class UserController : ControllerBase
     {
         private readonly UserService _userService;
-        public UserController(UserService userService)
+
+        private readonly IConfiguration _configuration;
+        public UserController(UserService userService , IConfiguration configuration)
         {
             _userService = userService;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -27,8 +36,32 @@ namespace Email_System.Controllers
         [Route("Login")]
         public async Task<IActionResult> LoginAsync(UserLoginParameter parameter)
         {
-            
-            return Ok(await _userService.LoginAsync(parameter));
+
+            var selectedUser = await _userService.LoginAsync(parameter);
+
+            if (selectedUser == null)
+            {
+                return Unauthorized();
+            }
+
+            var claims = new[]
+          {
+            new Claim(JwtRegisteredClaimNames.Sub, selectedUser.FullName),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.NameIdentifier, selectedUser.Id.ToString()),
+          };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.Now.AddDays(7),
+                signingCredentials: creds);
+
+            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
 
         [HttpGet]
@@ -49,6 +82,7 @@ namespace Email_System.Controllers
 
         [HttpPatch]
         [Route("ModifyFullName")]
+        [Authorize]
         public async Task<IActionResult> ModifyFullNameAsync(UserUpdateParameter parameter)
         {
             await _userService.ModifyFullNameAsync(parameter);
@@ -56,6 +90,7 @@ namespace Email_System.Controllers
         }
         [HttpPatch]
         [Route("ModifyPassword")]
+        [Authorize]
         public async Task<IActionResult> ModifyPasswordAsync(UserUpdateParameter parameter)
         {
             await _userService.ModifyPasswordAsync(parameter);
@@ -63,6 +98,7 @@ namespace Email_System.Controllers
         }
         [HttpPatch]
         [Route("ModifyProfileImage")]
+        [Authorize]
         public async Task<IActionResult> ModifyProfileImageAsync(UserUpdateParameter parameter)
         {
             await _userService.ModifyProfileImageAsync(parameter);
