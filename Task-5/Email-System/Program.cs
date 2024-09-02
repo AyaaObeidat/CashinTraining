@@ -16,8 +16,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//dbContext
 builder.Services.AddDbContext<EmailSystemDbContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("EmailSystemConnectionString")));
 
+//repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<IMessageDestinationRepository, MessageDestinationRepository>();
@@ -28,11 +31,12 @@ builder.Services.AddScoped<IInboxMessagesRepository, InboxMessagesRepository>();
 builder.Services.AddScoped<IOutboxMessagesRepository, OutboxMessagesRepository>();
 builder.Services.AddScoped<ITrashMessagesRepository, TrashMessagesRepository>();
 
+//services
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<MessageService>();
 builder.Services.AddScoped<UserMessagesService>();
 
-
+//ai access
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -46,8 +50,6 @@ builder.Services.AddCors(options =>
 
 
 //Authentication
-
-//////////////////////////////////////////////////////////////////////////////////////////////
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(Options =>
 {
     Options.TokenValidationParameters = new TokenValidationParameters
@@ -60,7 +62,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
 });
-
 
 // Configure Swagger to use JWT authentication
 builder.Services.AddSwaggerGen(c =>
@@ -93,11 +94,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-/////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -107,11 +103,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseAuthentication();//
+app.UseAuthentication();
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll");//
+app.UseCors("AllowAll");
 
 
 app.UseAuthorization();

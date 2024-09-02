@@ -1,7 +1,7 @@
 ﻿using Email_System.Models;
 using Email_System.Repositories.Interfaces;
 using EmailSystemDtos.UserDtos;
-
+using Microsoft.AspNetCore.Server.IIS;
 namespace Email_System.Services
 {
     public class UserService
@@ -25,7 +25,7 @@ namespace Email_System.Services
             foreach (var u in users)
             {
                 if (u.Email != parameters.Email && u.FullName != parameters.FullName) continue;
-                else return;
+                else throw new ArgumentException("User with the same email or full name already exists.");
             }
             var user =  User.Create(parameters.FullName , parameters.Email , parameters.Password , parameters.Address);
             await _userRepository.AddAsync(user);
@@ -70,7 +70,7 @@ namespace Email_System.Services
                     };
                 }
             }
-            return null;
+            throw new UnauthorizedAccessException("Invalid email or password.");
         }
 
         public async Task<List<UserDetails>?> GetAllAsync()
@@ -96,7 +96,7 @@ namespace Email_System.Services
         public async Task<UserDetails?> GetByIdAsync(UserGetByParameter parameters)
         {
             var user = await _userRepository.GetByIdAsync(parameters.Id);
-            if (user == null) return null;
+            if (user == null) throw new ArgumentException("User was not found.");
             return new UserDetails
             {
                 Id = user.Id,
@@ -115,12 +115,12 @@ namespace Email_System.Services
         public async Task ModifyFullNameAsync (UserUpdateParameter parameter)
         {
             var user = await _userRepository.GetByIdAsync (parameter.Id);
-            if (user == null) return;
+            if (user == null) throw new ArgumentException("User was not found.");
             var users = await _userRepository.GetAllAsync();
             foreach (var u in users)
             {
                 if ( u.FullName != parameter.NewFullName) continue;
-                else return;
+                else throw new ArgumentException("User with the same full name already exists.");
             }
             user.SetFullName(parameter.NewFullName);
             await _userRepository.UpdateAsync(user);
@@ -129,22 +129,23 @@ namespace Email_System.Services
         public async Task ModifyPasswordAsync(UserUpdateParameter parameter)
         {
             var user = await _userRepository.GetByIdAsync(parameter.Id);
-            if (user == null) return;
+            if (user == null) throw new ArgumentException("User was not found.");
             if(user.Password == parameter.CurrentPassword)
             {
-                if (user.Password == parameter.NewPassword) return;
+                if (user.Password == parameter.NewPassword) throw new ArgumentException("The new password cannot be the same as the current password.");
                 else
                 {
                     user.SetPassword(parameter.NewPassword);
                     await _userRepository.UpdateAsync(user);
                 }
             }
+            else throw new ArgumentException("The current password is incorrect.");
         }
 
         public async Task ModifyProfileImageAsync(UserUpdateParameter parameter)
         {
             var user = await _userRepository.GetByIdAsync(parameter.Id);
-            if (user == null) return;
+            if (user == null) throw new ArgumentException("User was not found.");
             if (user.ImageUrl == parameter.ImageUrl) return;
             else
             {

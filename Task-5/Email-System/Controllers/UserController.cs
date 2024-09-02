@@ -17,7 +17,7 @@ namespace Email_System.Controllers
     {
         private readonly UserService _userService;
 
-        private readonly IConfiguration _configuration;
+        private  IConfiguration _configuration;
         public UserController(UserService userService , IConfiguration configuration)
         {
             _userService = userService;
