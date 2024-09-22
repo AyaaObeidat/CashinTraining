@@ -46,7 +46,6 @@ namespace Email_System.Services
             user.SetTrashId(trash.Id);
             await _userRepository.UpdateAsync(user);
 
-
         }
         
         public async Task<UserDetails?> LoginAsync(UserLoginParameter parameters)
@@ -96,7 +95,7 @@ namespace Email_System.Services
         public async Task<UserDetails?> GetByIdAsync(UserGetByParameter parameters)
         {
             var user = await _userRepository.GetByIdAsync(parameters.Id);
-            if (user == null) throw new ArgumentException("User was not found.");
+            if (user == null) throw new ArgumentException();
             return new UserDetails
             {
                 Id = user.Id,

@@ -34,19 +34,26 @@
         }
 
         public void SetFullName(string fullName)
-        { 
+        {
+            if (string.IsNullOrEmpty(fullName)) { throw new ArgumentNullException(); }
             this.FullName = fullName;
         }
         public void SetEmail(string email) 
-        { 
+        {
+
+            if (string.IsNullOrEmpty(email)) { throw new ArgumentNullException(); }
             this.Email = email;
         }
         public void SetPassword(string password)
         {
+
+            if (string.IsNullOrEmpty(password)) { throw new ArgumentNullException(); }
             this.Password = password;
         }
         public void SetAddress(string address) 
         {
+
+            if (string.IsNullOrEmpty(address)) { throw new ArgumentNullException(); }
             this.Address = address; 
         }
         public void SetImageUrl(string url)
