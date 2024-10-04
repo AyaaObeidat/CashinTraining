@@ -35,7 +35,7 @@ namespace EmailSystemUnitTesting
         }
 
         [Fact]
-        public Task Create_NotValidUser_Test()
+        public async Task Create_NotValidUser_Test()
         {
             //Arrange
             var userCreateParameter = new UserCreateParameter
@@ -48,7 +48,7 @@ namespace EmailSystemUnitTesting
 
             //Act & Assert
 
-           Assert.ThrowsAsync<ArgumentNullException>(() => Task.FromResult(User.Create(userCreateParameter.FullName, userCreateParameter.Email, userCreateParameter.Password, userCreateParameter.Address)));
+           await Assert.ThrowsAsync<ArgumentNullException>(() => Task.FromResult(User.Create(userCreateParameter.FullName, userCreateParameter.Email, userCreateParameter.Password, userCreateParameter.Address)));
 
         }
 

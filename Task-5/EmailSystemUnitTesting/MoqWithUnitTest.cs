@@ -24,40 +24,7 @@ namespace EmailSystemUnitTesting
         {
             _userService = new UserService(_userRepositoryMock.Object, _inboxRepositoryMock.Object, _outboxRepositoryMock.Object, _rashRepositoryMock.Object);
         }
-        [Fact]
-        public async void Add_ValidUser_Test_OnModel()
-        {
-            //Arrange
-            UserCreateParameter userCreateParameter = new UserCreateParameter()
-            {
-                FullName = "Ahmad Obeidat",
-                Email = "Ahmad@gmail.com",
-                Password = "Ahmad123!",
-                Address = "Amman-Jordan"
-            };
-            //Act
-            var user = User.Create(userCreateParameter.FullName, userCreateParameter.Email, userCreateParameter.Password, userCreateParameter.Address);
-            //Assert
-            user.Should().NotBeNull();
-
-        }
-
-        [Fact]
-        public async void Add_NotValidUser_Test_OnModel()
-        {
-            //Arrange
-            UserCreateParameter userCreateParameter = new UserCreateParameter()
-            {
-                FullName = "Ahmad Obeidat",
-                Email = "Ahmad@gmail.com",
-                Password = "Ahmad123!",
-                Address = ""
-            };
-
-            // Act & Assert
-            await Assert.ThrowsAsync<ArgumentNullException>(() => Task.FromResult(User.Create(userCreateParameter.FullName, userCreateParameter.Email, userCreateParameter.Password, userCreateParameter.Address)));
-
-        }
+       
 
         [Fact]
         public async Task GetAllUsers_Test_OnUserService()
