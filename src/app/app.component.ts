@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { PipesComponent } from "./pipes/pipes.component";
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { EvennumbsPipe } from './evennumbs.pipe';
+import { EvenMinutesDirective } from './even-minutes.directive';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [EvenMinutesDirective,CommonModule,RouterOutlet, PipesComponent , FormsModule,EvennumbsPipe],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']  // Corrected to styleUrls
 })
 export class AppComponent {
-  title = 'MyProject';
+
+ myDate = new Date();
+ minutes = this.myDate.getMinutes();
 }
