@@ -9,6 +9,7 @@ namespace SchoolSystem.Controllers
     [ApiController]
     public class SchoolServiceController : ControllerBase
     {
+        //school
         private readonly SchoolService _schoolService;
 
         public SchoolServiceController(SchoolService schoolService)
