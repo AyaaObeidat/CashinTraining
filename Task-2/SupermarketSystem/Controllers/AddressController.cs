@@ -10,6 +10,7 @@ namespace SupermarketSystem.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
+        //address
             private readonly AddressService _addressService;
 
             public AddressController(AddressService addressService)
