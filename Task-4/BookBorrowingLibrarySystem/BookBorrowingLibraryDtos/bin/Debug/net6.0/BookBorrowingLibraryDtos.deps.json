@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "BookBorrowingLibraryDtos/1.0.0": {
+        "dependencies": {
+          "BookBorrowingLibraryEnums": "1.0.0"
+        },
+        "runtime": {
+          "BookBorrowingLibraryDtos.dll": {}
+        }
+      },
+      "BookBorrowingLibraryEnums/1.0.0": {
+        "runtime": {
+          "BookBorrowingLibraryEnums.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BookBorrowingLibraryDtos/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookBorrowingLibraryEnums/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

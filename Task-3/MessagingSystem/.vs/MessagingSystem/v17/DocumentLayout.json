@@ -1,0 +1,160 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\CashinTraining\\Task-3\\MessagingSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\dtos\\userdtos\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:dtos\\userdtos\\userdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\dtos\\userdtos\\usercreateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:dtos\\userdtos\\usercreateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\dtos\\messagedtos\\messagedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:dtos\\messagedtos\\messagedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\dtos\\messagedtos\\messageupdateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:dtos\\messagedtos\\messageupdateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\dtos\\messagedtos\\messagecreateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:dtos\\messagedtos\\messagecreateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\dtos\\messagedistenationdtos\\messagedistinationdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:dtos\\messagedistenationdtos\\messagedistinationdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|e:\\cashintraining\\task-3\\messagingsystem\\dtos\\messagedistenationdtos\\messagedistinationcreateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2E605895-D5BE-4E20-AC7D-B4E2C6AA3C1D}|MessagingSystem.csproj|solutionrelative:dtos\\messagedistenationdtos\\messagedistinationcreateparameters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MessageController.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Controllers\\MessageController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MessageController.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Controllers\\MessageController.cs",
+              "RelativeToolTip": "Controllers\\MessageController.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:56.907Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserDetails.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\UserDtos\\UserDetails.cs",
+              "RelativeDocumentMoniker": "Dtos\\UserDtos\\UserDetails.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\UserDtos\\UserDetails.cs",
+              "RelativeToolTip": "Dtos\\UserDtos\\UserDetails.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:52.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserCreateParameters.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\UserDtos\\UserCreateParameters.cs",
+              "RelativeDocumentMoniker": "Dtos\\UserDtos\\UserCreateParameters.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\UserDtos\\UserCreateParameters.cs",
+              "RelativeToolTip": "Dtos\\UserDtos\\UserCreateParameters.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:50.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MessageUpdateParameters.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDtos\\MessageUpdateParameters.cs",
+              "RelativeDocumentMoniker": "Dtos\\MessageDtos\\MessageUpdateParameters.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDtos\\MessageUpdateParameters.cs",
+              "RelativeToolTip": "Dtos\\MessageDtos\\MessageUpdateParameters.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:45.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MessageDetails.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDtos\\MessageDetails.cs",
+              "RelativeDocumentMoniker": "Dtos\\MessageDtos\\MessageDetails.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDtos\\MessageDetails.cs",
+              "RelativeToolTip": "Dtos\\MessageDtos\\MessageDetails.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:43.776Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MessageCreateParameters.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDtos\\MessageCreateParameters.cs",
+              "RelativeDocumentMoniker": "Dtos\\MessageDtos\\MessageCreateParameters.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDtos\\MessageCreateParameters.cs",
+              "RelativeToolTip": "Dtos\\MessageDtos\\MessageCreateParameters.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:42.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MessageDistinationDetails.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDistenationDtos\\MessageDistinationDetails.cs",
+              "RelativeDocumentMoniker": "Dtos\\MessageDistenationDtos\\MessageDistinationDetails.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDistenationDtos\\MessageDistinationDetails.cs",
+              "RelativeToolTip": "Dtos\\MessageDistenationDtos\\MessageDistinationDetails.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:37.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MessageDistinationCreateParameters.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDistenationDtos\\MessageDistinationCreateParameters.cs",
+              "RelativeDocumentMoniker": "Dtos\\MessageDistenationDtos\\MessageDistinationCreateParameters.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-3\\MessagingSystem\\Dtos\\MessageDistenationDtos\\MessageDistinationCreateParameters.cs",
+              "RelativeToolTip": "Dtos\\MessageDistenationDtos\\MessageDistinationCreateParameters.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-06T19:26:34.296Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

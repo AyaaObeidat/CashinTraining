@@ -1,0 +1,106 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\CashinTraining\\Task-5\\Email-System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{511FE5C9-E886-4310-9FB9-BEE630526479}|..\\EmailSystemUnitTesting\\EmailSystemUnitTesting.csproj|e:\\cashintraining\\task-5\\emailsystemunittesting\\usermodelunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{511FE5C9-E886-4310-9FB9-BEE630526479}|..\\EmailSystemUnitTesting\\EmailSystemUnitTesting.csproj|e:\\cashintraining\\task-5\\emailsystemunittesting\\userserviceunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{511FE5C9-E886-4310-9FB9-BEE630526479}|..\\EmailSystemUnitTesting\\EmailSystemUnitTesting.csproj|e:\\cashintraining\\task-5\\emailsystemunittesting\\moqwithunittest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B541962A-95E9-485D-B56C-AC8B40D7E8D6}|Email-System.csproj|e:\\cashintraining\\task-5\\email-system\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B541962A-95E9-485D-B56C-AC8B40D7E8D6}|Email-System.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MoqWithUnitTest.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-5\\EmailSystemUnitTesting\\MoqWithUnitTest.cs",
+              "RelativeDocumentMoniker": "..\\EmailSystemUnitTesting\\MoqWithUnitTest.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-5\\EmailSystemUnitTesting\\MoqWithUnitTest.cs",
+              "RelativeToolTip": "..\\EmailSystemUnitTesting\\MoqWithUnitTest.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABoAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T12:47:11.939Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-5\\Email-System\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-5\\Email-System\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T13:46:39.525Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserServiceUnitTest.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-5\\EmailSystemUnitTesting\\UserServiceUnitTest.cs",
+              "RelativeDocumentMoniker": "..\\EmailSystemUnitTesting\\UserServiceUnitTest.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-5\\EmailSystemUnitTesting\\UserServiceUnitTest.cs",
+              "RelativeToolTip": "..\\EmailSystemUnitTesting\\UserServiceUnitTest.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAArwBcAAACdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T13:46:10.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserModelUnitTest.cs",
+              "DocumentMoniker": "E:\\CashinTraining\\Task-5\\EmailSystemUnitTesting\\UserModelUnitTest.cs",
+              "RelativeDocumentMoniker": "..\\EmailSystemUnitTesting\\UserModelUnitTest.cs",
+              "ToolTip": "E:\\CashinTraining\\Task-5\\EmailSystemUnitTesting\\UserModelUnitTest.cs",
+              "RelativeToolTip": "..\\EmailSystemUnitTesting\\UserModelUnitTest.cs",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAADcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T13:24:57.441Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

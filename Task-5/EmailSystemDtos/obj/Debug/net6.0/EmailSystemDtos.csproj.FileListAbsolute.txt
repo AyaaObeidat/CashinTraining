@@ -1,0 +1,16 @@
+E:\CashinTraining\Task-5\EmailSystemDtos\bin\Debug\net6.0\EmailSystemDtos.deps.json
+E:\CashinTraining\Task-5\EmailSystemDtos\bin\Debug\net6.0\EmailSystemDtos.dll
+E:\CashinTraining\Task-5\EmailSystemDtos\bin\Debug\net6.0\EmailSystemDtos.pdb
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.GeneratedMSBuildEditorConfig.editorconfig
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.AssemblyInfoInputs.cache
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.AssemblyInfo.cs
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.csproj.CoreCompileInputs.cache
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.sourcelink.json
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.dll
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\refint\EmailSystemDtos.dll
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.pdb
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\ref\EmailSystemDtos.dll
+E:\CashinTraining\Task-5\EmailSystemDtos\bin\Debug\net6.0\EmailSystemEnums.dll
+E:\CashinTraining\Task-5\EmailSystemDtos\bin\Debug\net6.0\EmailSystemEnums.pdb
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSystemDtos.csproj.AssemblyReference.cache
+E:\CashinTraining\Task-5\EmailSystemDtos\obj\Debug\net6.0\EmailSys.2312C332.Up2Date

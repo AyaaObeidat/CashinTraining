@@ -1,0 +1,330 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliTesting\\MahaliTesting.csproj": {}
+  },
+  "projects": {
+    "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj",
+        "projectName": "AllEnums",
+        "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[6.0.30, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\MahaliDtos.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\MahaliDtos.csproj",
+        "projectName": "MahaliDtos",
+        "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\MahaliDtos.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj": {
+                "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[6.0.30, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliTesting\\MahaliTesting.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliTesting\\MahaliTesting.csproj",
+        "projectName": "MahaliTesting",
+        "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliTesting\\MahaliTesting.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliTesting\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj": {
+                "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj"
+              },
+              "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\MahaliDtos.csproj": {
+                "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\MahaliDtos.csproj"
+              },
+              "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\Mahali\\Mahali.csproj": {
+                "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\Mahali\\Mahali.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[6.0.30, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.20.70, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.2.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.4.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\Mahali\\Mahali.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\Mahali\\Mahali.csproj",
+        "projectName": "Mahali",
+        "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\Mahali\\Mahali.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\Mahali\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj": {
+                "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\AllEnums\\AllEnums.csproj"
+              },
+              "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\MahaliDtos.csproj": {
+                "projectPath": "E:\\CashinTraining\\Graduation Project 2\\Graduation-Project\\GraduationProject\\MahaliDtos\\MahaliDtos.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[6.0.30, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

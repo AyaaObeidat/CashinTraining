@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\SupermarketSystem",
+    "\\SupermarketSystem\\Controllers",
+    "\\SupermarketSystem\\Dtos",
+    "\\SupermarketSystem\\Dtos\\CategoryDtos",
+    "\\SupermarketSystem\\Models",
+    "\\SupermarketSystem\\Repositories",
+    "\\SupermarketSystem\\Repositories\\Implementations"
+  ],
+  "SelectedNode": "\\SupermarketSystem\\SupermarketSystem.sln",
+  "PreviewInSolutionExplorer": false
+}
