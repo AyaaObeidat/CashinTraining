@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="form-wrapper">
+        <form class="p-4 border rounded shadow-sm bg-white">
+          <h2 class="mb-4 text-center">Login</h2>
+          <div class="form-group mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Enter email"
+              [(ngModel)]="loginData.email"
+              [ngModelOptions]="{ standalone: true }"
+              id="email"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+              [(ngModel)]="loginData.password"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </div>
+          <button type="submit" class="btn btn-dark w-100" (click)="Login()">
+            Login
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
