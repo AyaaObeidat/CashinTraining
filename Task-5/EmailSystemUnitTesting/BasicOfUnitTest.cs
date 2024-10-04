@@ -9,7 +9,7 @@ namespace EmailSystemUnitTesting
 
 
         [Fact]
-        public void Test_Number111111111()
+        public void Test_Number12()
         {
             //Arrange
             int x = 8; int y = 9;
