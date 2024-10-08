@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookBorrowingLibrary", "BookBorrowingLibrary.csproj", "{109B7E13-B97E-4B48-87F1-687A2B960C12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookBorrowingLibraryEnums", "..\BookBorrowingLibraryEnums\BookBorrowingLibraryEnums.csproj", "{6614C235-8383-4C8E-9F70-D84D965CF102}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{109B7E13-B97E-4B48-87F1-687A2B960C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{109B7E13-B97E-4B48-87F1-687A2B960C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{109B7E13-B97E-4B48-87F1-687A2B960C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6614C235-8383-4C8E-9F70-D84D965CF102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6614C235-8383-4C8E-9F70-D84D965CF102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6614C235-8383-4C8E-9F70-D84D965CF102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6614C235-8383-4C8E-9F70-D84D965CF102}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

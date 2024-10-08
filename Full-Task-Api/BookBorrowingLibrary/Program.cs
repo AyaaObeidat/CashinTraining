@@ -1,3 +1,8 @@
+using BookBorrowingLibrary.Data;
+using BookBorrowingLibrary.Repositories.implementations;
+using BookBorrowingLibrary.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +11,14 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<BookBorrowingLibraryDbContext>(Options => Options.UseSqlServer(builder.Configuration.GetConnectionString("BookBorrowingLibraryConnectionString")));
+builder.Services.AddScoped<IUserInterface,UserInterface>();
+builder.Services.AddScoped<IBookInterface, BookInterface>();
+builder.Services.AddScoped<IDamagedBooksInterface, DamagedBooksInterface>();
+builder.Services.AddScoped<IReturnTransactionInterface, ReturnTransactionInterface>();
+builder.Services.AddScoped<IBorrowingTransactionInterface, BorrowingTransactionInterface>();
+
 
 var app = builder.Build();
 
