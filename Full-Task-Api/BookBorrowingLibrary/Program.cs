@@ -1,6 +1,7 @@
 using BookBorrowingLibrary.Data;
 using BookBorrowingLibrary.Repositories.implementations;
 using BookBorrowingLibrary.Repositories.Interfaces;
+using BookBorrowingLibrary.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,9 @@ builder.Services.AddScoped<IBookInterface, BookInterface>();
 builder.Services.AddScoped<IDamagedBooksInterface, DamagedBooksInterface>();
 builder.Services.AddScoped<IReturnTransactionInterface, ReturnTransactionInterface>();
 builder.Services.AddScoped<IBorrowingTransactionInterface, BorrowingTransactionInterface>();
-
+builder.Services.AddScoped<AdminService>();
+builder.Services.AddScoped<CustomerService>();  
+builder.Services.AddScoped<BookService>();
 
 var app = builder.Build();
 

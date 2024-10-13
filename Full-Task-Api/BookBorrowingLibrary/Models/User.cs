@@ -22,7 +22,7 @@ namespace BookBorrowingLibrary.Models
             Email = email;
             PhoneNumber = phoneNumber;
             Password = password;
-            IsAdmin = false;
+            IsAdmin = true;
             Status = RequestStatus.Pending;
         }
 
@@ -62,6 +62,11 @@ namespace BookBorrowingLibrary.Models
         {
             if(bookId == Guid.Empty) throw new ArgumentNullException();
             this.BookId = bookId;
+        }
+
+        public void SetIsCustomer()
+        {
+            IsAdmin = false;
         }
     }
 }

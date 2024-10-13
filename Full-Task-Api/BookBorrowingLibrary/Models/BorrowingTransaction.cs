@@ -42,6 +42,7 @@ namespace BookBorrowingLibrary.Models
         public void SetRejectedRequestStatus()
         {
             this.RequestStatus = RequestStatus.Rejected ;
+
         }
     }
 }
