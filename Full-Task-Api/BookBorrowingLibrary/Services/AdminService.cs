@@ -142,8 +142,8 @@ namespace BookBorrowingLibrary.Services
             {
                 returnBook_trans.SetDamagedBookStatus();
                 await _returnTransactionInterface.UpdateAsync(returnBook_trans);
-                await this.DamagedACopyOfBook(book);
-                await this.BlockCustomer(customer);
+                await this.DamagedACopyOfBookAsync(book);
+                await this.BlockCustomerAsync(customer);
             }
 
         }//adm

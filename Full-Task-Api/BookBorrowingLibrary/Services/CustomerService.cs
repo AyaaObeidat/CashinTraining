@@ -55,7 +55,7 @@ namespace BookBorrowingLibrary.Services
                     Email = user.Email,
                     Password = user.Password,
                     PhoneNumber = user.PhoneNumber,
-                    Book = new BookDetails
+                    Book = book != null ? new BookDetails
                     {
                         Id =book.Id,
                         Title = book.Title,
@@ -64,7 +64,7 @@ namespace BookBorrowingLibrary.Services
                         PublicationYear = book.PublicationYear,
                         NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                         TotalNumberOfCopies = book.TotalNumberOfCopies,
-                    },
+                    }:null,
                     IsAdmin = user.IsAdmin,
                     Status = user.Status,
                 };  
@@ -145,7 +145,7 @@ namespace BookBorrowingLibrary.Services
                 Email = customer.Email,
                 Password = customer.Password,
                 PhoneNumber = customer.PhoneNumber,
-                Book = new BookDetails
+                Book = book != null ? new BookDetails
                 {
                     Id = book.Id,
                     Title = book.Title,
@@ -154,7 +154,7 @@ namespace BookBorrowingLibrary.Services
                     PublicationYear = book.PublicationYear,
                     NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                     TotalNumberOfCopies = book.TotalNumberOfCopies,
-                },
+                }:null,
                 IsAdmin = customer.IsAdmin,
                 Status = customer.Status,
             };
@@ -175,7 +175,7 @@ namespace BookBorrowingLibrary.Services
                     Email = c.Email,
                     Password = c.Password,
                     PhoneNumber = c.PhoneNumber,
-                    Book = new BookDetails
+                    Book = book != null ? new BookDetails
                     {
                         Id = book.Id,
                         Title = book.Title,
@@ -184,7 +184,7 @@ namespace BookBorrowingLibrary.Services
                         PublicationYear = book.PublicationYear,
                         NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                         TotalNumberOfCopies = book.TotalNumberOfCopies,
-                    },
+                    }:null,
                     IsAdmin = c.IsAdmin,
                     Status = c.Status,
                 };
@@ -209,7 +209,7 @@ namespace BookBorrowingLibrary.Services
                     Email = c.Email,
                     Password = c.Password,
                     PhoneNumber = c.PhoneNumber,
-                    Book = new BookDetails
+                    Book = book != null ? new BookDetails
                     {
                         Id = book.Id,
                         Title = book.Title,
@@ -218,7 +218,7 @@ namespace BookBorrowingLibrary.Services
                         PublicationYear = book.PublicationYear,
                         NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                         TotalNumberOfCopies = book.TotalNumberOfCopies,
-                    },
+                    }:null,
                     IsAdmin = c.IsAdmin,
                     Status = c.Status,
                 };
@@ -242,7 +242,7 @@ namespace BookBorrowingLibrary.Services
                     Email = c.Email,
                     Password = c.Password,
                     PhoneNumber = c.PhoneNumber,
-                    Book = new BookDetails
+                    Book = book != null ? new BookDetails
                     {
                         Id = book.Id,
                         Title = book.Title,
@@ -251,7 +251,7 @@ namespace BookBorrowingLibrary.Services
                         PublicationYear = book.PublicationYear,
                         NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                         TotalNumberOfCopies = book.TotalNumberOfCopies,
-                    },
+                    }:null,
                     IsAdmin = c.IsAdmin,
                     Status = c.Status,
                 };

@@ -1,0 +1,28 @@
+body {
+  background-color:#313b31; /* Background color for the body */
+}
+.container {
+  max-width: 400px; /* Set maximum width of the form */
+  margin: 100px auto; /* Center the container and add top margin */
+}
+.bg-custom {
+  background-color: #e4e3b2; /* Set form box background color */
+  color: #313b31; /* Set text color to red */
+}
+.form-label {
+  color: #313b31; /* Set label color to red */
+}
+.form-control {
+  background-color: #ffffff; /* Keep form input background white */
+  color: #313b31; /* Set input text color */
+}
+.form-control::placeholder {
+  color: #313b31; /* Set placeholder text color */
+}
+.btn-primary {
+  background-color: #313b31; /* Set button color */
+  border: none; /* Remove border */
+}
+.btn-primary:hover {
+  background-color: #313b31; /* Darker button color on hover */
+}

@@ -46,13 +46,13 @@ namespace BookBorrowingLibrary.Services
                 PublicationYear = book.PublicationYear,
                 NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                 TotalNumberOfCopies = book.TotalNumberOfCopies,
-                Customer = new CustomerDetails
+                Customer = customer!=null? new CustomerDetails
                 {
                     Id = customer.Id,
                     FullName = customer.FullName,
                     Email = customer.Email,
                     PhoneNumber = customer.PhoneNumber,       
-                },
+                }:null,
 
             };
         }//adm
@@ -74,13 +74,13 @@ namespace BookBorrowingLibrary.Services
                     PublicationYear = b.PublicationYear,
                     NumberOfAvailableCopies = b.NumberOfAvailableCopies,
                     TotalNumberOfCopies = b.TotalNumberOfCopies,
-                    Customer = new CustomerDetails
+                    Customer = customer != null ? new CustomerDetails
                     {
                         Id = customer.Id,
                         FullName = customer.FullName,
                         Email = customer.Email,
                         PhoneNumber = customer.PhoneNumber,
-                    },
+                    }:null,
 
                 };
             }).ToList();
@@ -161,21 +161,21 @@ namespace BookBorrowingLibrary.Services
                         RequestStatus = RequestStatus.Pending,
                         BookStatus = b.BookStatus,
                         DeliveryStatus = b.DeliveryStatus,
-                        Customer = new CustomerDetails
+                        Customer = customer != null ? new CustomerDetails
                         {
                             Id = customer.Id,
                             FullName = customer.FullName,
                             Email = customer.Email,
                             PhoneNumber = customer.PhoneNumber,
-                        },
-                        Book = new BookDetails
+                        }:null,
+                        Book = book != null ? new BookDetails
                         {
                             Id = book.Id,
                             Title = book.Title,
                             Author = book.Author,
                             PublicationYear = book.PublicationYear,
                             Publisher = book.Publisher,
-                        }
+                        }:null
                     };
                 })
                 .ToList();
@@ -200,21 +200,21 @@ namespace BookBorrowingLibrary.Services
                         RequestStatus = RequestStatus.Pending,
                         BookStatus = b.BookStatus,
                         DeliveryStatus = b.DeliveryStatus,
-                        Customer = new CustomerDetails
+                        Customer = customer != null ? new CustomerDetails
                         {
                             Id = customer.Id,
                             FullName = customer.FullName,
                             Email = customer.Email,
                             PhoneNumber = customer.PhoneNumber,
-                        },
-                        Book = new BookDetails
+                        }:null,
+                        Book = book != null ? new BookDetails
                         {
                             Id = book.Id,
                             Title = book.Title,
                             Author = book.Author,
                             PublicationYear = book.PublicationYear,
                             Publisher = book.Publisher,
-                        }
+                        }:null
                     };
                 })
                 .ToList();
@@ -238,21 +238,21 @@ namespace BookBorrowingLibrary.Services
                         Id = b.Id,
                         ReturnedDate = b.ReturnedDate,
                         BookStatus = b.BookStatus,
-                        Customer = new CustomerDetails
+                        Customer = customer != null ? new CustomerDetails
                         {
                             Id = customer.Id,
                             FullName = customer.FullName,
                             Email = customer.Email,
                             PhoneNumber = customer.PhoneNumber,
-                        },
-                        Book = new BookDetails
+                        }:null,
+                        Book = book != null ? new BookDetails
                         {
                             Id = book.Id,
                             Title = book.Title,
                             Author = book.Author,
                             PublicationYear = book.PublicationYear,
                             Publisher = book.Publisher,
-                        }
+                        }:null
                     };
                 })
                 .ToList();
@@ -272,14 +272,14 @@ namespace BookBorrowingLibrary.Services
                     Id= d.Id,
                     NumberOfDamagedCopies = d.NumberOfDamagedCopies,
                     DamageProceedings = d.DamageProceedings,
-                    Book = new BookDetails
+                    Book = book != null ? new BookDetails
                     {
                         Id = book.Id,
                         Title= book.Title,
                         Author = book.Author,
                         PublicationYear = book.PublicationYear,
                         Publisher = book.Publisher,
-                    }
+                    }:null
                     
                 };
             }).ToList();

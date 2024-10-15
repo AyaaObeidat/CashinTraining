@@ -1,0 +1,87 @@
+<app-header></app-header>
+<div class="container bg-custom p-4 rounded shadow">
+  <form>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        placeholder="Enter your username"
+        [(ngModel)]="user.fullName"
+        ngModel
+        name="username"
+        #username="ngModel"
+        required
+        [maxlength]="15"
+      />
+      <p class="invalid-feedback" *ngIf="username.invalid && username.touched">
+        Please enter a username that is less than or equal to 15 characters.
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter your email"
+        [(ngModel)]="user.email"
+        ngModel
+        name="email"
+        #email="ngModel"
+        required
+        [maxLength]="25"
+      />
+      <p class="invalid-feedback" *ngIf="email.invalid && email.touched">
+        Please enter a email that is less than or equal to 25 characters.
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Enter your password"
+        [(ngModel)]="user.password"
+        ngModel
+        name="password"
+        #password="ngModel"
+        required
+        maxlength="8"
+      />
+      <p class="invalid-feedback" *ngIf="password.invalid && password.touched">
+        Please enter a password that is less than or equal to 8 characters.
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number</label>
+      <input
+        type="number"
+        class="form-control"
+        id="phoneNumber"
+        placeholder="Enter your phone number"
+        [(ngModel)]="user.phoneNumber"
+        ngModel
+        name="phnumber"
+        #phnumber="ngModel"
+        required
+        [maxLength]="9"
+      />
+      <p class="invalid-feedback" *ngIf="phnumber.invalid && phnumber.touched">
+        Please enter your phoneNumber
+      </p>
+    </div>
+    <button
+      type="submit"
+      (click)="GetRegistraionData()"
+      class="btn btn-primary w-100"
+    >
+      Register
+    </button>
+  </form>
+</div>
