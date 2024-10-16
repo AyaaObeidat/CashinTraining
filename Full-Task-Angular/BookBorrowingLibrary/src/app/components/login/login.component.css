@@ -1,0 +1,35 @@
+body {
+    background-color:#313b31;
+}
+.container {
+    max-width: 400px;
+    margin: 100px auto;
+}
+.bg-custom {
+    background-color: #e4e3b2;
+    color: #313b31;
+}
+.form-label {
+    color: #313b31;
+}
+.form-control {
+    background-color: #ffffff;
+    color: #313b31;
+}
+.form-control::placeholder {
+    color: #313b31;
+}
+.btn-primary {
+    background-color: #313b31;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #313b31;
+}
+.nav-link {
+    color: #313b31;
+    margin-left: 1rem;
+}
+.nav-link:hover {
+    text-decoration: underline;
+}

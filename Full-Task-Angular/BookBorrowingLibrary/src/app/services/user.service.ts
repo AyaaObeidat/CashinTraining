@@ -12,4 +12,9 @@ export class UserService {
   {
     return this.http.post<any>("https://localhost:44367/api/Customer/Register",data);
   }
+
+  Login(data : any) : Observable<any>
+  {
+    return this.http.post<any>("https://localhost:44367/api/Customer/Login",data);
+  }
 }

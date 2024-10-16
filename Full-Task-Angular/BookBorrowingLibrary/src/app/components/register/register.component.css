@@ -1,28 +1,35 @@
 body {
-  background-color:#313b31; /* Background color for the body */
+  background-color:#313b31;
 }
 .container {
-  max-width: 400px; /* Set maximum width of the form */
-  margin: 100px auto; /* Center the container and add top margin */
+  max-width: 400px;
+  margin: 100px auto;
 }
 .bg-custom {
-  background-color: #e4e3b2; /* Set form box background color */
-  color: #313b31; /* Set text color to red */
+  background-color: #e4e3b2;
+  color: #313b31;
 }
 .form-label {
-  color: #313b31; /* Set label color to red */
+  color: #313b31;
 }
 .form-control {
-  background-color: #ffffff; /* Keep form input background white */
-  color: #313b31; /* Set input text color */
+  background-color: #ffffff;
+  color: #313b31;
 }
 .form-control::placeholder {
-  color: #313b31; /* Set placeholder text color */
+  color: #313b31;
 }
 .btn-primary {
-  background-color: #313b31; /* Set button color */
-  border: none; /* Remove border */
+  background-color: #313b31;
+  border: none;
 }
 .btn-primary:hover {
-  background-color: #313b31; /* Darker button color on hover */
+  background-color: #313b31;
+}
+.nav-link {
+  color: #313b31;
+  margin-left: 1rem;
+}
+.nav-link:hover {
+  text-decoration: underline;
 }

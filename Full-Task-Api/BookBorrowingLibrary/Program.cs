@@ -3,6 +3,7 @@ using BookBorrowingLibrary.Repositories.implementations;
 using BookBorrowingLibrary.Repositories.Interfaces;
 using BookBorrowingLibrary.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,15 +24,14 @@ builder.Services.AddScoped<AdminService>();
 builder.Services.AddScoped<CustomerService>();  
 builder.Services.AddScoped<BookService>();
 
-builder.Services.AddCors(options =>
+builder.Services.AddCors(Options =>
 {
-    options.AddPolicy("AllowAll",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
+    Options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
 });
 
 var app = builder.Build();
