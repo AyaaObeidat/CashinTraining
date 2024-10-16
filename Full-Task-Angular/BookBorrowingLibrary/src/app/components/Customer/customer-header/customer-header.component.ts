@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { CustomerServService } from '../customerServ/customer-serv.service';
 
 @Component({
   selector: 'app-customer-header',
@@ -9,5 +10,9 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './customer-header.component.css'
 })
 export class CustomerHeaderComponent {
-@Input() customer :any;
+  customer : any;
+  constructor(private customerServ : CustomerServService)
+  {
+    this.customer = this.customerServ.GetCustomerData();
+  }
 }

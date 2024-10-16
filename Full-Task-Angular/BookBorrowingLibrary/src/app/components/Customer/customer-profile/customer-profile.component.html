@@ -1,0 +1,39 @@
+<app-customer-header></app-customer-header>
+<div class="container mt-5">
+  <div class="row">
+    <!-- Profile Information Card -->
+    <div class="col-md-8 mx-auto">
+      <div class="card shadow-sm rounded">
+        <!-- Card Header with Green Background -->
+        <div class="card-header">
+          <h4 class="mb-0">Profile Information</h4>
+        </div>
+        <!-- Card Body with Custom Background -->
+        <div class="card-body bg-light-custom">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Full Name:</strong></label>
+              <p class="form-control-plaintext">{{ customer?.fullName }}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Email:</strong></label>
+              <p class="form-control-plaintext">{{ customer?.email }}</p>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label"><strong>Phone Number:</strong></label>
+              <p class="form-control-plaintext">{{ customer?.phoneNumber }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Card Footer -->
+        <div class="card-footer text-end">
+          <button class="btn btn-outline-primary">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,10 +7,12 @@
       style="height: 50px; width: auto"
     />
     <div class="d-flex flex-column align-items-start">
-      <span class="h5 mb-0">{{ customer.fullName }}</span>
+      <span class="h5 mb-0">{{ customer?.fullName }}</span>
     </div>
   </div>
   <nav class="d-flex">
-    <a routerLink="/login" routerActiveLink="active" class="nav-link">Logout</a>
+    <a routerLink="/customerHome" class="nav-link">Home</a>
+    <a routerLink="/customerProfile" class="nav-link">Profile</a>
+    <a routerLink="/login" class="nav-link">Logout</a>
   </nav>
 </header>

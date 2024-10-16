@@ -51,6 +51,14 @@ namespace BookBorrowingLibrary.Controllers
             return Ok();
         }
 
+        [HttpPatch]
+        [Route("ModifyPhoneNumber")]
+        public async Task<IActionResult> ModifyPhoneNumberAsync(CustomerUpdateParameters parameters)
+        {
+            await _customerService.ModifyPhoneNumberAsync(parameters);
+            return Ok();
+        }
+
         [HttpGet]
         [Route("GetAllBooks")]
         public async Task<IActionResult> GetAllBooksAsync()

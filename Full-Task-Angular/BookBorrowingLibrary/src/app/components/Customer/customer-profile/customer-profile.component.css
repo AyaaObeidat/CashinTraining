@@ -1,0 +1,10 @@
+
+  /* Custom background color for card body */
+  .bg-light-custom {
+    background-color: #e4e3b2;
+    color: #313b31;
+  }
+  .card-header{
+    color: #313b31;
+    background-color : #678d67;
+  }

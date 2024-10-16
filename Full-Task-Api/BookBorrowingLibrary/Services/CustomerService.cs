@@ -17,7 +17,7 @@ namespace BookBorrowingLibrary.Services
         private readonly IReturnTransactionInterface _returnTransactionInterface;
         private readonly IBorrowingTransactionInterface _borrowingTransactionInterface;
 
-        public CustomerService(IUserInterface userInterface, IBookInterface bookInterface, IBorrowingTransactionInterface borrowingTransactionInterface,IReturnTransactionInterface returnTransactionInterface)
+        public CustomerService(IUserInterface userInterface, IBookInterface bookInterface, IBorrowingTransactionInterface borrowingTransactionInterface, IReturnTransactionInterface returnTransactionInterface)
         {
             _userInterface = userInterface;
             _bookInterface = bookInterface;
@@ -32,7 +32,7 @@ namespace BookBorrowingLibrary.Services
             if (notValidCustomers.Count() > 0) throw new Exception("A user with the same full name, email, or phone number already exists.");
             else
             {
-                var user = User.Create(parameters.FullName , parameters.Email, parameters.PhoneNumber , parameters.Password);
+                var user = User.Create(parameters.FullName, parameters.Email, parameters.PhoneNumber, parameters.Password);
                 await _userInterface.AddAsync(user);
                 user.SetIsCustomer();
                 await _userInterface.UpdateAsync(user);
@@ -57,37 +57,34 @@ namespace BookBorrowingLibrary.Services
                     PhoneNumber = user.PhoneNumber,
                     Book = book != null ? new BookDetails
                     {
-                        Id =book.Id,
+                        Id = book.Id,
                         Title = book.Title,
                         Author = book.Author,
                         Publisher = book.Publisher,
                         PublicationYear = book.PublicationYear,
                         NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                         TotalNumberOfCopies = book.TotalNumberOfCopies,
-                    }:null,
+                    } : null,
                     IsAdmin = user.IsAdmin,
                     Status = user.Status,
-                };  
+                };
             }
-            
+
         }//cus
 
         public async Task ModifyFullNameAsync(CustomerUpdateParameters parameters)
         {
             var customer = await _userInterface.GetByIdAsync(parameters.Id);
             if (customer == null) throw new ArgumentNullException("Customer not found");
-            else if (customer.FullName == parameters.CurrentFullName)
+            var customers = await _userInterface.GetAllCustomersAsync();
+            var NotValidCustomers = customers.ToList().Where(c => c.FullName == parameters.NewFullName).ToList();
+            if (NotValidCustomers.Count > 0) throw new Exception("This full name is already in use.");
+            else
             {
-                var customers = await _userInterface.GetAllCustomersAsync();
-                var NotValidCustomers = customers.ToList().Where(c => c.FullName == parameters.NewFullName).ToList();
-                if (NotValidCustomers.Count > 0) throw new Exception("This full name is already in use.");
-                else
-                {
-                    customer.SetFullName(parameters.NewFullName);
-                    await _userInterface.UpdateAsync(customer);
-                }
+                customer.SetFullName(parameters.NewFullName);
+                await _userInterface.UpdateAsync(customer);
             }
-            else throw new Exception("The current full name does not match the existing name.");
+        
         } //cus
 
         public async Task ModifyPasswordAsync(CustomerUpdateParameters parameters)
@@ -106,6 +103,20 @@ namespace BookBorrowingLibrary.Services
                 }
             }
             else throw new Exception("The current password does not match the existing password.");
+        }//cus
+
+        public async Task ModifyPhoneNumberAsync(CustomerUpdateParameters parameters)
+        {
+            var customer = await _userInterface.GetByIdAsync(parameters.Id);
+            if (customer == null) throw new ArgumentNullException("Customer not found");
+                var customers = await _userInterface.GetAllCustomersAsync();
+                var NotValidCustomers = customers.ToList().Where(c => c.PhoneNumber == parameters.NewPhoneNumber).ToList();
+                if (NotValidCustomers.Count > 0) throw new Exception("This phoneNumber is already in use.");
+                else
+                {
+                    customer.SetPhoneNumber(parameters.NewPhoneNumber);
+                    await _userInterface.UpdateAsync(customer);
+                }
         }//cus
 
         public async Task Borrow_BookAsync(BorrowOrReturn_BookParameter parameter)
