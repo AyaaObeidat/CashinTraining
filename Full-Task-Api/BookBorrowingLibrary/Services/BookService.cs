@@ -28,7 +28,7 @@ namespace BookBorrowingLibrary.Services
 
         public async Task AddNewBookAsync(BookCreateParameters parameters)
         {
-            var book = Book.Create(parameters.Title, parameters.Author, parameters.Publisher, parameters.PublicationYear, parameters.NumberOfAvailableCopies, parameters.TotalNumberOfCopies);
+            var book = Book.Create(parameters.Title,parameters.Description, parameters.Author, parameters.Publisher, parameters.PublicationYear, parameters.NumberOfAvailableCopies, parameters.TotalNumberOfCopies);
             await _bookInterface.AddAsync(book);
         }//adm
 
@@ -41,6 +41,7 @@ namespace BookBorrowingLibrary.Services
             {
                 Id = book.Id,
                 Title = book.Title,
+                Description = book.Description,
                 Author = book.Author,
                 Publisher = book.Publisher,
                 PublicationYear = book.PublicationYear,
@@ -69,6 +70,7 @@ namespace BookBorrowingLibrary.Services
                 {
                     Id = b.Id,
                     Title = b.Title,
+                    Description = b.Description,
                     Author = b.Author,
                     Publisher = b.Publisher,
                     PublicationYear = b.PublicationYear,
@@ -172,6 +174,7 @@ namespace BookBorrowingLibrary.Services
                         {
                             Id = book.Id,
                             Title = book.Title,
+                            Description = book.Description,
                             Author = book.Author,
                             PublicationYear = book.PublicationYear,
                             Publisher = book.Publisher,
@@ -211,6 +214,7 @@ namespace BookBorrowingLibrary.Services
                         {
                             Id = book.Id,
                             Title = book.Title,
+                            Description = book.Description,
                             Author = book.Author,
                             PublicationYear = book.PublicationYear,
                             Publisher = book.Publisher,
@@ -249,6 +253,7 @@ namespace BookBorrowingLibrary.Services
                         {
                             Id = book.Id,
                             Title = book.Title,
+                            Description = book.Description,
                             Author = book.Author,
                             PublicationYear = book.PublicationYear,
                             Publisher = book.Publisher,
@@ -276,6 +281,7 @@ namespace BookBorrowingLibrary.Services
                     {
                         Id = book.Id,
                         Title= book.Title,
+                        Description = book.Description,
                         Author = book.Author,
                         PublicationYear = book.PublicationYear,
                         Publisher = book.Publisher,

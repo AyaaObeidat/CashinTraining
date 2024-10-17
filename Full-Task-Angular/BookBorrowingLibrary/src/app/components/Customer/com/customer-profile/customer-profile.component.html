@@ -1,15 +1,12 @@
 <app-customer-header></app-customer-header>
 <div class="container mt-5">
   <div class="row">
-    <!-- Profile Information Card -->
     <div class="col-md-8 mx-auto">
       <div class="card shadow-sm rounded">
-        <!-- Card Header with Green Background -->
-
         <div class="card-header">
           <h4 class="mb-0">Profile Information</h4>
         </div>
-        <!-- Card Body with Custom Background -->
+
         <div class="card-body bg-light-custom">
           <div class="row mb-3">
             <div class="col-md-6">
@@ -31,8 +28,8 @@
                     class="form-control me-2"
                     [(ngModel)]="newFullName"
                     [ngModelOptions]="{ standalone: true }"
-                    style="width: auto;"
-                    placeholder="Enter NEW FULLNAME"
+                    style="width: auto"
+                    placeholder="Enter new full name"
                   />
                   <button
                     class="btn btn-outline-primary"
@@ -42,7 +39,6 @@
                   </button>
                 </span>
               </label>
-              
             </div>
           </div>
 
@@ -56,13 +52,13 @@
 
               <label *ngIf="toEdit" class="form-label me-2 spec-lab-col">
                 <span class="d-flex align-items-center">
-                  <span class="me-2">New PhoneNumber:</span>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control me-2"
-                    [(ngModel)]="newFullName"
+                    [(ngModel)]="newPhoneNumber"
                     [ngModelOptions]="{ standalone: true }"
-                    style="width: auto;"
+                    style="width: auto"
+                    placeholder="Enter new phone-number"
                   />
                   <button
                     class="btn btn-outline-primary"
@@ -80,36 +76,44 @@
               <label class="form-label me-2"
                 ><strong>Change Password</strong></label
               >
-              <div class="spec-lab-col">
-                Current Password:
-                <input
-                  type="password"
-                  [(ngModel)]="currentPassword"
-                  [ngModelOptions]="{ standalone: true }"
-                />
-              </div>
+
+              <label *ngIf="toEdit" class="form-label me-2 spec-lab-col">
+                <span class="d-flex align-items-center">
+                  <input
+                    type="password"
+                    class="form-control me-2"
+                    [(ngModel)]="currentPassword"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto"
+                    placeholder="Enter current password"
+                  /><input
+                    type="password"
+                    class="form-control me-2"
+                    [(ngModel)]="newPassword"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto"
+                    placeholder="Enter new password"
+                  /><input
+                    type="password"
+                    class="form-control me-2"
+                    [(ngModel)]="confirmPassword"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto"
+                    placeholder="Confirm new password"
+                  />
+                  <button
+                    class="btn btn-outline-primary"
+                    (click)="ClickToSave()"
+                  >
+                    Save
+                  </button>
+                </span>
+              </label>
               <br />
-              <div class="spec-lab-col">
-                New Password:
-                <input
-                  type="password"
-                  [(ngModel)]="newPassword"
-                  [ngModelOptions]="{ standalone: true }"
-                />
-              </div>
-              <br />
-              <div class="spec-lab-col">
-                Confirm Password:
-                <input
-                  type="password"
-                  [(ngModel)]="confirmPassword"
-                  [ngModelOptions]="{ standalone: true }"
-                />
-              </div>
             </div>
           </div>
         </div>
-        <!-- Card Footer -->
+
         <div class="card-footer text-end">
           <button
             *ngIf="!toEdit"

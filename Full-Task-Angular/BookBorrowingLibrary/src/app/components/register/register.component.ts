@@ -9,7 +9,13 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [HeaderComponent, FormsModule, CommonModule, RouterOutlet, RouterLink],
+  imports: [
+    HeaderComponent,
+    FormsModule,
+    CommonModule,
+    RouterOutlet,
+    RouterLink,
+  ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'], // Corrected: styleUrls instead of styleUrl
 })
@@ -25,7 +31,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private router: Router,
     private render: Renderer2,
-    @Inject(DOCUMENT) private document: Document 
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit() {
@@ -33,7 +39,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.render.setStyle(this.document.body, 'backgroundColor', '#313b31');
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     this.render.removeStyle(this.document.body, 'backgroundColor');
   }
 
@@ -45,8 +51,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.user.phoneNumber !== 0
     ) {
       this.userService.Register(this.user).subscribe(
-        res => { this.router.navigate(['/login']); },
-        err => { alert('Error Creating User'); }
+        (res) => {
+          this.router.navigate(['/login']);
+        },
+        (err) => {
+          alert('Error Creating User');
+        }
       );
     }
   }

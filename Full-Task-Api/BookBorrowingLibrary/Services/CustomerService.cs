@@ -59,6 +59,7 @@ namespace BookBorrowingLibrary.Services
                     {
                         Id = book.Id,
                         Title = book.Title,
+                        Description = book.Description,
                         Author = book.Author,
                         Publisher = book.Publisher,
                         PublicationYear = book.PublicationYear,
@@ -160,6 +161,7 @@ namespace BookBorrowingLibrary.Services
                 {
                     Id = book.Id,
                     Title = book.Title,
+                    Description = book.Description,
                     Author = book.Author,
                     Publisher = book.Publisher,
                     PublicationYear = book.PublicationYear,
@@ -190,6 +192,7 @@ namespace BookBorrowingLibrary.Services
                     {
                         Id = book.Id,
                         Title = book.Title,
+                        Description = book.Description,
                         Author = book.Author,
                         Publisher = book.Publisher,
                         PublicationYear = book.PublicationYear,
@@ -224,6 +227,7 @@ namespace BookBorrowingLibrary.Services
                     {
                         Id = book.Id,
                         Title = book.Title,
+                        Description = book.Description,
                         Author = book.Author,
                         Publisher = book.Publisher,
                         PublicationYear = book.PublicationYear,
@@ -257,6 +261,7 @@ namespace BookBorrowingLibrary.Services
                     {
                         Id = book.Id,
                         Title = book.Title,
+                        Description = book.Description,
                         Author = book.Author,
                         Publisher = book.Publisher,
                         PublicationYear = book.PublicationYear,
@@ -283,6 +288,7 @@ namespace BookBorrowingLibrary.Services
                 {
                     Id = book.Id,
                     Title = book.Title,
+                    Description = book.Description,
                     Author = book.Author,
                     Publisher = book.Publisher,
                     PublicationYear = book.PublicationYear,

@@ -1,67 +1,67 @@
 <app-header></app-header>
-  <div class="container bg-custom p-4 rounded shadow">
-    <form>
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          placeholder="Enter your username"
-          [(ngModel)]="user.fullName"
-          [ngModelOptions]="{ standalone: true }"
-          required
-        />
-      </div>
-
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="email"
-          placeholder="Enter your email"
-          [(ngModel)]="user.email"
-          [ngModelOptions]="{ standalone: true }"
-          required
-        />
-      </div>
-
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          placeholder="Enter your password"
-          [(ngModel)]="user.password"
-          [ngModelOptions]="{ standalone: true }"
-          required
-        />
-      </div>
-
-      <div class="mb-3">
-        <label for="phoneNumber" class="form-label">Phone Number</label>
-        <input
-          type="number"
-          class="form-control"
-          id="phoneNumber"
-          placeholder="Enter your phone number"
-          [(ngModel)]="user.phoneNumber"
-          [ngModelOptions]="{ standalone: true }"
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        class="btn btn-primary w-100"
-        (click)="GetRegistrationData()"
-      >
-        Register
-      </button>
-    </form>
-    <br />
-    <div class="mb-3 text-center form-label">
-      <a routerLink="/login" class="nav-link">Already have an account</a>
+<div class="container bg-custom p-4 rounded shadow">
+  <form>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        placeholder="Enter your username"
+        [(ngModel)]="user.fullName"
+        [ngModelOptions]="{ standalone: true }"
+        required
+      />
     </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter your email"
+        [(ngModel)]="user.email"
+        [ngModelOptions]="{ standalone: true }"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Enter your password"
+        [(ngModel)]="user.password"
+        [ngModelOptions]="{ standalone: true }"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="phoneNumber" class="form-label">Phone Number</label>
+      <input
+        type="number"
+        class="form-control"
+        id="phoneNumber"
+        placeholder="Enter your phone number"
+        [(ngModel)]="user.phoneNumber"
+        [ngModelOptions]="{ standalone: true }"
+        required
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      (click)="GetRegistrationData()"
+    >
+      Register
+    </button>
+  </form>
+  <br />
+  <div class="mb-3 text-center form-label">
+    <a routerLink="/login" class="nav-link">Already have an account</a>
   </div>
+</div>
