@@ -2,9 +2,21 @@
   /* Custom background color for card body */
   .bg-light-custom {
     background-color: #e4e3b2;
-    color: #313b31;
+    color:#678d67;
   }
   .card-header{
     color: #313b31;
     background-color : #678d67;
+  }
+  .btn{
+    border-color: #678d67;
+    color:#678d67;
+  }
+  .spec-lab-col{
+    color: #313b31;
+  }
+  .btn-outline-primary:hover{
+    border-color: #678d67;
+    background-color: #678d67;
+    color: #e4e3b2;
   }

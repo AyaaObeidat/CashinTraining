@@ -5,6 +5,7 @@
     <div class="col-md-8 mx-auto">
       <div class="card shadow-sm rounded">
         <!-- Card Header with Green Background -->
+
         <div class="card-header">
           <h4 class="mb-0">Profile Information</h4>
         </div>
@@ -12,26 +13,111 @@
         <div class="card-body bg-light-custom">
           <div class="row mb-3">
             <div class="col-md-6">
-              <label class="form-label"><strong>Full Name:</strong></label>
-              <p class="form-control-plaintext">{{ customer?.fullName }}</p>
+              <label class="form-label me-2"
+                ><strong>Email : {{ customer?.email }}</strong></label
+              >
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-md-6">
-              <label class="form-label"><strong>Email:</strong></label>
-              <p class="form-control-plaintext">{{ customer?.email }}</p>
+              <label class="form-label me-2"
+                ><strong>Full Name : {{ customer?.fullName }} </strong></label
+              >
+
+              <label *ngIf="toEdit" class="form-label me-2 spec-lab-col">
+                <span class="d-flex align-items-center">
+                  <input
+                    type="text"
+                    class="form-control me-2"
+                    [(ngModel)]="newFullName"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto;"
+                    placeholder="Enter NEW FULLNAME"
+                  />
+                  <button
+                    class="btn btn-outline-primary"
+                    (click)="ClickToSave()"
+                  >
+                    Save
+                  </button>
+                </span>
+              </label>
+              
             </div>
           </div>
+
           <div class="row mb-3">
             <div class="col-md-6">
-              <label class="form-label"><strong>Phone Number:</strong></label>
-              <p class="form-control-plaintext">{{ customer?.phoneNumber }}</p>
+              <label class="form-label me-2"
+                ><strong
+                  >Phone Number : {{ customer?.phoneNumber }}</strong
+                ></label
+              >
+
+              <label *ngIf="toEdit" class="form-label me-2 spec-lab-col">
+                <span class="d-flex align-items-center">
+                  <span class="me-2">New PhoneNumber:</span>
+                  <input
+                    type="text"
+                    class="form-control me-2"
+                    [(ngModel)]="newFullName"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto;"
+                  />
+                  <button
+                    class="btn btn-outline-primary"
+                    (click)="ClickToSave()"
+                  >
+                    Save
+                  </button>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div *ngIf="toEdit" class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label me-2"
+                ><strong>Change Password</strong></label
+              >
+              <div class="spec-lab-col">
+                Current Password:
+                <input
+                  type="password"
+                  [(ngModel)]="currentPassword"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+              <br />
+              <div class="spec-lab-col">
+                New Password:
+                <input
+                  type="password"
+                  [(ngModel)]="newPassword"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
+              <br />
+              <div class="spec-lab-col">
+                Confirm Password:
+                <input
+                  type="password"
+                  [(ngModel)]="confirmPassword"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </div>
             </div>
           </div>
         </div>
         <!-- Card Footer -->
         <div class="card-footer text-end">
-          <button class="btn btn-outline-primary">Edit Profile</button>
+          <button
+            *ngIf="!toEdit"
+            class="btn btn-outline-primary"
+            (click)="ClickToEdit()"
+          >
+            Edit
+          </button>
         </div>
       </div>
     </div>
