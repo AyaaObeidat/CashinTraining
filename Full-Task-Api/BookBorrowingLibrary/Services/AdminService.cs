@@ -74,7 +74,7 @@ namespace BookBorrowingLibrary.Services
         public async Task UnBlockCustomerAsync(CustomerGetByParameter parameter)
         {
             var customer =await _userInterface.GetByIdAsync(parameter.Id);
-            customer.SetRejectedStatus();
+            customer.SetAcceptedStatus();
             await _userInterface.UpdateAsync(customer);
         }//adm
 

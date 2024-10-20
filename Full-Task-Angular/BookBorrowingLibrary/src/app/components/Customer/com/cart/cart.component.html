@@ -1,28 +1,36 @@
 <app-customer-header></app-customer-header>
 <div class="container">
-    <div class="card book-card shadow-sm">
-      <!-- Book Cover -->
-      <img src="assets/img/cart-book.gif" class="card-img-top" alt="Book Cover">
-      
-      <div class="card-body">
-        <!-- Book Title -->
-        <p class="card-text"><strong>Book Name: </strong>{{customerBook.title}}</p>
-        <!-- Author -->
-        <p class="card-text"><strong>Author: </strong>{{customerBook.author}}</p>
-        <!-- Genre -->
-        <p class="card-text"><strong>Publisher: </strong>{{customerBook.publisher}}</p>
-        <!-- Year -->
-        <p class="card-text"><strong>Published: </strong>{{customerBook.publicationYear}}</p>
-        <!-- Book Description -->
-        <p class="card-text">{{customerBook.description}}</p>
-      </div>
-      
-      <!-- Card Footer with Action Buttons -->
-      <div class="card-footer text-center">
-        <button class="btn btn-outline-primary" (click)="ReturnBook()" *ngIf="isActive; else req">Return Book</button>
-        <ng-template #req>
-          <div class="ret-req">Return Book Requested</div>
-        </ng-template>
-      </div>
+  <div class="card book-card shadow-sm">
+    <img src="assets/img/cart-book.gif" class="card-img-top" alt="Book Cover" />
+
+    <div class="card-body">
+      <p class="card-text">
+        <strong>Book Name: </strong>{{ customerBook?.title }}
+      </p>
+      <p class="card-text">
+        <strong>Author: </strong>{{ customerBook?.author }}
+      </p>
+      <p class="card-text">
+        <strong>Publisher: </strong>{{ customerBook?.publisher }}
+      </p>
+      <p class="card-text">
+        <strong>Published: </strong>{{ customerBook?.publicationYear }}
+      </p>
+      <p class="card-text">{{ customerBook?.description }}</p>
+    </div>
+
+    <div class="card-footer text-center" *ngIf="haveBook">
+      <p class="card-text rules">
+        <strong>*</strong>If you return the book and it is undamaged, you can
+        borrow another book after 24 hours.
+      </p>
+      <p class="card-text rules">
+        <strong>*</strong>But if it is damaged, you will be warned and taken out
+        of the system for at least 5 days or more.
+      </p>
+      <button class="btn btn-outline-primary" (click)="ReturnBook()">
+        Return Book
+      </button>
     </div>
   </div>
+</div>

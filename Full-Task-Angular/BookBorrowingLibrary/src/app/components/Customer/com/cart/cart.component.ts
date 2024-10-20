@@ -6,34 +6,48 @@ import { CustomerServService } from '../../serv/customer-serv.service';
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CustomerHeaderComponent , CommonModule],
+  imports: [CustomerHeaderComponent, CommonModule],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'], // Fixed typo from styleUrl to styleUrls
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit, OnDestroy {
-  customer: any;
-  customerBook: any = {}
-  isActive = false;
+  customer: any = {};
+  customerBook: any = {};
+  haveBook = false;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private render: Renderer2,
+    private renderer: Renderer2,
     private customerService: CustomerServService
-  ) {
-    debugger
-    this.customer = this.customerService.GetCustomerData();
-    this.customerBook = this.customer.book;
-    if(this.customerBook != null) this.isActive = true;
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.render.setStyle(this.document.body, 'backgroundColor', '#313b31');
+    this.renderer.setStyle(this.document.body, 'backgroundColor', '#313b31');
+
+    // Get customer data
+    this.customer = this.customerService.GetCustomerData();
+    this.customerBook = this.customer?.book;
+    if (this.customerBook !== null) this.haveBook = true;
   }
 
   ngOnDestroy(): void {
-    this.render.removeStyle(this.document.body, 'backgroundColor');
+    this.renderer.removeStyle(this.document.body, 'backgroundColor');
   }
 
-  ReturnBook(){
-    this.isActive=false;
+  ReturnBook(): void {
+    this.customerService
+      .ReturnBorrowedBook({
+        userId: this.customer?.id,
+        bookId: this.customerBook?.id,
+      })
+      .subscribe(
+        (res) => {
+          alert('Successful Return');
+          this.haveBook = false;
+        },
+        (err) => {
+          alert('Failed Return');
+        }
+      );
   }
 }

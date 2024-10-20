@@ -2,35 +2,27 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div *ngFor="let b of getRange(5)" class="col-md-4 col-lg-3 mb-4">
+    <div *ngFor="let customerBook of allBooks" class="col-md-6">
       <div class="card book-card shadow-sm">
-        <!-- Book Cover -->
         <img
           src="assets/img/cart-book.gif"
           class="card-img-top"
           alt="Book Cover"
         />
-
         <div class="card-body">
-          <!-- Book Title -->
-          <h5 class="card-title">Book Title</h5>
-          <!-- Author -->
-          <p class="card-text"><strong>Author:</strong> John Doe</p>
-          <!-- Genre -->
-          <p class="card-text"><strong>Genre:</strong> Fiction</p>
-          <!-- Year -->
-          <p class="card-text"><strong>Published:</strong> 2024</p>
-          <!-- Book Description -->
           <p class="card-text">
-            This is a brief description of the book. It gives an overview of the
-            story, characters, and overall theme of the book.
+            <strong>Book Name: </strong>{{ customerBook?.title }}
           </p>
-        </div>
-
-        <!-- Card Footer with Action Buttons -->
-        <div class="card-footer text-center">
-          <button class="btn btn-primary">Borrow</button>
-          <button class="btn btn-secondary">Details</button>
+          <p class="card-text">
+            <strong>Author: </strong>{{ customerBook?.author }}
+          </p>
+          <p class="card-text">
+            <strong>Publisher: </strong>{{ customerBook?.publisher }}
+          </p>
+          <p class="card-text">
+            <strong>Published: </strong>{{ customerBook?.publicationYear }}
+          </p>
+          <p class="card-text">{{ customerBook?.description }}</p>
         </div>
       </div>
     </div>

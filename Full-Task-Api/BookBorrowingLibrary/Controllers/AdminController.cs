@@ -45,7 +45,7 @@ namespace BookBorrowingLibrary.Controllers
         [Route("GetAllBooks")]
         public async Task<IActionResult> GetAllBooksAsync()
         {
-            return Ok(_bookService.GetAllBooksAsync());
+            return Ok(await _bookService.GetAllBooksAsync());
         }
 
         [HttpPut]

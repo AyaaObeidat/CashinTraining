@@ -19,6 +19,7 @@ import { CustomerServService } from '../../serv/customer-serv.service';
 })
 export class CustomerHomeComponent implements OnInit, OnDestroy {
   customer: any = {};
+  allBooks : any[] = [];
   constructor(
     private router: Router,
     private render: Renderer2,
@@ -33,11 +34,13 @@ export class CustomerHomeComponent implements OnInit, OnDestroy {
   }
   ngOnInit() {
     this.render.setStyle(this.document.body, 'backgroundColor', '#313b31');
+    this.customerServ.GetAllBooks().subscribe(
+     res => this.allBooks = res,
+     err => console.log("cannot found any book")
+    );
   }
   ngOnDestroy() {
     this.render.removeStyle(this.document.body, 'backgroundColor');
   }
-  getRange(count: number): number[] {
-    return Array.from({ length: count }, (_, i) => i + 1); // Generates [1, 2, 3, 4, 5]
-  }
+
 }

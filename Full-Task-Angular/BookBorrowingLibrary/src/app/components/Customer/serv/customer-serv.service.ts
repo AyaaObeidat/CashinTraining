@@ -35,4 +35,11 @@ export class CustomerServService {
       );
     }
   }
+ ReturnBorrowedBook(data:any):Observable<any>
+ {
+    return this._http.post<any>("https://localhost:44367/api/Customer/Return_Book",data);
+ }
+ GetAllBooks():Observable<any>{
+  return this._http.get("https://localhost:44367/api/Admin/GetAllBooks");
+ }
 }

@@ -1,5 +1,5 @@
 .book-card {
-    max-width: 400px;
+    max-width: 500px;
     margin: 50px auto;
     background-color:#678d67 ;
   }
@@ -24,4 +24,11 @@
     color: white;
     text-align: center;
     text-decoration: underline
+  }
+  .rules{
+    color: rgb(157, 25, 25);
+    text-align: justify;
+  }
+  .card-text{
+    text-align: justify;
   }

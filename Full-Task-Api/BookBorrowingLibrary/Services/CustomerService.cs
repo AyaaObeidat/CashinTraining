@@ -125,12 +125,13 @@ namespace BookBorrowingLibrary.Services
             var customer = await _userInterface.GetByIdAsync(parameter.UserId);
             var book = await _bookInterface.GetByIdAsync(parameter.BookId);
             if (customer == null || book == null) throw new ArgumentNullException("customer or book not found");
-            if(await CanBorrowBookAsync(customer) && book.NumberOfAvailableCopies > 0)
+            if (await CanBorrowBookAsync(customer) && book.NumberOfAvailableCopies > 0)
             {
-                var borrow_book = BorrowingTransaction.Create(customer.Id , book.Id);
+                var borrow_book = BorrowingTransaction.Create(customer.Id, book.Id);
                 await _borrowingTransactionInterface.AddAsync(borrow_book);
-                
+
             }
+            else throw new ArgumentException("You cannot borrow book");
 
         }//cus
 
@@ -306,7 +307,7 @@ namespace BookBorrowingLibrary.Services
         {
             var borrowingTransactions = await _borrowingTransactionInterface.GetAllAsync();
             var borrowTransaction = borrowingTransactions.ToList().FirstOrDefault(bt => bt.UserId ==  customer.Id);
-            if (borrowingTransactions == null) return true;
+            if (borrowTransaction == null) return true;
             return false;
           
         }
