@@ -143,6 +143,10 @@ namespace BookBorrowingLibrary.Services
             var returnBook_trans = ReturnTransaction.Create(customer.Id , book.Id);
             await _returnTransactionInterface.AddAsync(returnBook_trans);
 
+            customer.SetBookId(Guid.Empty);
+            await _userInterface.UpdateAsync(customer); 
+           
+
         }//cus
 
         public async Task<CustomerDetails> GetCustomerByIdAsync(CustomerGetByParameter parameter)
@@ -300,7 +304,9 @@ namespace BookBorrowingLibrary.Services
         //Business Validation
         public async Task<bool> CanBorrowBookAsync(User customer)
         {
-            if (customer.BookId == Guid.Empty) return true;
+            var borrowingTransactions = await _borrowingTransactionInterface.GetAllAsync();
+            var borrowTransaction = borrowingTransactions.ToList().FirstOrDefault(bt => bt.UserId ==  customer.Id);
+            if (borrowingTransactions == null) return true;
             return false;
           
         }

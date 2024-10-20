@@ -37,4 +37,7 @@ export class CustomerHomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.render.removeStyle(this.document.body, 'backgroundColor');
   }
+  getRange(count: number): number[] {
+    return Array.from({ length: count }, (_, i) => i + 1); // Generates [1, 2, 3, 4, 5]
+  }
 }

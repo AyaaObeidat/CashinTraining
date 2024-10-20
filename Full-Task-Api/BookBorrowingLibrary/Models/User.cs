@@ -60,7 +60,7 @@ namespace BookBorrowingLibrary.Models
 
         public void SetBookId(Guid bookId)
         {
-            if(bookId == Guid.Empty) throw new ArgumentNullException();
+            //if(bookId == Guid.Empty) throw new ArgumentNullException();
             this.BookId = bookId;
         }
 

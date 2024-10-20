@@ -1,9 +1,34 @@
+/* Customizing the overall card appearance */
 .card {
-    background-color: #e4e3b2; 
-    color: #313b31; 
-  }
-  
-  .card-title {
-    color: #313b31; 
-  }
-  
+  background-color: #e4e3b2;
+  color: #313b31;
+}
+
+/* Adjusting the title color */
+.card-title {
+  color: #313b31;
+}
+
+/* Specific styles for the book cards */
+.book-card {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: #678d67; /* Card background color */
+}
+
+/* Limiting the image size and aspect ratio */
+.card-img-top {
+  max-height: 125px;
+  object-fit: cover;
+}
+
+/* Ensuring responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Overriding the max-width for the book cards */
+.card.book-card {
+  max-width: 250px;
+}

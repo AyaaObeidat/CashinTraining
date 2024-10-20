@@ -130,6 +130,8 @@ namespace BookBorrowingLibrary.Services
             if (returnBook_trans == null) throw new ArgumentNullException();
             var book = await _bookInterface.GetByIdAsync(returnBook_trans.BookId);
             var customer = await _userInterface.GetByIdAsync(returnBook_trans.UserId);
+            var borrowingTransactions =await _borrowingTransactionInterface.GetAllAsync();
+            var borrowingTransaction = borrowingTransactions.ToList().FirstOrDefault(b => b.BookId == book.Id && book.UserId == customer.Id);
 
             if(parameter.BookStatus == BookStatus.NonCorrupt)
             {
@@ -145,7 +147,10 @@ namespace BookBorrowingLibrary.Services
                 await this.DamagedACopyOfBookAsync(book);
                 await this.BlockCustomerAsync(customer);
             }
-
+            book.SetUserId(Guid.Empty);
+            await _bookInterface.UpdateAsync(book);
+            await _borrowingTransactionInterface.DeleteAsync(borrowingTransaction.Id);
+            await _returnTransactionInterface.DeleteAsync(returnBook_trans.Id);
         }//adm
     }
 }

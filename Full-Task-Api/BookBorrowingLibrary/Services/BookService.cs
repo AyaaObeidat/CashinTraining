@@ -47,45 +47,27 @@ namespace BookBorrowingLibrary.Services
                 PublicationYear = book.PublicationYear,
                 NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                 TotalNumberOfCopies = book.TotalNumberOfCopies,
-                Customer = customer!=null? new CustomerDetails
-                {
-                    Id = customer.Id,
-                    FullName = customer.FullName,
-                    Email = customer.Email,
-                    PhoneNumber = customer.PhoneNumber,       
-                }:null,
+               
 
             };
         }//adm
 
         public async Task<List<BookDetails>> GetAllBooksAsync()
         {
-            var books = (await _bookInterface.GetAllAsync()).ToList();
+            var books = await _bookInterface.GetAllAsync();
             if (books.Count == 0) throw new ArgumentNullException("Books not found");
-            var customers = (await _userInterface.GetAllCustomersAsync()).ToList();
-            return books.Select(b =>
+            return books.ToList().Select(b => new BookDetails
             {
-                var customer = customers.FirstOrDefault(c => c.Id == b.UserId);
-                return new BookDetails
-                {
-                    Id = b.Id,
-                    Title = b.Title,
-                    Description = b.Description,
-                    Author = b.Author,
-                    Publisher = b.Publisher,
-                    PublicationYear = b.PublicationYear,
-                    NumberOfAvailableCopies = b.NumberOfAvailableCopies,
-                    TotalNumberOfCopies = b.TotalNumberOfCopies,
-                    Customer = customer != null ? new CustomerDetails
-                    {
-                        Id = customer.Id,
-                        FullName = customer.FullName,
-                        Email = customer.Email,
-                        PhoneNumber = customer.PhoneNumber,
-                    }:null,
-
-                };
+                Id = b.Id,
+                Title = b.Title,
+                Description = b.Description,
+                Author = b.Author,
+                Publisher = b.Publisher,
+                PublicationYear = b.PublicationYear,
+                NumberOfAvailableCopies = b.NumberOfAvailableCopies,
+                TotalNumberOfCopies = b.TotalNumberOfCopies,
             }).ToList();
+           
            
         }//cus&adm
 

@@ -65,7 +65,7 @@
         }
         public void SetUserId(Guid userId)
         {
-            if(userId == Guid.Empty) throw new ArgumentNullException();
+           // if(userId == Guid.Empty) throw new ArgumentNullException();
             this.UserId = userId; 
         }
 
