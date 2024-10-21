@@ -42,4 +42,8 @@ export class CustomerServService {
  GetAllBooks():Observable<any>{
   return this._http.get("https://localhost:44367/api/Admin/GetAllBooks");
  }
+ 
+ BorrowBook(data:any):Observable<any>{
+  return this._http.post<any>("https://localhost:44367/api/Customer/Borrow_Book",data);
+ }
 }

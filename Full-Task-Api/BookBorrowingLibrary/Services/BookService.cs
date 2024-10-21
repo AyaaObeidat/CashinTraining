@@ -66,6 +66,7 @@ namespace BookBorrowingLibrary.Services
                 PublicationYear = b.PublicationYear,
                 NumberOfAvailableCopies = b.NumberOfAvailableCopies,
                 TotalNumberOfCopies = b.TotalNumberOfCopies,
+                UserId = b.UserId,
             }).ToList();
            
            

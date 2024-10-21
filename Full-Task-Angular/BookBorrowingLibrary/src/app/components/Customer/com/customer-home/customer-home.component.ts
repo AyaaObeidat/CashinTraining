@@ -2,7 +2,6 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import {
   Component,
   Inject,
-  Input,
   OnDestroy,
   OnInit,
   Renderer2,
@@ -20,6 +19,7 @@ import { CustomerServService } from '../../serv/customer-serv.service';
 export class CustomerHomeComponent implements OnInit, OnDestroy {
   customer: any = {};
   allBooks : any[] = [];
+  readRules = false;
   constructor(
     private router: Router,
     private render: Renderer2,
@@ -38,9 +38,20 @@ export class CustomerHomeComponent implements OnInit, OnDestroy {
      res => this.allBooks = res,
      err => console.log("cannot found any book")
     );
+  
   }
   ngOnDestroy() {
     this.render.removeStyle(this.document.body, 'backgroundColor');
   }
-
+  BorrowBook(book : any)
+  {
+     this.customerServ.BorrowBook({userId : this.customer?.id , bookId : book?.id}).subscribe(
+      res => alert("Your application to borrow the book was sent to the addict"),
+      err => alert("You can't borrow the book right now.")
+    );
+  }
+  ReadRules()
+  {
+    this.readRules = true;
+  }
 }

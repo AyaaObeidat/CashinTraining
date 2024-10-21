@@ -1,6 +1,6 @@
 .book-card {
   width: 400px; 
-  height: 430px; 
+  height: 500px; 
   margin: 50px auto;
   background-color: #678d67;
 
@@ -38,4 +38,15 @@ img {
 .rules {
   color: rgb(157, 25, 25);
   text-align: justify;
+}
+.rules-color-text{
+color: #e4e3b2;
+}
+.link-text{
+  text-decoration: underline;
+  color: #e4e3b2;
+}
+.link-text:hover{
+  text-decoration: underline;
+  color: #678d67;
 }

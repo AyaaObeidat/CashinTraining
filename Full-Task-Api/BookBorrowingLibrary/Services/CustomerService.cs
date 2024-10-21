@@ -65,6 +65,7 @@ namespace BookBorrowingLibrary.Services
                         PublicationYear = book.PublicationYear,
                         NumberOfAvailableCopies = book.NumberOfAvailableCopies,
                         TotalNumberOfCopies = book.TotalNumberOfCopies,
+                        UserId = book.UserId,
                     } : null,
                     IsAdmin = user.IsAdmin,
                     Status = user.Status,
