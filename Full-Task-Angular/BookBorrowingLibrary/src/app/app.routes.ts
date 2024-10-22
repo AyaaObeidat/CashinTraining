@@ -9,6 +9,7 @@ import { AdminHomeComponent } from './components/Admin/com/admin-home/admin-home
 import { AdminProfileComponent } from './components/Admin/com/admin-profile/admin-profile.component';
 import { ViewBookComponent } from './components/Admin/com/dashboard/com/Books-com/view-book/view-book.component';
 import { EditBookComponent } from './components/Admin/com/dashboard/com/Books-com/edit-book/edit-book.component';
+import { NewBookComponent } from './components/Admin/com/dashboard/com/Books-com/new-book/new-book.component';
 
 
 export const routes: Routes = [
@@ -22,4 +23,5 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'viewBook', component: ViewBookComponent },
   { path: 'editBook', component: EditBookComponent },
+  { path: 'newBook', component: NewBookComponent },
 ];

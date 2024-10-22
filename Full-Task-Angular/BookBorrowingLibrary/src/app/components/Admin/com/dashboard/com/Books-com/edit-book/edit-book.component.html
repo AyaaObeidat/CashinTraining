@@ -1,6 +1,5 @@
-
-<app-admin-dashboard></app-admin-dashboard>
 <app-admin-header></app-admin-header>
+<app-admin-dashboard></app-admin-dashboard>
 <div class="container mb-5">
   <div class="row">
     <div class="col-md-10 mx-auto">
@@ -21,7 +20,15 @@
                 [ngModelOptions]="{ standalone: true }"
                 style="width: auto"
                 placeholder="Enter new title"
+                *ngIf="toEdit"
               />
+              <button
+                *ngIf="toEdit"
+                class="btn-s btn-outline-primary"
+                (click)="Save()"
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
@@ -38,7 +45,15 @@
                 [ngModelOptions]="{ standalone: true }"
                 style="width: auto"
                 placeholder="Enter new author"
+                *ngIf="toEdit"
               />
+              <button
+                *ngIf="toEdit"
+                class="btn-s btn-outline-primary"
+                (click)="Save()"
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
@@ -55,7 +70,15 @@
                 [ngModelOptions]="{ standalone: true }"
                 style="width: auto"
                 placeholder="Enter new publisher"
+                *ngIf="toEdit"
               />
+              <button
+                *ngIf="toEdit"
+                class="btn-s btn-outline-primary"
+                (click)="Save()"
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
@@ -70,11 +93,19 @@
               <input
                 type="text"
                 class="form-control"
-                [(ngModel)]="newTitle"
+                [(ngModel)]="newPublicationYear"
                 [ngModelOptions]="{ standalone: true }"
                 style="width: auto"
                 placeholder="Enter new year"
+                *ngIf="toEdit"
               />
+              <button
+                *ngIf="toEdit"
+                class="btn-s btn-outline-primary"
+                (click)="Save()"
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
@@ -87,14 +118,6 @@
                   {{ bookData?.totalNumberOfCopies }}</strong
                 >
               </label>
-              <input
-                type="number"
-                class="form-control"
-                [(ngModel)]="newTotalNumberOfCopies"
-                [ngModelOptions]="{ standalone: true }"
-                style="width: auto"
-                placeholder="Enter new number"
-              />
             </div>
           </div>
         </div>
@@ -107,16 +130,41 @@
                   {{ bookData?.numberOfAvailableCopies }}</strong
                 >
               </label>
+            </div>
+          </div>
+        </div>
+        <div class="card-body bg-light-custom">
+          <div class="row mb-1">
+            <div class="col-md-12 d-flex align-items-center">
+              <label class="form-label me-2 spec-lab" *ngIf="toEdit">
+                if you want buy new copies from this book please click on
+                <a class="link" (click)="BuyNewCopies()"
+                  ><strong>Buy</strong></a
+                >
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="card-body bg-light-custom">
+          <div class="row mb-1">
+            <div class="col-md-12 d-flex align-items-center">
               <input
                 type="number"
                 class="form-control"
                 [(ngModel)]="newNumberOfAvailableCopies"
                 [ngModelOptions]="{ standalone: true }"
                 style="width: auto"
-                placeholder="Enter new number"
+                placeholder="Enter number of copies"
+                *ngIf="toBuy"
               />
+              <button *ngIf="toBuy" class="btn-s btn-outline-primary" (click)="Save()">
+                Buy
+              </button>
             </div>
           </div>
+        </div>
+        <div class="card-footer text-center" *ngIf="!toEdit">
+          <button class="btn btn-outline-primary" (click)="Edit()">Edit</button>
         </div>
       </div>
     </div>

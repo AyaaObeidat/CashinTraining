@@ -16,6 +16,7 @@
   .btn{
     border-color: #678d67;
     color:#678d67;
+    width: 300px;
   }
   .spec-lab-col{
     color: #313b31;
@@ -25,3 +26,24 @@
     background-color: #678d67;
     color: #e4e3b2;
   }
+  .btn-s{
+    border-color: #678d67;
+    color:#678d67;
+    width: auto;
+    border-radius: 5px;
+    margin-left: 10px;
+    height: 33px;
+  }
+  .spec-lab{
+    color: rgb(186, 33, 33);
+  }
+  .link {
+    color: rgb(186, 33, 33);
+    text-decoration: underline; 
+  }
+  
+  .link:hover {
+    color: #313b31; 
+    text-decoration: underline; 
+  }
+  

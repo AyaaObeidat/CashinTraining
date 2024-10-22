@@ -28,4 +28,8 @@ export class AllBooksComponent implements OnInit{
   {
     this.router.navigate(['/editBook'],{state:{editBook:book}});
   }
+  AddNewBook()
+  {
+    this.router.navigate(['/newBook']);
+  }
 }
