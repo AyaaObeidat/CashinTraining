@@ -4,6 +4,8 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CustomerServService } from './components/Customer/serv/customer-serv.service';
+import { AdminServService } from './components/Admin/ser/admin-serv.service';
+import { DashboardServService } from './components/Admin/com/dashboard/ser/dashboard-serv.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,7 @@ import { CustomerServService } from './components/Customer/serv/customer-serv.se
   imports: [RouterOutlet,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers :[UserService,CustomerServService]
+  providers :[UserService,CustomerServService,AdminServService,DashboardServService]
 })
 export class AppComponent {
   title = 'BookBorrowingLibrary';

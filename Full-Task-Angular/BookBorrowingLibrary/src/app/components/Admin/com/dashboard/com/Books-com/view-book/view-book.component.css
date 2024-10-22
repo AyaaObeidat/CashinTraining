@@ -1,0 +1,36 @@
+.book-card {
+    max-width: 400px;
+    background-color:#678d67 ;
+    align-items: center;
+    margin-left: 400px;
+    margin-top: 50px;
+  }
+  .card-img-top {
+    max-height: 80px;
+    object-fit: cover;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  .btn{
+    border-color: #313b31;
+    color:#313b31;
+  }
+  .btn-outline-primary:hover{
+    border-color: #678d67;
+    background-color: white;
+    color: #678d67;
+  }
+  .ret-req{
+    color: white;
+    text-align: center;
+    text-decoration: underline
+  }
+  .rules{
+    color: rgb(157, 25, 25);
+    text-align: justify;
+  }
+  .card-text{
+    text-align: justify;
+  }

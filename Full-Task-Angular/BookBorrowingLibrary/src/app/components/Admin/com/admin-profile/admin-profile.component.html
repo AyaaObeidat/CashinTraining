@@ -1,0 +1,108 @@
+<app-admin-header></app-admin-header>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <div class="card shadow-sm rounded">
+        <div class="card-header">
+          <h4 class="mb-0">Profile Information</h4>
+        </div>
+
+        <div class="card-body bg-light-custom">
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label me-2"
+                ><strong>Email : {{ admin?.email }}</strong></label
+              >
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label me-2"
+                ><strong>Full Name : {{ admin?.fullName }} </strong></label
+              >
+
+              <label *ngIf="toEdit" class="form-label me-2 spec-lab-col">
+                <span class="d-flex align-items-center">
+                  <input
+                    type="text"
+                    class="form-control me-2"
+                    [(ngModel)]="newFullName"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto"
+                    placeholder="Enter new full name"
+                  />
+                  <button
+                    class="btn btn-outline-primary"
+                    (click)="ClickToSave()"
+                  >
+                    Save
+                  </button>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label me-2"
+                ><strong>Phone Number : {{ admin?.phoneNumber }}</strong></label
+              >
+            </div>
+          </div>
+
+          <div *ngIf="toEdit" class="row mb-3">
+            <div class="col-md-6">
+              <label class="form-label me-2"
+                ><strong>Change Password</strong></label
+              >
+
+              <label *ngIf="toEdit" class="form-label me-2 spec-lab-col">
+                <span class="d-flex align-items-center">
+                  <input
+                    type="password"
+                    class="form-control me-2"
+                    [(ngModel)]="currentPassword"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto"
+                    placeholder="Enter current password"
+                  /><input
+                    type="password"
+                    class="form-control me-2"
+                    [(ngModel)]="newPassword"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto"
+                    placeholder="Enter new password"
+                  /><input
+                    type="password"
+                    class="form-control me-2"
+                    [(ngModel)]="confirmPassword"
+                    [ngModelOptions]="{ standalone: true }"
+                    style="width: auto"
+                    placeholder="Confirm new password"
+                  />
+                  <button
+                    class="btn btn-outline-primary"
+                    (click)="ClickToSave()"
+                  >
+                    Save
+                  </button>
+                </span>
+              </label>
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <div class="card-footer text-end">
+          <button
+            *ngIf="!toEdit"
+            class="btn btn-outline-primary"
+            (click)="ClickToEdit()"
+          >
+            Edit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

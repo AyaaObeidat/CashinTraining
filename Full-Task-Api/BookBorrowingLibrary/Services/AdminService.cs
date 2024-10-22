@@ -31,12 +31,8 @@ namespace BookBorrowingLibrary.Services
         public async Task ModifyFullNameAsync(AdminUpdateParameters parameters)
         {
             var admin = await _userInterface.GetAdminAsync();
-            if (admin.FullName == parameters.CurrentFullName)
-            {
-                    admin.SetFullName(parameters.NewFullName);
-                    await _userInterface.UpdateAsync(admin);
-            }
-            else throw new Exception("The current full name does not match the existing name.");
+             admin.SetFullName(parameters.NewFullName);
+             await _userInterface.UpdateAsync(admin);       
         }//adm
 
         public async Task ModifyPasswordAsync(AdminUpdateParameters parameters)

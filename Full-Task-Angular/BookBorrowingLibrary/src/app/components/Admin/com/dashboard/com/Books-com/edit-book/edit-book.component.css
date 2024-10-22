@@ -1,0 +1,27 @@
+
+.container{
+    margin-left: 180px;
+    margin-top: 50px;
+    color: #e4e3b2;
+}
+
+.bg-light-custom {
+    background-color: #e4e3b2;
+    color:#678d67;
+  }
+  .card-header{
+    color: #313b31;
+    background-color : #678d67;
+  }
+  .btn{
+    border-color: #678d67;
+    color:#678d67;
+  }
+  .spec-lab-col{
+    color: #313b31;
+  }
+  .btn-outline-primary:hover{
+    border-color: #678d67;
+    background-color: #678d67;
+    color: #e4e3b2;
+  }

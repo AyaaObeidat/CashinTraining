@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       (res) => {
         this.UserLoginData = res;
         if (this.UserLoginData.isAdmin) {
-          this.router.navigate(['/adminProfile'], {
+          this.router.navigate(['/adminHome'], {
             state: { user: this.UserLoginData },
           });
         } else {

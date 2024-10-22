@@ -8,8 +8,6 @@ namespace BookBorrowingLibraryDtos.AdminDtos
 {
     public class AdminUpdateParameters
     {
-        public Guid Id { get; set; }
-        public string CurrentFullName { get; set; }
         public string NewFullName { get; set; }
         public string CurrentPassword { get; set; }
         public string NewPassword { get; set; }

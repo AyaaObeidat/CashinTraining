@@ -1,0 +1,30 @@
+<div class="content">
+  <h3>All Books</h3>
+  <div class="table-container">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Book Title</th>
+          <th>Author</th>
+          <th>Publication Year</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let book of allBooks; let b = index">
+        <tr>
+          <td>{{b+1}}</td>
+          <td>{{book?.title}}</td>
+          <td>{{book?.author}}</td>
+          <td>{{book?.publicationYear}}</td>
+          <td>
+            <a routerLink="/viewBook" class="link" (click)="ViewBook(book)">View</a>
+          </td>
+          <td>
+            <a routerLink="/editBook" class="link" (click)="EditBook(book)">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
