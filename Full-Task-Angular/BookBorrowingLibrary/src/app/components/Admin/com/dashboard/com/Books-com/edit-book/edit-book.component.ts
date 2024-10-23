@@ -1,4 +1,4 @@
-import { DashboardServService } from './../../../ser/dashboard-serv.service';
+import { BookServService } from '../../../ser/book-ser/book-serv.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Component, Inject, Renderer2, ɵsetEnsureDirtyViewsAreAlwaysReachable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -31,7 +31,7 @@ export class EditBookComponent {
   constructor(
     private router: Router,
     private render: Renderer2,
-    private dashboardService: DashboardServService,
+    private bookService: BookServService,
     @Inject(DOCUMENT) private document: Document
   ) {
     const navigation = this.router.getCurrentNavigation();
@@ -52,7 +52,7 @@ export class EditBookComponent {
   Save() {
     debugger
     this.toEdit = false;
-    return this.dashboardService
+    return this.bookService
       .ModifyBookData({
         id: this.bookData?.id,
         newTitle: this?.newTitle,

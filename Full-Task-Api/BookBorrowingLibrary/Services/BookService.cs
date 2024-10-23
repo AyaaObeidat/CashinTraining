@@ -257,19 +257,20 @@ namespace BookBorrowingLibrary.Services
                 var book = books.ToList().FirstOrDefault(b => b.Id == d.BookId);
                 return new DamagedBooksDetails
                 {
-                    Id= d.Id,
+                    Id = d.Id,
                     NumberOfDamagedCopies = d.NumberOfDamagedCopies,
                     DamageProceedings = d.DamageProceedings,
                     Book = book != null ? new BookDetails
                     {
                         Id = book.Id,
-                        Title= book.Title,
+                        Title = book.Title,
                         Description = book.Description,
                         Author = book.Author,
                         PublicationYear = book.PublicationYear,
                         Publisher = book.Publisher,
-                    }:null
-                    
+                        NumberOfAvailableCopies = book.NumberOfAvailableCopies
+                    } : null
+
                 };
             }).ToList();
         }//adm
@@ -284,7 +285,7 @@ namespace BookBorrowingLibrary.Services
             await _bookInterface.UpdateAsync(book);
 
 
-            await _damagedBooksInterface.DeleteAsync(damagedBook.BookId);
+            await _damagedBooksInterface.DeleteAsync(damagedBook.Id);
 
         }//adm
     }

@@ -1,0 +1,30 @@
+<app-admin-dashboard></app-admin-dashboard>
+<app-admin-header></app-admin-header>
+<div class="content">
+  <h3>All Damaged Books</h3>
+  <div class="table-container">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Book Title</th>
+          <th>Number Of Available Copies</th>
+          <th>Number of Damaged Copies</th>
+          <th colspan="1">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let b of allDamagedBooks; let i = index">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ b?.book?.title }}</td>
+          <td>{{ b?.book?.numberOfAvailableCopies }}</td>
+          <td>{{ b?.numberOfDamagedCopies }}</td>
+          <td>
+            <a routerLink="/repair" class="link" (click)="Repair(b)">Repair</a>
+          </td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

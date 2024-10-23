@@ -1,6 +1,6 @@
 .sidebar {
     width: 200px;
-    height: 150vh;
+    height: 110vh;
     position: absolute;
     top: 82px; 
     left: 0;
@@ -14,10 +14,20 @@
     padding: 10px;
     text-decoration: none;
     display: block;
+    text-justify: auto;
     margin-left: 10px;
 }
 
 .sidebar a:hover {
     background-color: #e4e3b2;
     color: #313b31;
+    margin-left: 0px;
+    
 }
+.active-link{
+    margin-left: 0px;
+    font-style :italic ;
+    font-weight: bold;
+    font-size: large;
+}
+

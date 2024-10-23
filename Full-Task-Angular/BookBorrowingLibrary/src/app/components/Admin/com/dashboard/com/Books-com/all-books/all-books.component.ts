@@ -1,21 +1,21 @@
 import { error } from 'console';
-import { DashboardServService } from '../../../ser/dashboard-serv.service';
+import { BookServService } from '../../../ser/book-ser/book-serv.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-all-books',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,RouterLink],
+  imports: [CommonModule,RouterOutlet,RouterLink,RouterLinkActive],
   templateUrl: './all-books.component.html',
   styleUrl: './all-books.component.css',
 })
 export class AllBooksComponent implements OnInit{
   allBooks: any;
-  constructor(private dashboardService: DashboardServService,private router:Router) {}
+  constructor(private bookService: BookServService,private router:Router) {}
   ngOnInit(): void {
-    this.dashboardService.GetAllBooks().subscribe(
+    this.bookService.GetAllBooks().subscribe(
       res => this.allBooks = res,
       err => console.log("not found any book"),
     );

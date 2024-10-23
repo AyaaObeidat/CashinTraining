@@ -117,8 +117,6 @@ namespace BookBorrowingLibrary.Services
             damagedBook.UpdateNumberOfDamagedCopies();
             await _damagedBooksInterface.UpdateAsync(damagedBook);
 
-            book.SetNumberOfAvailableCopies(book.NumberOfAvailableCopies - 1);
-            await _bookInterface.UpdateAsync(book);
         }//adm
         public async Task ReturnBookStatusAsync(ReturnBookGetByParameters parameter)
         {

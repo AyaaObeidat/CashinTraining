@@ -1,0 +1,30 @@
+.content {
+  margin-left: 200px;
+  padding: 20px;
+  color: #e4e3b2;
+  text-align: center;
+}
+
+.table-container {
+  margin-top: 20px;
+}
+
+.link {
+color: rgb(186, 33, 33);
+text-decoration: underline; 
+}
+
+.link:hover {
+color: #313b31; 
+text-decoration: underline; 
+}
+.btn-outline-primary:hover{
+border-color: #e4e3b2;
+background-color: #e4e3b2;
+color: #313b31;
+}
+.btn{
+border-color:#e4e3b2;
+color:#e4e3b2;
+width: 200px;
+}

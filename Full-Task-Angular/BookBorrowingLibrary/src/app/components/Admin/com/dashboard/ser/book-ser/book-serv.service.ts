@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { __core_private_testing_placeholder__ } from '@angular/core/testing';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DashboardServService {
+export class BookServService {
   constructor(private _http: HttpClient) {}
   GetAllBooks(): Observable<any> {
     return this._http.get<any>('https://localhost:44367/api/Admin/GetAllBooks');
@@ -44,5 +45,11 @@ export class DashboardServService {
       'https://localhost:44367/api/Admin/AddNewBook',
       data
     );
+  }
+  GetAllDamagedBooks():Observable<any>{
+    return this._http.get<any>('https://localhost:44367/api/Admin/GetAllDamagedBooks');
+  }
+  Repair(data:any):Observable<any>{
+    return this._http.post<any>('https://localhost:44367/api/Admin/RepairofDamagedCopy',data);
   }
 }

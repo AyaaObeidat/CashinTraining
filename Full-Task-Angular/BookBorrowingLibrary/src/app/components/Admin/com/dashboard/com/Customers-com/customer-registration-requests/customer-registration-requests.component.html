@@ -1,0 +1,32 @@
+<app-admin-dashboard></app-admin-dashboard>
+<app-admin-header></app-admin-header>
+<div class="content">
+  <h3>All Pending Customers</h3>
+  <div class="table-container">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Email</th>
+          <th>Full Name</th>
+          <th>Phone Number</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let customer of allPendingCustomers; let b = index">
+        <tr>
+          <td>{{ b + 1 }}</td>
+          <td>{{ customer?.email }}</td>
+          <td>{{ customer?.fullName }}</td>
+          <td>{{ customer?.phoneNumber }}</td>
+          <td>
+            <a routerLink="/accept" class="link" (click)="AcceptCustomer(customer)">Accept</a>
+          </td>
+          <td>
+            <a routerLink="/reject" class="link" (click)="RejectCustomer(customer)">Reject</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
