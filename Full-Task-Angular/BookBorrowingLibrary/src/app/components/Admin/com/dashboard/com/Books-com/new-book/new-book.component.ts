@@ -34,10 +34,19 @@ export class NewBookComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.render.removeStyle(this.document.body, 'backgroundColor');
   }
-  AddNewBook(){
+  AddNewBook(f:any){
     this.bookService.AddNewBook(this.book).subscribe(
       res => alert("Successful Addition"),
       err => alert("Faild Addition")
     );
+    this.book = {
+      title: '',
+      description: '',
+      author: '',
+      publisher: '',
+      publicationYear: '',
+      numberOfAvailableCopies: 0,
+      totalNumberOfCopies: 0,
+    };
   }
 }

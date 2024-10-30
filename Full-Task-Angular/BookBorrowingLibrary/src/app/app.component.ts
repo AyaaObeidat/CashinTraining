@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomerServService } from './components/Customer/serv/customer-serv.service';
 import { AdminServService } from './components/Admin/ser/admin-serv.service';
 import { BookServService } from './components/Admin/com/dashboard/ser/book-ser/book-serv.service';
+import { BorrRetReqService } from './components/Admin/com/dashboard/ser/Borr-Ret-Reqs-ser/borr-ret-req.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ import { BookServService } from './components/Admin/com/dashboard/ser/book-ser/b
   imports: [RouterOutlet,HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  providers :[UserService,CustomerServService,AdminServService,BookServService,RegisteredCustomersService]
+  providers :[UserService,CustomerServService,AdminServService,BookServService,RegisteredCustomersService,BorrRetReqService]
 })
 export class AppComponent {
   title = 'BookBorrowingLibrary';

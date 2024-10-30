@@ -25,7 +25,8 @@ export class AdminHomeComponent implements OnInit,OnDestroy{
     if (navigation?.extras.state) {
       this.adminData = navigation.extras.state['user'];
       this.adminServService.SetAdminData(this.adminData);
-      console.log(this.adminServService.GetAdminData());
+      console.log(this.adminData);
+      
     }
   }
   ngOnInit(): void {

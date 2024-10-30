@@ -5,6 +5,7 @@ using BookBorrowingLibraryDtos.BorrowingBookDtos;
 using BookBorrowingLibraryDtos.BorrowingOrReturnBookDtos;
 using BookBorrowingLibraryDtos.CustomerDtos;
 using BookBorrowingLibraryDtos.DamagedBooksDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyFullName")]
+        [Authorize]
         public async Task<IActionResult> ModifyFullNameAsync(AdminUpdateParameters parameters)
         {
             await _adminService.ModifyFullNameAsync(parameters);
@@ -35,6 +37,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyPassword")]
+        [Authorize]
         public async Task<IActionResult> ModifyPasswordAsync(AdminUpdateParameters parameters)
         {
             await _adminService.ModifyPasswordAsync(parameters);
@@ -43,6 +46,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllBooks")]
+        [Authorize]
         public async Task<IActionResult> GetAllBooksAsync()
         {
             return Ok(await _bookService.GetAllBooksAsync());
@@ -50,6 +54,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPut]
         [Route("GetBookById")]
+        [Authorize]
         public async Task<IActionResult> GetBookByIdAsync(BookGetByParameter parameter)
         {
             return Ok(await _bookService.GetByIdAsync(parameter));
@@ -57,6 +62,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyTitle")]
+        [Authorize]
         public async Task<IActionResult> ModifyTitleAsync(BookUpdateParameter parameters)
         {
             await _bookService.ModifyTitleAsync(parameters);
@@ -65,6 +71,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyAuthor")]
+        [Authorize]
         public async Task<IActionResult> ModifyAuthorAsync(BookUpdateParameter parameters)
         {
             await _bookService.ModifyAuthorAsync(parameters);
@@ -73,6 +80,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyPublisher")]
+        [Authorize]
         public async Task<IActionResult> ModifyPublisherAsync(BookUpdateParameter parameters)
         {
             await _bookService.ModifyPublisherAsync(parameters);
@@ -81,6 +89,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyPublisherYear")]
+        [Authorize]
         public async Task<IActionResult> ModifyPublisherYearAsync(BookUpdateParameter parameters)
         {
             await _bookService.ModifyPublisherYearAsync(parameters);
@@ -90,6 +99,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyNumberOfAvailableCopies")]
+        [Authorize]
         public async Task<IActionResult> ModifyNumberOfAvailableCopiesAsync(BookUpdateParameter parameters)
         {
             await _bookService.ModifyNumberOfAvailableCopiesAsync(parameters);
@@ -98,6 +108,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("ModifyTotalNumberOfCopies")]
+        [Authorize]
         public async Task<IActionResult> ModifyTotalNumberOfCopiesAsync(BookUpdateParameter parameters)
         {
             await _bookService.ModifyTotalNumberOfCopiesAsync(parameters);
@@ -106,6 +117,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPatch]
         [Route("BuyNewCopies")]
+        [Authorize]
         public async Task<IActionResult> BuyNewCopiesAsync(BookUpdateParameter parameters)
         {
             await _adminService.BuyNewCopiesAsync(parameters);
@@ -114,6 +126,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("AddNewBook")]
+        [Authorize]
         public async Task<IActionResult> AddNewBookAsync(BookCreateParameters parameters)
         {
             await _bookService.AddNewBookAsync(parameters);
@@ -122,6 +135,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllPendingCustomer")]
+        [Authorize]
         public async Task<IActionResult> GetAllPendingCustomerAsync()
         {
             return Ok(await _customerService.GetAllPendingCustomerAsync());
@@ -129,6 +143,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("AcceptNewCustomer")]
+        [Authorize]
         public async Task<IActionResult> AcceptNewCustomerAsync(CustomerGetByParameter parameters)
         {
             await _adminService.AcceptNewCustomerAsync(parameters);
@@ -137,6 +152,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("RejectCustomer")]
+        [Authorize]
         public async Task<IActionResult> RejectCustomerAsync(CustomerGetByParameter parameters)
         {
             await _adminService.RejectCustomerAsync(parameters);
@@ -145,6 +161,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllAcceptedCustomer")]
+        [Authorize]
         public async Task<IActionResult> GetAllAcceptedCustomerAsync()
         {
             return Ok(await _customerService.GetAllAcceptedCustomerAsync());
@@ -152,6 +169,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllBlockedCustomer")]
+        [Authorize]
         public async Task<IActionResult> GetAllBlockedCustomerAsync()
         {
             return Ok(await _customerService.GetAllBlockedCustomerAsync());
@@ -160,6 +178,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("UnBlockCustomer")]
+        [Authorize]
         public async Task<IActionResult> UnBlockCustomerAsync(CustomerGetByParameter parameters)
         {
             await _adminService.UnBlockCustomerAsync(parameters);
@@ -168,6 +187,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllBorrowBooksPendingRequests")]
+        [Authorize]
         public async Task<IActionResult> GetAllBorrowBooksPendingRequestsAsync()
         {
             return Ok(await _bookService.GetAllBorrowBooksPendingRequestsAsync());
@@ -175,6 +195,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("AcceptBorrowingBookRequest")]
+        [Authorize]
         public async Task<IActionResult> AcceptBorrowingBookRequestAsync(BorrowingBookGetByParameter parameters)
         {
             await _adminService.AcceptBorrowingBookRequestAsync(parameters);
@@ -183,6 +204,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("RejectBorrowingBookRequest")]
+        [Authorize]
         public async Task<IActionResult> RejectBorrowingBookRequestAsync(BorrowingBookGetByParameter parameters)
         {
             await _adminService.RejectBorrowingBookRequestAsync(parameters);
@@ -191,6 +213,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllBorrowBooksAcceptingRequests")]
+        [Authorize]
         public async Task<IActionResult> GetAllBorrowBooksAcceptingRequestsAsync()
         {
             return Ok(await _bookService.GetAllBorrowBooksAcceptingRequestsAsync());
@@ -198,6 +221,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllReturnBooksTransactions")]
+        [Authorize]
         public async Task<IActionResult> GetAllReturnBooksTransactionsAsync()
         {
             return Ok(await _bookService.GetAllReturnBooksTransactionsAsync());
@@ -205,6 +229,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("ReturnBookStatus")]
+        [Authorize]
         public async Task<IActionResult> ReturnBookStatusAsync(ReturnBookGetByParameters parameters)
         {
             await _adminService.ReturnBookStatusAsync(parameters);
@@ -213,6 +238,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpGet]
         [Route("GetAllDamagedBooks")]
+        [Authorize]
         public async Task<IActionResult> GetAllDamagedBooksAsync()
         {
             return Ok(await _bookService.GetAllDamagedBooksAsync());
@@ -220,6 +246,7 @@ namespace BookBorrowingLibrary.Controllers
 
         [HttpPost]
         [Route("RepairOfDamagedCopy")]
+        [Authorize]
         public async Task<IActionResult> RepairOfDamagedCopyAsync(DamagedBookGetByParameter parameters)
         {
             await _bookService.RepairOfDamagedCopyAsync(parameters);

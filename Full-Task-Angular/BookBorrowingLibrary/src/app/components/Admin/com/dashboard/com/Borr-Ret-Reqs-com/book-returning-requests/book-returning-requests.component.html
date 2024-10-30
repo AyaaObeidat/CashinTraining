@@ -1,0 +1,32 @@
+<app-admin-dashboard></app-admin-dashboard>
+<app-admin-header></app-admin-header>
+<div class="content">
+  <h3>All Book Returned Requests</h3>
+  <div class="table-container">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Customer Name</th>
+          <th>Book Title</th>
+          <th>Returned Date</th>
+          <th colspan="2">Book Status</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let request of allBookReturnedRequests; let i = index">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ request?.customer?.fullName }}</td>
+          <td>{{ request?.book?.title }}</td>
+          <td>{{ request?.returnedDate | date : 'medium' }}</td>
+          <td>
+            <a routerLink="/nonCorrupt" class="link" (click)="SetNonCorruptBookStatus(request)">NonCorrupt</a>
+          </td>
+          <td>
+            <a routerLink="/damaged" class="link" (click)="SetDamagedBookStatus(request)">Damaged</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

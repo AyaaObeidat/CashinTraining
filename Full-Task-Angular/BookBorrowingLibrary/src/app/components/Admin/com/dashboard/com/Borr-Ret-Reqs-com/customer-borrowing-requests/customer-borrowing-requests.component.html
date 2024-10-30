@@ -1,0 +1,32 @@
+<app-admin-dashboard></app-admin-dashboard>
+<app-admin-header></app-admin-header>
+<div class="content">
+  <h3>All Customer Borrowing Requests</h3>
+  <div class="table-container">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Customer Name</th>
+          <th>Book Title</th>
+          <th>Request Date</th>
+          <th colspan="2">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let request of allPendingRequests; let i = index">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ request?.customer?.fullName }}</td>
+          <td>{{ request?.book?.title }}</td>
+          <td>{{ request?.createdDate | date : 'medium' }}</td>
+          <td>
+            <a routerLink="/acceptReq" class="link" (click)="AcceptRequest(request)">Accept</a>
+          </td>
+          <td>
+            <a routerLink="/rejectReq" class="link" (click)="RejectRequest(request)">Reject</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

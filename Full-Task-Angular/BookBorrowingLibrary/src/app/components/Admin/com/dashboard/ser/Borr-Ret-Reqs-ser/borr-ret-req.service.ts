@@ -6,56 +6,64 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class RegisteredCustomersService {
+export class BorrRetReqService {
   constructor(private _http: HttpClient, private userService: UserService) {}
-  GetAllCustomerRegistrationRequests(): Observable<any> {
+  GetAllCustomerBorrowingRequsets(): Observable<any> {
     const headers = this.userService.GetHeaderToken();
     const options = { headers };
     return this._http.get<any>(
-      'https://localhost:44367/api/Admin/GetAllPendingCustomer',
+      'https://localhost:44367/api/Admin/GetAllBorrowBooksPendingRequests',
       options
     );
   }
-
-  AcceptCustomer(data: any): Observable<any> {
+  AcceptRequest(data: any): Observable<any> {
     const headers = this.userService.GetHeaderToken();
     const options = { headers };
     return this._http.post<any>(
-      'https://localhost:44367/api/Admin/AcceptNewCustomer',
+      'https://localhost:44367/api/Admin/AcceptBorrowingBookRequest',
       data,
       options
     );
   }
-  RejectCustomer(data: any): Observable<any> {
+  RejectRequest(data: any): Observable<any> {
     const headers = this.userService.GetHeaderToken();
     const options = { headers };
     return this._http.post<any>(
-      'https://localhost:44367/api/Admin/RejectCustomer',
+      'https://localhost:44367/api/Admin/RejectBorrowingBookRequest',
       data,
       options
     );
   }
-  GetAllAcceptingCustomers(): Observable<any> {
+  GetAllAcceptedCustomerBorrowingRequsets(): Observable<any> {
     const headers = this.userService.GetHeaderToken();
     const options = { headers };
     return this._http.get<any>(
-      'https://localhost:44367/api/Admin/GetAllAcceptedCustomer',
+      'https://localhost:44367/api/Admin/GetAllBorrowBooksAcceptingRequests',
       options
     );
   }
-  GetAllBlockedCustomers(): Observable<any> {
+  GetAllBookReturnedRequsets(): Observable<any> {
     const headers = this.userService.GetHeaderToken();
     const options = { headers };
     return this._http.get<any>(
-      'https://localhost:44367/api/Admin/GetAllBlockedCustomer',
+      'https://localhost:44367/api/Admin/GetAllReturnBooksTransactions',
       options
     );
   }
-  UnblockCustomer(data: any): Observable<any> {
+  SetNonCorruptBookStatus(data: any): Observable<any> {
     const headers = this.userService.GetHeaderToken();
     const options = { headers };
     return this._http.post<any>(
-      'https://localhost:44367/api/Admin/UnBlockCustomer',
+      'https://localhost:44367/api/Admin/ReturnBookStatus',
+      data,
+      options
+    );
+  }
+  SetDamagedBookStatus(data: any): Observable<any> {
+    const headers = this.userService.GetHeaderToken();
+    const options = { headers };
+    return this._http.post<any>(
+      'https://localhost:44367/api/Admin/ReturnBookStatus',
       data,
       options
     );
