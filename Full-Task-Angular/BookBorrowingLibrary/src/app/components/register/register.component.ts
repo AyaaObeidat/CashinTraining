@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     phoneNumber: 0,
     password: '',
   };
-
+  isNotCreated = false;
   constructor(
     private userService: UserService,
     private router: Router,
@@ -55,9 +55,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
           this.router.navigate(['/login']);
         },
         (err) => {
-          alert('Error Creating User');
+          this.isNotCreated = true;
         }
       );
+      this.user = {
+        fullName: '',
+        email: '',
+        phoneNumber: 0,
+        password: '',
+      };
     }
   }
 }

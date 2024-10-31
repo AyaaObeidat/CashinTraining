@@ -134,5 +134,14 @@ namespace BookBorrowingLibrary.Controllers
             await _customerService.Return_BookAsync(parameter);
             return Ok();
         }
+
+        [HttpPost]
+        [Route("GetCustomerById")]
+        [Authorize]
+        public async Task<IActionResult> GetCustomerByIdAsync(CustomerGetByParameter parameter)
+        {
+           
+            return Ok(await _customerService.GetCustomerByIdAsync(parameter));
+        }
     }
 }

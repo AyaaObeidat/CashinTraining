@@ -28,6 +28,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.customer = this.customerService.GetCustomerData();
     this.customerBook = this.customer?.book;
     if (this.customerBook !== null) this.haveBook = true;
+    console.log(this.customer);
   }
 
   ngOnDestroy(): void {
@@ -42,11 +43,13 @@ export class CartComponent implements OnInit, OnDestroy {
       })
       .subscribe(
         (res) => {
-          alert('Successful Return');
           this.haveBook = false;
+          this.customerService.GetCustomerById({id:this.customer?.id}).subscribe(
+            (res: any) => this.customerService.SetCustomerData(res),
+            (err:any ) =>{}
+          );
         },
         (err) => {
-          alert('Failed Return');
         }
       );
   }

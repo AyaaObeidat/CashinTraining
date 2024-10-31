@@ -47,7 +47,8 @@ export class CustomerProfileComponent implements OnInit, OnDestroy {
       })
       .subscribe(
         (res) => {
-          alert('Updated Successfuly');
+          {
+          }
           if (this.newFullName !== '') {
             this.customer.fullName = this.newFullName;
           } else if (this.newPhoneNumber !== 0) {
@@ -61,7 +62,7 @@ export class CustomerProfileComponent implements OnInit, OnDestroy {
           this.confirmPassword = '';
           this.newPhoneNumber = 0;
         },
-        (err) => alert('Faild')
+        (err) => {}
       );
   }
 }

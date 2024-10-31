@@ -64,7 +64,6 @@ export class EditBookComponent {
       })
       .subscribe(
         (res) => {
-          alert('Updated Successfuly');
           if (this.newTitle !== '') this.bookData.title = this.newTitle;
           else if (this.newAuthor !== '')
             this.bookData.author = this.newAuthor;
@@ -82,7 +81,7 @@ export class EditBookComponent {
           this.newPublicationYear = '';
           this.newNumberOfAvailableCopies = 0;
         },
-        (err) => alert('Faild')
+        (err) => {}
       );
   }
   BuyNewCopies(){

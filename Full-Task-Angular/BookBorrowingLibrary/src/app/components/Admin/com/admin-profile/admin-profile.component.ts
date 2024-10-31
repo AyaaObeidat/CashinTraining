@@ -46,7 +46,6 @@ export class AdminProfileComponent implements OnInit, OnDestroy {
       })
       .subscribe(
         (res) => {
-          alert('Updated Successfuly');
           if (this.newFullName !== '') {
             this.admin.fullName = this.newFullName;
           } else {
@@ -57,7 +56,7 @@ export class AdminProfileComponent implements OnInit, OnDestroy {
           this.newPassword = '';
           this.confirmPassword = '';
         },
-        (err) => alert('Faild')
+       err => {}
       );
   }
 }

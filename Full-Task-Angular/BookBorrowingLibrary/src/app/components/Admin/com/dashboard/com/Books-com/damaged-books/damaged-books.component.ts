@@ -33,8 +33,8 @@ export class DamagedBooksComponent {
   }
   Repair(book:any){
     this.bookServService.Repair({id:book?.id}).subscribe(
-      res => alert('Successfuly Repaired'),
-      err => alert('Faild')
+      res => {},
+      err => {}
     );
   }
 }

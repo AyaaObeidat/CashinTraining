@@ -62,11 +62,19 @@ export class CustomerServService {
   }
 
   BorrowBook(data: any): Observable<any> {
-    debugger
     const headers = this.userService.GetHeaderToken();
     const options = { headers };
     return this._http.post<any>(
       'https://localhost:44367/api/Customer/Borrow_Book',
+      data,
+      options
+    );
+  }
+  GetCustomerById(data:any):Observable<any>{
+    const headers = this.userService.GetHeaderToken();
+    const options = { headers };
+    return this._http.post<any>(
+      'https://localhost:44367/api/Customer/GetCustomerById',
       data,
       options
     );

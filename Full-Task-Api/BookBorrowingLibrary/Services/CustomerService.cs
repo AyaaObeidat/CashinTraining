@@ -142,12 +142,17 @@ namespace BookBorrowingLibrary.Services
             var book = await _bookInterface.GetByIdAsync(parameter.BookId);
             if (customer == null || book == null) throw new ArgumentNullException("customer or book not found");
 
-            var returnBook_trans = ReturnTransaction.Create(customer.Id , book.Id);
-            await _returnTransactionInterface.AddAsync(returnBook_trans);
+            var returnTransactions =await _returnTransactionInterface.GetAllAsync();
+            var returnTransactionsList = returnTransactions.ToList().Where(r => r.UserId==customer.Id && r.BookId==book.Id).ToList();
+            if (returnTransactionsList.Count == 0)
+            {
+                var returnBook_trans = ReturnTransaction.Create(customer.Id, book.Id);
+                await _returnTransactionInterface.AddAsync(returnBook_trans);
 
-            customer.SetBookId(Guid.Empty);
-            await _userInterface.UpdateAsync(customer); 
-           
+                customer.SetBookId(Guid.Empty);
+                await _userInterface.UpdateAsync(customer);
+            }
+            else throw new ArgumentException();
 
         }//cus
 

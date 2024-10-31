@@ -14,6 +14,8 @@ export class CustomerHomeComponent implements OnInit, OnDestroy {
   customer: any = {};
   allBooks: any[] = [];
   readRules = false;
+  canBorrow = false;
+  cannotBorrow = false;
   constructor(
     private router: Router,
     private render: Renderer2,
@@ -41,9 +43,8 @@ export class CustomerHomeComponent implements OnInit, OnDestroy {
     this.customerServ
       .BorrowBook({ userId: this.customer?.id, bookId: book?.id })
       .subscribe(
-        (res) =>
-          alert('Your application to borrow the book was sent to the addict'),
-        (err) => alert("You can't borrow the book right now.")
+        (res) => this.canBorrow=true,
+        (err) => this.cannotBorrow = true
       );
   }
   ReadRules() {

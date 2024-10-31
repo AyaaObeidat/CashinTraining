@@ -39,15 +39,15 @@ export class BookReturningRequestsComponent implements OnInit, OnDestroy {
   }
   SetNonCorruptBookStatus(request: any) {
     this.requestService.SetNonCorruptBookStatus({ id: request?.id , bookStatus : 0}).subscribe(
-      (res) => alert('Successfuly'),
-      (err) => alert('Faild')
+      (res) => {},
+      (err) => {}
     );
   }
 
   SetDamagedBookStatus(request: any) {
     this.requestService.SetDamagedBookStatus({ id: request?.id , bookStatus : 1}).subscribe(
-      (res) => alert('Successfuly'),
-      (err) => alert('Faild')
+      (res) => {},
+      (err) => {}
     );
   }
 }

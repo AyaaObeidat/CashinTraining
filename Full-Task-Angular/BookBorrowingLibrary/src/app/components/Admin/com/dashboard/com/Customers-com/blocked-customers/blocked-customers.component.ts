@@ -3,7 +3,7 @@ import { Component, Inject, Renderer2 } from '@angular/core';
 import { RegisteredCustomersService } from '../../../ser/customer-ser/registered-customers.service';
 import { AdminHeaderComponent } from '../../../../admin-header/admin-header.component';
 import { AdminDashboardComponent } from '../../../admin-dashboard/admin-dashboard.component';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-blocked-customers',
@@ -17,7 +17,8 @@ export class BlockedCustomersComponent {
   constructor(
     private render: Renderer2,
     private registeredCustomersService: RegisteredCustomersService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private router : Router
   ) {}
   ngOnInit(): void {
     this.render.setStyle(this.document.body, 'backgroundColor', '#313b31');
@@ -33,8 +34,8 @@ export class BlockedCustomersComponent {
   }
   UnblockCustomer(customer : any){
     this.registeredCustomersService.UnblockCustomer({id:customer?.id}).subscribe(
-      (res) => alert('Successfuly UnBlock Customer'),
-      (err) => alert('Faild')
+      (res) => {this.router.navigate(['/blockedCustomers'])},
+      (err) => {}
     );
   }
 }

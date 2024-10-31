@@ -19,11 +19,10 @@
               in case:
             </li>
             <ol>
+              <li>No book in your own library</li>
               <li>
-                No book in your own library
-              </li>
-              <li>
-                Do not submit a request for borrowing in advance and is still under consideration
+                Do not submit a request for borrowing in advance and is still
+                under consideration
               </li>
             </ol>
           </ul>
@@ -55,11 +54,18 @@
         </div>
         <div class="card-footer text-center">
           <button
+            *ngIf="!canBorrow && !cannotBorrow"
             class="btn btn-outline-primary"
             (click)="BorrowBook(customerBook)"
           >
             Borrow
           </button>
+          <div class="text-warning" *ngIf="canBorrow">
+            Your request to borrow the book was sent to the addict
+          </div>
+          <div class="text-warning" *ngIf="cannotBorrow">
+            You can't borrow the book right now.
+          </div>
         </div>
       </div>
     </div>

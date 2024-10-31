@@ -5,7 +5,7 @@ import { AdminHeaderComponent } from '../../../../admin-header/admin-header.comp
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { BookServService } from '../../../ser/book-ser/book-serv.service';
 import { error } from 'console';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-customer-registration-requests',
@@ -21,7 +21,8 @@ export class CustomerRegistrationRequestsComponent
   constructor(
     private render: Renderer2,
     private registeredCustomersService: RegisteredCustomersService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private router : Router
   ) {}
   ngOnInit(): void {
     this.render.setStyle(this.document.body, 'backgroundColor', '#313b31');
@@ -37,14 +38,14 @@ export class CustomerRegistrationRequestsComponent
   }
   AcceptCustomer(customer: any) {
     this.registeredCustomersService.AcceptCustomer({ id: customer?.id }).subscribe(
-      res => alert('successfuly accepting'),
-      err => alert('faild')
+      res => {this.router.navigate(['/accept'])},
+      err => {}
     );
   }
   RejectCustomer(customer: any) {
     this.registeredCustomersService.RejectCustomer({id : customer?.id}).subscribe(
-      res => alert('successfuly'),
-      err => alert('faild')
+      res => {this.router.navigate(['/reject'])},
+      err => {}
     );
   }
 }

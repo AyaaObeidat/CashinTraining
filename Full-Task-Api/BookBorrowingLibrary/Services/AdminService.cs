@@ -125,7 +125,7 @@ namespace BookBorrowingLibrary.Services
             var book = await _bookInterface.GetByIdAsync(returnBook_trans.BookId);
             var customer = await _userInterface.GetByIdAsync(returnBook_trans.UserId);
             var borrowingTransactions =await _borrowingTransactionInterface.GetAllAsync();
-            var borrowingTransaction = borrowingTransactions.ToList().FirstOrDefault(b => b.BookId == book.Id && book.UserId == customer.Id);
+            var borrowingTransaction = borrowingTransactions.ToList().FirstOrDefault(b => b.BookId == book.Id && b.UserId == customer.Id);
 
             if(parameter.BookStatus == BookStatus.NonCorrupt)
             {
