@@ -55,7 +55,7 @@ namespace Profolio.Models
             this.Password = password;
         }
 
-        public void SetEduciation(long phoneNumber)
+        public void SetPhoneNumber(long phoneNumber)
         {
             if (phoneNumber == null) throw new ArgumentNullException("PhoneNumber doesn't be null");
             this.PhoneNumber = phoneNumber;
@@ -110,6 +110,8 @@ namespace Profolio.Models
         {
             this.Experiences = experience;
         }
+
+      
     }
 
 }

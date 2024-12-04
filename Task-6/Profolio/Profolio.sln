@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Profolio", "Profolio.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfolioEnums", "..\ProfolioEnums\ProfolioEnums.csproj", "{FAC23AE1-B3A7-43C1-8448-9BF7968A9647}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfolioDtos", "..\ProfolioDtos\ProfolioDtos.csproj", "{6B4AC801-A310-4533-B4F9-06FD3C58311E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FAC23AE1-B3A7-43C1-8448-9BF7968A9647}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FAC23AE1-B3A7-43C1-8448-9BF7968A9647}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FAC23AE1-B3A7-43C1-8448-9BF7968A9647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B4AC801-A310-4533-B4F9-06FD3C58311E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B4AC801-A310-4533-B4F9-06FD3C58311E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B4AC801-A310-4533-B4F9-06FD3C58311E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B4AC801-A310-4533-B4F9-06FD3C58311E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

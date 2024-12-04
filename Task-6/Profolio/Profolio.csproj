@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProfolioDtos\ProfolioDtos.csproj" />
     <ProjectReference Include="..\ProfolioEnums\ProfolioEnums.csproj" />
   </ItemGroup>
 
