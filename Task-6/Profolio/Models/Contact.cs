@@ -4,19 +4,19 @@
     {
         public Guid Id { get; set; }
         public string Email { get; private set; } = null!;
-        public long? PhoneNumber {  get;private set; }
+        public long? PhoneNumber { get; private set; }
         public string? LinkedinUrl { get; private set; }
         public string? GitHubUrl { get; private set; }
         public Guid UserId { get; private set; }
         private Contact() { }
-        private Contact( string email,Guid userId)
+        private Contact(string email, Guid userId)
         {
             Email = email;
             UserId = userId;
         }
-        public static Contact Create(string email , Guid userId)
+        public static Contact Create(string email, Guid userId)
         {
-            if(email == null) throw new ArgumentNullException("email doesn't be null");
+            if (email == null) throw new ArgumentNullException("email doesn't be null");
             if (userId == Guid.Empty) throw new ArgumentNullException();
             return new Contact(email, userId);
         }
@@ -39,5 +39,6 @@
         {
             GitHubUrl = gitHubUrl;
         }
-    }
+    
+}
 }

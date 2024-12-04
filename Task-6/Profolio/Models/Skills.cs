@@ -8,14 +8,14 @@
         public Guid UserId { get; private set; }
 
         private Skills() { }
-        private Skills(string title , Guid userId)
+        private Skills(string title, Guid userId)
         {
             Title = title;
             UserId = userId;
         }
-        public static Skills Create(string title , Guid userId)
+        public static Skills Create(string title, Guid userId)
         {
-            if(title == null) throw new ArgumentNullException("Title doesn't be null");
+            if (title == null) throw new ArgumentNullException("Title doesn't be null");
             if (userId == Guid.Empty) throw new ArgumentNullException();
             return new Skills(title, userId);
         }
@@ -31,4 +31,6 @@
             this.Description = description;
         }
     }
+
 }
+

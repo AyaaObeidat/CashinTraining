@@ -9,14 +9,14 @@ namespace Profolio.Models
         public string Email { get; private set; } = null!;
         public string Password { get; private set; } = null!;
         public long? PhoneNumber { get; private set; }
-        public string? About { get; private set; } 
-        public string? Education { get; private set; } 
+        public string? About { get; private set; }
+        public string? Education { get; private set; }
         public string? ImageUrl { get; private set; }
         public string? JobTitle { get; private set; }
         public string? CvUrl { get; private set; }
         public ProfileStatus ProfileStatus { get; private set; }
         public List<Skills> Skills { get; private set; }
-        public List<Experience> experiences { get; private set; }
+        public List<Experience> Experiences { get; private set; }
         public Guid ContactId { get; private set; }
 
         private User() { }
@@ -32,7 +32,7 @@ namespace Profolio.Models
         public static User Create(string fullName, string email, string password)
         {
             if (fullName == null) throw new ArgumentNullException("FullName doesn't be null");
-            if(email == null) throw new ArgumentNullException("email doesn't be null");
+            if (email == null) throw new ArgumentNullException("email doesn't be null");
             if (password == null) throw new ArgumentNullException("password doesn't be null");
             return new User(fullName, email, password);
         }
@@ -43,7 +43,7 @@ namespace Profolio.Models
             this.FullName = fullName;
         }
 
-        public void SetEmail (string email)
+        public void SetEmail(string email)
         {
             if (email == null) throw new ArgumentNullException("Email doesn't be null");
             this.Email = email;
@@ -108,7 +108,9 @@ namespace Profolio.Models
         }
         public void SetUserExperiences(List<Experience> experience)
         {
-            this.experiences = experience;
+            this.Experiences = experience;
         }
     }
+
 }
+

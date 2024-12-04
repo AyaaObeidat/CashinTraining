@@ -11,4 +11,5 @@ namespace ProfolioEnums
         Private = 0,
         Public
     }
+
 }

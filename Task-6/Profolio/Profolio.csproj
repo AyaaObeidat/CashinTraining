@@ -8,7 +8,7 @@
     <ContainerRuntimeIdentifier>win10-x64</ContainerRuntimeIdentifier>
     <ContainerBaseImage>mcr.microsoft.com/dotnet/aspnet:6.0</ContainerBaseImage>
     <EnableSdkContainerDebugging>True</EnableSdkContainerDebugging>
-    <UserSecretsId>80bbbe6b-1441-4f49-a2f5-bcb3e6588256</UserSecretsId>
+    <UserSecretsId>755f281a-167d-4f99-af7a-52277167396c</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
@@ -27,10 +27,6 @@
       <Value>443</Value>
     </ContainerEnvironmentVariable>
     <ContainerPort Include="443" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
   <ItemGroup>
